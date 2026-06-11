@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c66c5roia6o5x"
-path="res://.godot/imported/char_idle_down_anim_strip_6.png-577736e640881248426d481198cad54c.ctex"
+uid="uid://dqs1vev6rnqt3"
+path="res://.godot/imported/correrSpritesheet.png-86c0088bdd2386d3879f6d9046919f87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/personaje/char_idle_down_anim_strip_6.png"
-dest_files=["res://.godot/imported/char_idle_down_anim_strip_6.png-577736e640881248426d481198cad54c.ctex"]
+source_file="res://sprites/personaje/correrSpritesheet.png"
+dest_files=["res://.godot/imported/correrSpritesheet.png-86c0088bdd2386d3879f6d9046919f87.ctex"]
 
 [params]
 
