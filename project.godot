@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Juego-Granja-MTR"
-run/main_scene="uid://dlp2v63k421qo"
+run/main_scene="uid://cm7c3deu4jxa0"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0.08855995, 0.0885599, 0.0885599, 1)
 config/icon="res://icon.svg"
@@ -54,6 +54,7 @@ izquierda={
 [layer_names]
 
 2d_physics/layer_1="jugador"
+2d_physics/layer_2="obstaculo"
 
 [physics]
 

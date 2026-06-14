@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dac6jtwdwk3dj"]
+
+[ext_resource type="Texture2D" uid="uid://by6fagtwnqt1" path="res://sprites/assetPack/Overworld_Tileset.png" id="1_yxpsy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qqnc"]
+atlas = ExtResource("1_yxpsy")
+region = Rect2(96, 288, 64, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxpsy"]
+size = Vector2(22, 20)
+
+[node name="Arbol" type="StaticBody2D" unique_id=317442876]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1401159612]
+texture = SubResource("AtlasTexture_4qqnc")
+offset = Vector2(0, -11.51)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1750915021]
+position = Vector2(-1, 13)
+shape = SubResource("RectangleShape2D_yxpsy")
