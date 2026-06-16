@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dlp2v63k421qo" path="res://escenas/jugador/jugador.tscn" id="1_44c1f"]
 [ext_resource type="Texture2D" uid="uid://by6fagtwnqt1" path="res://recursos/assetPack/Overworld_Tileset.png" id="3_phdhe"]
-[ext_resource type="PackedScene" uid="uid://tlr7aicmpoi0" path="res://escenas/interfaz.tscn" id="3_xo3ps"]
+[ext_resource type="PackedScene" uid="uid://tlr7aicmpoi0" path="res://escenas/interfaz/interfaz.tscn" id="3_xo3ps"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xo3ps"]
 texture = ExtResource("3_phdhe")
@@ -31,6 +31,6 @@ tile_map_data = PackedByteArray("AAAHAAIAAQADAAkAAAAKAAIAAQAFAAkAAAALAAMAAQAFAAk
 tile_set = SubResource("TileSet_sbnnb")
 
 [node name="CharacterBody2D" parent="." unique_id=1791083245 instance=ExtResource("1_44c1f")]
-position = Vector2(269, 110)
+position = Vector2(295, 205)
 
 [node name="Interfaz" parent="." unique_id=2077230092 instance=ExtResource("3_xo3ps")]

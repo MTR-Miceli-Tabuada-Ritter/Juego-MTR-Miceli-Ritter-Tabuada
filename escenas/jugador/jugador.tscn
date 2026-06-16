@@ -575,6 +575,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycxet"]
 size = Vector2(10, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3don6"]
+size = Vector2(30, 30)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1791083245 node_paths=PackedStringArray("animacion")]
 collision_mask = 2
 script = ExtResource("1_8cmsc")
@@ -583,9 +586,19 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13692352]
 sprite_frames = SubResource("SpriteFrames_mnegl")
-animation = &"herramientaIzquierda"
+animation = &"idleAbajo"
 autoplay = "idleAbajo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1817492249]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_ycxet")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1925774606]
+position = Vector2(0, 16)
+
+[node name="Area2D" type="Area2D" parent="Marker2D" unique_id=541689440]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Area2D" unique_id=1622831405]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_3don6")
+debug_color = Color(0, 0.64273643, 0.31795844, 0.41960785)

@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
 @export var animacion: AnimatedSprite2D 
+@export var direccionVista: Marker2D
 
 var velocidad = 200.0
 var ultima_direccion = Vector2.DOWN
 var esta_actuando = false
+var posicionBase = "abajo"
 
 func _ready() -> void:
 	animacion.animation_finished.connect(_on_animation_finished)
