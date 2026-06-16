@@ -27,6 +27,7 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://addons/": "purple",
 "res://escenas/": "blue",
 "res://recursos/": "teal"
 }
