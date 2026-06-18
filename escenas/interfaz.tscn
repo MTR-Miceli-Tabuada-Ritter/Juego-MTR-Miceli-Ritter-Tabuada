@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bhu3ieq58vg64"]
+
+[ext_resource type="Theme" uid="uid://b3oaqeiabphl1" path="res://recursos/fuentes/interfaz.tres" id="1_2ul7s"]
+[ext_resource type="Texture2D" uid="uid://cxl2uige3ew1j" path="res://recursos/assetPack/Hud_Ui/health_bar_hud.png" id="2_kjlrn"]
+[ext_resource type="Texture2D" uid="uid://mruv3taxh7jc" path="res://recursos/assetPack/Hud_Ui/health_hud.png" id="3_0cwio"]
+[ext_resource type="Texture2D" uid="uid://ehqb8f8asd33" path="res://recursos/assetPack/Hud_Ui/item_box_hud.png" id="4_puc7n"]
+
+[node name="Interfaz" type="CanvasLayer" unique_id=2077230092]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1850452812]
+offset_left = 602.0
+offset_right = 640.0
+offset_bottom = 19.0
+size_flags_horizontal = 3
+theme = ExtResource("1_2ul7s")
+text = "00: 00"
+scroll_active = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=364858354]
+offset_right = 128.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+value = 20.0
+texture_over = ExtResource("2_kjlrn")
+texture_progress = ExtResource("3_0cwio")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=976820496]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+texture = ExtResource("4_puc7n")
