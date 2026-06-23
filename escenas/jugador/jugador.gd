@@ -50,11 +50,10 @@ func _intentar_cultivar():
 
 func _procesar_animacion(estado: String, direccion: Vector2):
 	if abs(direccion.x) > abs(direccion.y):
-		if direccion.x > 0:
-			animacion.play(estado + "Derecha")
-		else:
-			animacion.play(estado + "Izquierda")
+		animacion.play(estado + "Derecha")
+		animacion.flip_h = direccion.x < 0
 	else:
+		animacion.flip_h = false
 		if direccion.y > 0:
 			animacion.play(estado + "Abajo")
 		else:
