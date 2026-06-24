@@ -32,6 +32,10 @@ folder_colors={
 "res://recursos/": "teal"
 }
 
+[global_group]
+
+tilemap_cultivable=""
+
 [input]
 
 arriba={
@@ -68,6 +72,7 @@ herramienta={
 
 2d_physics/layer_1="jugador"
 2d_physics/layer_2="obstaculo"
+2d_physics/layer_4="cultivable"
 
 [physics]
 
