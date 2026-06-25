@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 		_actualizar_area_cultivo(ultima_direccion)
 	if Input.is_action_just_pressed("herramienta") and not esta_actuando:
 		esta_actuando = true
-		_procesar_animacion("herramienta", ultima_direccion)
+		_procesar_animacion("Regar", ultima_direccion)
 	if not esta_actuando:
 		if direccionMovimiento != Vector2.ZERO:
 			_procesar_animacion("correr", direccionMovimiento)
