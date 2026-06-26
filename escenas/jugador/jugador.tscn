@@ -336,12 +336,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jffbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddpx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jffbf")
 }],
 "loop": false,
 "name": &"RegarAbajo",
-"speed": 10.0
+"speed": 3.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuwu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2svea")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iuwu0")
 }, {
@@ -350,9 +362,15 @@ animations = [{
 }],
 "loop": false,
 "name": &"RegarArriba",
-"speed": 10.0
+"speed": 3.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocdym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnm7w")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ocdym")
 }, {
@@ -361,7 +379,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"RegarDerecha",
-"speed": 10.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -517,7 +535,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13692352]
 sprite_frames = SubResource("SpriteFrames_mnegl")
-animation = &"RegarDerecha"
+animation = &"RegarAbajo"
 autoplay = "idleAbajo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1817492249]
