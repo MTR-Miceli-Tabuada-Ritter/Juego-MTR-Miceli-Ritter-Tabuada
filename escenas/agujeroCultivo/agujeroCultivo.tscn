@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bpclme7d56o4i"]
+
+[ext_resource type="Texture2D" uid="uid://by6fagtwnqt1" path="res://recursos/assetPack/Overworld_Tileset.png" id="1_d1vtd"]
+[ext_resource type="Script" uid="uid://c2w4w8k6bw0g3" path="res://escenas/agujeroCultivo/agujero_cultivo.gd" id="1_rfq02"]
+[ext_resource type="Script" uid="uid://dfkms8outegjs" path="res://globales/interactuable.gd" id="2_rfq02"]
+[ext_resource type="Texture2D" uid="uid://be7yvdgga17fl" path="res://recursos/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Spring Crops.png" id="3_wohqy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cojk"]
+atlas = ExtResource("1_d1vtd")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whsvw"]
+size = Vector2(36, 36)
+
+[node name="AgujeroCultivo" type="Node2D" unique_id=1214211286]
+script = ExtResource("1_rfq02")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1752363328]
+texture = SubResource("AtlasTexture_8cojk")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1126428028]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_rfq02")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2119146188]
+shape = SubResource("RectangleShape2D_whsvw")
+
+[node name="crop" type="Sprite2D" parent="." unique_id=1956875268]
+position = Vector2(0, -16)
+texture = ExtResource("3_wohqy")
+hframes = 14
+vframes = 4
+frame = 5

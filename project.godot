@@ -29,6 +29,7 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://addons/": "purple",
 "res://escenas/": "blue",
+"res://globales/": "gray",
 "res://recursos/": "teal"
 }
 
@@ -72,6 +73,7 @@ herramienta={
 
 2d_physics/layer_1="jugador"
 2d_physics/layer_2="obstaculo"
+2d_physics/layer_3="interactuable"
 2d_physics/layer_4="cultivable"
 
 [physics]

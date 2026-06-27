@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dlp2v63k421qo"]
 
 [ext_resource type="Script" uid="uid://oven1uoamc2f" path="res://escenas/jugador/jugador.gd" id="1_8cmsc"]
-[ext_resource type="Texture2D" uid="uid://cqfypce0gw5od" path="res://recursos/assetPack/Cute_Fantasy_Free/Player/Player.png" id="2_26844"]
-[ext_resource type="Texture2D" uid="uid://c0tksjup2h7wm" path="res://recursos/assetPack/Cute_Fantasy_Free/Player/Player_Actions.png" id="3_qsk7m"]
+[ext_resource type="Texture2D" uid="uid://cqfypce0gw5od" path="res://recursos/Cute_Fantasy_Free/Player/Player.png" id="2_26844"]
+[ext_resource type="Texture2D" uid="uid://c0tksjup2h7wm" path="res://recursos/Cute_Fantasy_Free/Player/Player_Actions.png" id="3_qsk7m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3don6"]
 atlas = ExtResource("2_26844")
@@ -535,7 +535,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13692352]
 sprite_frames = SubResource("SpriteFrames_mnegl")
-animation = &"RegarAbajo"
+animation = &"RegarDerecha"
 autoplay = "idleAbajo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1817492249]
