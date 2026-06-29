@@ -21,10 +21,10 @@ func _process(_delta: float) -> void:
 		bajadaDeNoche = false
 		tiempoTranscurrido = 0.0
 
-func _arrancarNoche():
+func arrancarNoche():
 	bajadaDeNoche = true
 	
-func _terminarNoche():
+func terminarNoche():
 	dia += 1
 	if dia > 28:
 		dia = 1

@@ -6,8 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://mruv3taxh7jc" path="res://recursos/assetPack/Hud_Ui/health_hud.png" id="3_0cwio"]
 [ext_resource type="Texture2D" uid="uid://ehqb8f8asd33" path="res://recursos/assetPack/Hud_Ui/item_box_hud.png" id="4_puc7n"]
 
-[node name="Interfaz" type="CanvasLayer" unique_id=2077230092]
+[node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "mesTexto", "diaTexto")]
 script = ExtResource("1_6v4fd")
+horaTexto = NodePath("Control/hora")
+mesTexto = NodePath("Control/mes")
+diaTexto = NodePath("Control/dia")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=364858354]
 offset_right = 128.0

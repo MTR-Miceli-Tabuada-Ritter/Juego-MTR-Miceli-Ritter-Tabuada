@@ -1,22 +1,22 @@
 extends Node2D
 @export var velocidadCrecimiento = 1.5
-@export var crop: AnimatedSprite2D
+@export var crop: Sprite2D
 var cropCrecimientoId = 0
 var cropRandom
-var flagLista = false
+var cropListo = false
 var rango = RandomNumberGenerator.new()
+var escenaPrincipal
 
 func _ready() -> void:
 	cropRandom = rango.randi_range(0,crop.vframes - 1)
 	crop.visible=true
-	crop.frame_cords= Vector2(cropCrecimientoId,cropRandom)
-	_crecerCrop()
+	crop.frame_coords= Vector2(cropCrecimientoId,cropRandom)
+	escenaPrincipal = get_node("/root/escenaPrincipal")
+	escenaPrincipal.connect("cambioDia",_crecerCrop)
 	
 func _crecerCrop():
 	if cropCrecimientoId < crop.hframes -1:
-		await get_tree().create_timer(velocidadCrecimiento).timeout
 		cropCrecimientoId= cropCrecimientoId+1
-		crop.frame_cords = Vector2(cropCrecimientoId,cropRandom)
-		_crecerCrop()
+		crop.frame_coords = Vector2(cropCrecimientoId,cropRandom)
 	else:
-		flagLista= true
+		cropListo= true

@@ -1,10 +1,10 @@
 extends CharacterBody2D
 var agujeroPreload = preload("res://escenas/agujeroCultivo/agujeroCultivo.tscn")
-@export var animacion: AnimatedSprite2D 
 @export var direccionVistaMarker: Marker2D
-@onready var tilemap: TileMapLayer = get_tree().get_first_node_in_group("tilemap_cultivable")#no me interesa cambiar desde el inspector entonces dejo onready
+@export var animacion: AnimatedSprite2D 
 @export var notificacion: Sprite2D
 @export var accionablesArea: Area2D
+@onready var tilemap: TileMapLayer = get_tree().get_first_node_in_group("tilemap_cultivable")#no me interesa cambiar desde el inspector entonces dejo onready
 var velocidad = 200.0
 var ultima_direccion = Vector2.DOWN
 var esta_actuando = false
@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 		_actualizar_area_cultivo(ultima_direccion)
 	if Input.is_action_just_pressed("herramienta") and not esta_actuando:
 		esta_actuando = true
-		_procesar_animacion("Regar", ultima_direccion)
+		_procesar_animacion("Hacha", ultima_direccion)
 	if not esta_actuando:
 		if direccionMovimiento != Vector2.ZERO:
 			_procesar_animacion("correr", direccionMovimiento)
@@ -49,6 +49,9 @@ func _intentar_cultivar():
 	
 	if tile_data and tile_data.get_collision_polygons_count(1) > 0:
 		print("suelo fertilizado")
+		var agujeroInstancia = agujeroPreload.instantiate()
+		agujeroInstancia.position = direccionVistaMarker.global_position
+		get_parent().call_deferred("add_child",agujeroInstancia)
 	else:
 		print("no hay suelo cultivable acá")
 
@@ -69,4 +72,12 @@ func _on_animation_finished():
 		_intentar_cultivar() 
 
 func _chequearAccionables():
-	
+	var areasColisionantes: Array[Area2D] = accionablesArea.get_overlapping_areas() #devuelve todas las areas que esten colisionando con el pj
+	if areasColisionantes.size() > 0:
+		for area in areasColisionantes:
+			if area.get_parent().cropListo == true:
+				notificacion.visible = true
+
+	else:
+		notificacion.visible = false
+			

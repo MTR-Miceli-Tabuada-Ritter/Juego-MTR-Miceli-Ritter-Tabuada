@@ -530,23 +530,23 @@ size = Vector2(30, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsk7m"]
 size = Vector2(32, 24)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1791083245 node_paths=PackedStringArray("animacion", "direccionVistaMarker", "notificacion", "accionablesArea")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1791083245 node_paths=PackedStringArray("direccionVistaMarker", "animacion", "notificacion", "accionablesArea")]
 collision_mask = 2
 script = ExtResource("1_8cmsc")
-animacion = NodePath("AnimatedSprite2D")
 direccionVistaMarker = NodePath("Marker2D")
+animacion = NodePath("AnimatedSprite2D")
 notificacion = NodePath("notificacionAccionable")
 accionablesArea = NodePath("accionables")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13692352]
 sprite_frames = SubResource("SpriteFrames_mnegl")
-animation = &"RegarDerecha"
+animation = &"CuchilloAbajo"
 autoplay = "idleAbajo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1817492249]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_ycxet")
-debug_color = Color(0.73808837, 0, 0.07948469, 0.41960785)
+debug_color = Color(0, 0.6313726, 0.45882353, 0.65882355)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1925774606]
 
@@ -556,7 +556,8 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Area2D" unique_id=1622831405]
 shape = SubResource("RectangleShape2D_3don6")
-debug_color = Color(0, 0.690766, 0.7404605, 0.41960785)
+disabled = true
+debug_color = Color(0.7294118, 0, 0, 0.5176471)
 
 [node name="accionables" type="Area2D" parent="." unique_id=311719860]
 collision_layer = 0
