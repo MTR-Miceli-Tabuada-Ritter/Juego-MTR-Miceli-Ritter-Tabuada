@@ -7,19 +7,21 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cojk"]
 atlas = ExtResource("1_d1vtd")
-region = Rect2(0, 96, 32, 32)
+region = Rect2(288, 128, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whsvw"]
 size = Vector2(36, 36)
 
-[node name="AgujeroCultivo" type="Node2D" unique_id=1214211286]
+[node name="AgujeroCultivo" type="Node2D" unique_id=1214211286 node_paths=PackedStringArray("crop")]
 script = ExtResource("1_rfq02")
+crop = NodePath("crop")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1752363328]
 texture = SubResource("AtlasTexture_8cojk")
 metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1126428028]
+visible = false
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("2_rfq02")
@@ -28,8 +30,8 @@ script = ExtResource("2_rfq02")
 shape = SubResource("RectangleShape2D_whsvw")
 
 [node name="crop" type="Sprite2D" parent="." unique_id=1956875268]
-position = Vector2(0, -16)
+position = Vector2(0, -24)
 texture = ExtResource("3_wohqy")
 hframes = 14
 vframes = 4
-frame = 5
+frame = 1

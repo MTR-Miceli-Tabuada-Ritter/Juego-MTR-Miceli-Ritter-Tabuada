@@ -1,7 +1,10 @@
 extends CharacterBody2D
+var agujeroPreload = preload("res://escenas/agujeroCultivo/agujeroCultivo.tscn")
 @export var animacion: AnimatedSprite2D 
 @export var direccionVistaMarker: Marker2D
-@onready var tilemap: TileMapLayer = get_tree().get_first_node_in_group("tilemap_cultivable")
+@onready var tilemap: TileMapLayer = get_tree().get_first_node_in_group("tilemap_cultivable")#no me interesa cambiar desde el inspector entonces dejo onready
+@export var notificacion: Sprite2D
+@export var accionablesArea: Area2D
 var velocidad = 200.0
 var ultima_direccion = Vector2.DOWN
 var esta_actuando = false
@@ -25,6 +28,7 @@ func _physics_process(_delta: float) -> void:
 		else:
 			_procesar_animacion("idle", ultima_direccion)
 	move_and_slide()
+	_chequearAccionables()
 
 #aca metemos una logica para que el marker este siempre en un tile en especifico
 #y que sea mas preciso todo para cultivar
@@ -63,3 +67,6 @@ func _on_animation_finished():
 	if esta_actuando:
 		esta_actuando = false
 		_intentar_cultivar() 
+
+func _chequearAccionables():
+	

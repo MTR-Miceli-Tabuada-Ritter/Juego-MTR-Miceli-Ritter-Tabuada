@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://oven1uoamc2f" path="res://escenas/jugador/jugador.gd" id="1_8cmsc"]
 [ext_resource type="Texture2D" uid="uid://cqfypce0gw5od" path="res://recursos/Cute_Fantasy_Free/Player/Player.png" id="2_26844"]
 [ext_resource type="Texture2D" uid="uid://c0tksjup2h7wm" path="res://recursos/Cute_Fantasy_Free/Player/Player_Actions.png" id="3_qsk7m"]
+[ext_resource type="Texture2D" uid="uid://b7vwkicncm4kx" path="res://recursos/assetPack/Hud_Ui/select_icon_ui.png" id="4_3don6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3don6"]
 atlas = ExtResource("2_26844")
@@ -526,12 +527,16 @@ size = Vector2(10, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3don6"]
 size = Vector2(30, 30)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1791083245 node_paths=PackedStringArray("animacion", "direccionVistaMarker")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsk7m"]
+size = Vector2(32, 24)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1791083245 node_paths=PackedStringArray("animacion", "direccionVistaMarker", "notificacion", "accionablesArea")]
 collision_mask = 2
 script = ExtResource("1_8cmsc")
 animacion = NodePath("AnimatedSprite2D")
 direccionVistaMarker = NodePath("Marker2D")
-metadata/_edit_group_ = true
+notificacion = NodePath("notificacionAccionable")
+accionablesArea = NodePath("accionables")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13692352]
 sprite_frames = SubResource("SpriteFrames_mnegl")
@@ -541,6 +546,7 @@ autoplay = "idleAbajo"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1817492249]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_ycxet")
+debug_color = Color(0.73808837, 0, 0.07948469, 0.41960785)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1925774606]
 
@@ -550,4 +556,19 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Area2D" unique_id=1622831405]
 shape = SubResource("RectangleShape2D_3don6")
-debug_color = Color(0, 0.64273643, 0.31795844, 0.41960785)
+debug_color = Color(0, 0.690766, 0.7404605, 0.41960785)
+
+[node name="accionables" type="Area2D" parent="." unique_id=311719860]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="accionables" unique_id=1399096432]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_qsk7m")
+debug_color = Color(0.0651549, 0.28217176, 0.99998957, 0.41960785)
+
+[node name="notificacionAccionable" type="Sprite2D" parent="." unique_id=1868057778]
+visible = false
+position = Vector2(0, -32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_3don6")
