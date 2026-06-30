@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 func cropRecolectado(rutaObjeto, cantidad):
 	var indice = rutaObjeto.find("_")
 	var numeroRutaObjeto = rutaObjeto.substr(indice + 1)
-	
+
 	match numeroRutaObjeto:
 		"0":
 			if slot1.estaEnUso == true:

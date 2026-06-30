@@ -8,6 +8,7 @@ var bajadaDeNoche = false
 var amaneciendo = false
 var bajadaDeNocheDuracion = 5
 var tiempoTranscurrido = 0.0
+var slotEnUso = null
 
 func _process(_delta: float) -> void:
 	if bajadaDeNoche:
@@ -44,3 +45,6 @@ func terminarNoche():
 
 func cropRecolectado(rutaObjeto, cantidad):
 	interfaz.cropRecolectado(rutaObjeto, cantidad)
+
+func setearSlotEnUso(slot):
+	slotEnUso = slot
