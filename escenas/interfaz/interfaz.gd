@@ -10,7 +10,7 @@ extends CanvasLayer
 
 var esDeNoche = false
 var tiempoEnSegundos = 0.0
-var velocidadMultiplicador =20000.0
+var velocidadMultiplicador = 100.0
 var centrar = "[center]"
 var escenaPrincipal
 
@@ -18,7 +18,7 @@ func _ready() -> void:
 	escenaPrincipal = get_node("/root/escenaPrincipal")
 	escenaPrincipal.connect("cambioDia",_cambiarFecha)
 	_cambiarFecha()
-	
+
 func _cambiarFecha():
 	diaTexto.text = centrar + "%02d" % [escenaPrincipal.dia]
 	mesTexto.text = centrar + "%02d" % [escenaPrincipal.mes]
