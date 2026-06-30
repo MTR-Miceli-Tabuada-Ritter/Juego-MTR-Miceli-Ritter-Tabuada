@@ -24,15 +24,18 @@ func _cambiarFecha():
 	mesTexto.text = centrar + "%02d" % [escenaPrincipal.mes]
 
 func _process(delta: float) -> void:
-	tiempoEnSegundos += delta * velocidadMultiplicador #para 
+	tiempoEnSegundos += delta * velocidadMultiplicador #para
 	var horas = int(tiempoEnSegundos / 3600) % 24
 	var minutos = int(tiempoEnSegundos / 60) % 60
-	if horas > 18 and esDeNoche == false:
+	var esHoraDeNoche = horas >= 18 or horas < 5
+	if esHoraDeNoche and esDeNoche == false:
 		esDeNoche = true
 		escenaPrincipal.arrancarNoche()
+	if esHoraDeNoche == false and esDeNoche == true:
+		esDeNoche = false
+		escenaPrincipal.arrancarDia()
 	if tiempoEnSegundos >= 86400: #lo q dura un dia
 		tiempoEnSegundos = 0.0
-		esDeNoche = false
 		escenaPrincipal.terminarNoche()
 	horaTexto.text = centrar + "%02d:%02d" % [horas,minutos]
 
