@@ -72,3 +72,12 @@ offset_bottom = 32.0
 theme = ExtResource("1_2ul7s")
 bbcode_enabled = true
 text = "00"
+
+[node name="Label" type="Label" parent="." unique_id=288567747]
+offset_left = 40.0
+offset_top = 400.0
+offset_right = 675.0
+offset_bottom = 475.0
+text = "deberiamos tener una barra de inventario con 8 slots (ponele) 
+y que en cada espacio del inventario entre perfeto la ESCENA
+de slotInventario q esta en: res:res://escenas/interfaz/inventario/slotInventario.gd"

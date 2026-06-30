@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bpd57pgebrxwu"]
+
+[ext_resource type="Script" uid="uid://b2uyoo0k10ds6" path="res://escenas/interfaz/inventario/slotInventario.gd" id="1_6d03k"]
+[ext_resource type="Theme" uid="uid://b3oaqeiabphl1" path="res://recursos/fuentes/interfaz.tres" id="2_eed61"]
+[ext_resource type="FontFile" uid="uid://bgr3pw1yjdpek" path="res://recursos/fuentes/PixelOperator.ttf" id="3_r2f0x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jwvfp"]
+font = ExtResource("3_r2f0x")
+
+[node name="slot1" type="TextureRect" unique_id=827471245]
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_6d03k")
+
+[node name="Label" type="Label" parent="." unique_id=1595789542]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_eed61")
+text = "00"
+label_settings = SubResource("LabelSettings_jwvfp")
+horizontal_alignment = 2
+vertical_alignment = 2
