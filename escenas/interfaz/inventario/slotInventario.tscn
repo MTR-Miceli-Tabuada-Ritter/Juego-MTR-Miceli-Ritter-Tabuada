@@ -8,6 +8,7 @@
 font = ExtResource("3_r2f0x")
 
 [node name="slot1" type="TextureRect" unique_id=827471245 node_paths=PackedStringArray("textoCantidad")]
+visible = false
 offset_right = 32.0
 offset_bottom = 32.0
 script = ExtResource("1_6d03k")

@@ -12,16 +12,16 @@ region = Rect2(288, 128, 32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whsvw"]
 size = Vector2(36, 36)
 
-[node name="AgujeroCultivo" type="Node2D" unique_id=1214211286 node_paths=PackedStringArray("crop")]
+[node name="AgujeroCultivo" type="Node2D" unique_id=1214211286 node_paths=PackedStringArray("crop", "colisionArea")]
 script = ExtResource("1_rfq02")
 crop = NodePath("crop")
+colisionArea = NodePath("Area2D/CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1752363328]
 texture = SubResource("AtlasTexture_8cojk")
 metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1126428028]
-visible = false
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("2_rfq02")

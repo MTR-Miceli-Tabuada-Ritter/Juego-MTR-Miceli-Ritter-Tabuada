@@ -77,7 +77,7 @@ func _chequearAccionables():
 		for area in areasColisionantes:
 			if area.get_parent().cropListo == true:
 				notificacion.visible = true
-
+				area.get_parent().cosechar()
 	else:
 		notificacion.visible = false
 			

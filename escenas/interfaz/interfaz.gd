@@ -2,9 +2,12 @@ extends CanvasLayer
 @export var horaTexto: RichTextLabel
 @export var mesTexto: RichTextLabel
 @export var diaTexto: RichTextLabel
+@export var slot1: TextureRect
+@export var slot2: TextureRect
+
 var esDeNoche = false
 var tiempoEnSegundos = 0.0
-var velocidadMultiplicador =10000.0
+var velocidadMultiplicador =20000.0
 var centrar = "[center]"
 var escenaPrincipal
 
@@ -29,3 +32,19 @@ func _process(delta: float) -> void:
 		esDeNoche = false
 		escenaPrincipal.terminarNoche()
 	horaTexto.text = centrar + "%02d:%02d" % [horas,minutos]
+
+func cropRecolectado(rutaObjeto, cantidad):
+	var indice = rutaObjeto.find("_")
+	var numeroRutaObjeto = rutaObjeto.substr(indice + 1)
+	
+	match numeroRutaObjeto:
+		"0":
+			if slot1.estaEnUso == true:
+				slot1.cambiarTexto(cantidad)
+			else:
+				slot1.setearSlot(rutaObjeto,cantidad)
+		"1":
+			if slot2.estaEnUso:
+				slot2.cambiarTexto(cantidad)
+			else:
+				slot2.setearSlot(rutaObjeto,cantidad)

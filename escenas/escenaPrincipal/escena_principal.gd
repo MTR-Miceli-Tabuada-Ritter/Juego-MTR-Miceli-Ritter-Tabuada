@@ -1,6 +1,7 @@
 extends Node2D
 signal cambioDia()
 @export var colorDeNoche: CanvasModulate
+@export var interfaz: CanvasLayer
 var dia =1
 var mes = 1
 var bajadaDeNoche = false
@@ -31,3 +32,6 @@ func terminarNoche():
 		mes += 1
 	colorDeNoche.color = Color(1,1,1)
 	cambioDia.emit()
+
+func cropRecolectado(rutaObjeto, cantidad):
+	interfaz.cropRecolectado(rutaObjeto, cantidad)

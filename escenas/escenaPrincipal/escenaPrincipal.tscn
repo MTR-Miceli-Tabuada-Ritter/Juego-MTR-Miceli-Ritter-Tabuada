@@ -5,10 +5,11 @@
 [ext_resource type="Script" uid="uid://ikk2a6fr3e5r" path="res://escenas/escenaPrincipal/escena_principal.gd" id="1_xo3ps"]
 [ext_resource type="PackedScene" uid="uid://tlr7aicmpoi0" path="res://escenas/interfaz/interfaz.tscn" id="3_xo3ps"]
 
-[node name="escenaPrincipal" type="Node2D" unique_id=1856232161 node_paths=PackedStringArray("colorDeNoche")]
+[node name="escenaPrincipal" type="Node2D" unique_id=1856232161 node_paths=PackedStringArray("colorDeNoche", "interfaz")]
 y_sort_enabled = true
 script = ExtResource("1_xo3ps")
 colorDeNoche = NodePath("nocheColor")
+interfaz = NodePath("Interfaz")
 
 [node name="Interfaz" parent="." unique_id=2077230092 instance=ExtResource("3_xo3ps")]
 
