@@ -7,13 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://ehqb8f8asd33" path="res://recursos/assetPack/Hud_Ui/item_box_hud.png" id="4_puc7n"]
 [ext_resource type="PackedScene" uid="uid://bpd57pgebrxwu" path="res://escenas/interfaz/inventario/slotInventario.tscn" id="6_8jl4y"]
 
-[node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "mesTexto", "diaTexto", "slot1", "slot2")]
+[node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "mesTexto", "diaTexto", "slot1", "slot2", "slot3", "slot4")]
 script = ExtResource("1_6v4fd")
 horaTexto = NodePath("Control/hora")
 mesTexto = NodePath("Control/mes")
 diaTexto = NodePath("Control/dia")
 slot1 = NodePath("slot1")
 slot2 = NodePath("slot2")
+slot3 = NodePath("slot3")
+slot4 = NodePath("slot4")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=364858354]
 offset_right = 128.0
@@ -107,6 +109,32 @@ anchor_bottom = 1.0
 offset_left = 16.0
 offset_top = -32.0
 offset_right = 48.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="slot3" parent="." unique_id=1112111774 instance=ExtResource("6_8jl4y")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = -32.0
+offset_right = 88.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="slot4" parent="." unique_id=1223162118 instance=ExtResource("6_8jl4y")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -32.0
+offset_right = 120.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0

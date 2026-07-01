@@ -4,6 +4,9 @@ extends CanvasLayer
 @export var diaTexto: RichTextLabel
 @export var slot1: TextureRect
 @export var slot2: TextureRect
+@export var slot3: TextureRect
+@export var slot4: TextureRect
+
 
 var esDeNoche = false
 var tiempoEnSegundos = 0.0
@@ -48,3 +51,13 @@ func cropRecolectado(rutaObjeto, cantidad):
 				slot2.cambiarTexto(cantidad)
 			else:
 				slot2.setearSlot(rutaObjeto,cantidad)
+		"3":
+			if slot3.estaEnUso:
+				slot3.cambiarTexto(cantidad)
+			else:
+				slot3.setearSlot(rutaObjeto,cantidad)
+		"4":
+			if slot4.estaEnUso:
+				slot4.cambiarTexto(cantidad)
+			else:
+				slot4.setearSlot(rutaObjeto,cantidad)
