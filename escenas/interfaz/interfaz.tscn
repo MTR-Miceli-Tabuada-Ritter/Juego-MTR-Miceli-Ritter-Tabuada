@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://mruv3taxh7jc" path="res://recursos/assetPack/Hud_Ui/health_hud.png" id="3_0cwio"]
 [ext_resource type="Texture2D" uid="uid://ehqb8f8asd33" path="res://recursos/assetPack/Hud_Ui/item_box_hud.png" id="4_puc7n"]
 [ext_resource type="PackedScene" uid="uid://bpd57pgebrxwu" path="res://escenas/interfaz/inventario/slotInventario.tscn" id="6_8jl4y"]
+[ext_resource type="Script" path="res://escenas/interfaz/inventario/resaltadoInventario.gd" id="7_r3s4l"]
 
 [node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "mesTexto", "diaTexto", "slot1", "slot2", "slot3", "slot4")]
 script = ExtResource("1_6v4fd")
@@ -138,3 +139,7 @@ offset_right = 120.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="ResaltadoInventario" type="Node2D" parent="." unique_id=1727384950]
+top_level = true
+script = ExtResource("7_r3s4l")
