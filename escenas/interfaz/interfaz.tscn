@@ -6,13 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://mruv3taxh7jc" path="res://recursos/assetPack/Hud_Ui/health_hud.png" id="3_0cwio"]
 [ext_resource type="Texture2D" uid="uid://ehqb8f8asd33" path="res://recursos/assetPack/Hud_Ui/item_box_hud.png" id="4_puc7n"]
 [ext_resource type="PackedScene" uid="uid://bpd57pgebrxwu" path="res://escenas/interfaz/inventario/slotInventario.tscn" id="6_8jl4y"]
-[ext_resource type="Script" path="res://escenas/interfaz/inventario/resaltadoInventario.gd" id="7_r3s4l"]
+[ext_resource type="Script" uid="uid://bv2yt3thxds0s" path="res://escenas/interfaz/inventario/resaltadoInventario.gd" id="7_r3s4l"]
 
 [node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "mesTexto", "diaTexto", "slot1", "slot2", "slot3", "slot4")]
 script = ExtResource("1_6v4fd")
-horaTexto = NodePath("Control/hora")
-mesTexto = NodePath("Control/mes")
-diaTexto = NodePath("Control/dia")
+horaTexto = NodePath("VBoxContainer/hora")
+mesTexto = NodePath("VBoxContainer/HBoxContainer/mes")
+diaTexto = NodePath("VBoxContainer/HBoxContainer/dia")
 slot1 = NodePath("slot1")
 slot2 = NodePath("slot2")
 slot3 = NodePath("slot3")
@@ -37,47 +37,11 @@ texture = ExtResource("4_puc7n")
 
 [node name="Control" type="Control" parent="." unique_id=360494730]
 layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
+anchor_left = 0.92
 anchor_right = 1.0
-grow_horizontal = 0
-
-[node name="hora" type="RichTextLabel" parent="Control" unique_id=1850452812]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_right = -10.0
-offset_bottom = 19.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_2ul7s")
-bbcode_enabled = true
-text = "00: 00"
-scroll_active = false
-
-[node name="dia" type="RichTextLabel" parent="Control" unique_id=1939408586]
-layout_mode = 0
-offset_left = -48.0
-offset_top = 16.0
-offset_right = -32.0
-offset_bottom = 32.0
-theme = ExtResource("1_2ul7s")
-bbcode_enabled = true
-text = "00"
-
-[node name="mes" type="RichTextLabel" parent="Control" unique_id=1070571687]
-layout_mode = 0
-offset_left = -16.0
-offset_top = 16.0
-offset_bottom = 32.0
-theme = ExtResource("1_2ul7s")
-bbcode_enabled = true
-text = "00"
+anchor_bottom = 0.105000004
+offset_left = 51.200012
+offset_bottom = -37.800003
 
 [node name="Label" type="Label" parent="." unique_id=288567747]
 offset_left = 40.0
@@ -143,3 +107,49 @@ grow_vertical = 0
 [node name="ResaltadoInventario" type="Node2D" parent="." unique_id=1727384950]
 top_level = true
 script = ExtResource("7_r3s4l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=372595194]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.849976
+offset_bottom = 32.0
+grow_horizontal = 0
+theme_override_constants/separation = 0
+
+[node name="hora" type="RichTextLabel" parent="VBoxContainer" unique_id=1850452812]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_2ul7s")
+bbcode_enabled = true
+text = "00:00"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=411577762]
+layout_mode = 2
+alignment = 1
+
+[node name="dia" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=1939408586]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_2ul7s")
+bbcode_enabled = true
+text = "00"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mes" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=1070571687]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_2ul7s")
+bbcode_enabled = true
+text = "00"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
