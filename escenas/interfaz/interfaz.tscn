@@ -5,18 +5,24 @@
 [ext_resource type="Texture2D" uid="uid://cxl2uige3ew1j" path="res://recursos/assetPack/Hud_Ui/health_bar_hud.png" id="2_kjlrn"]
 [ext_resource type="Texture2D" uid="uid://mruv3taxh7jc" path="res://recursos/assetPack/Hud_Ui/health_hud.png" id="3_0cwio"]
 [ext_resource type="Texture2D" uid="uid://ehqb8f8asd33" path="res://recursos/assetPack/Hud_Ui/item_box_hud.png" id="4_puc7n"]
+[ext_resource type="PackedScene" uid="uid://e2fgdxd3fo8w" path="res://escenas/interfaz/inventarioResaltado/inventarioResaltado.tscn" id="5_4wubh"]
 [ext_resource type="PackedScene" uid="uid://bpd57pgebrxwu" path="res://escenas/interfaz/inventario/slotInventario.tscn" id="6_8jl4y"]
-[ext_resource type="Script" uid="uid://bv2yt3thxds0s" path="res://escenas/interfaz/inventario/resaltadoInventario.gd" id="7_r3s4l"]
 
-[node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "mesTexto", "diaTexto", "slot1", "slot2", "slot3", "slot4")]
+[node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "mesTexto", "diaTexto", "slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10")]
 script = ExtResource("1_6v4fd")
 horaTexto = NodePath("VBoxContainer/hora")
 mesTexto = NodePath("VBoxContainer/HBoxContainer/mes")
 diaTexto = NodePath("VBoxContainer/HBoxContainer/dia")
-slot1 = NodePath("slot1")
-slot2 = NodePath("slot2")
-slot3 = NodePath("slot3")
-slot4 = NodePath("slot4")
+slot1 = NodePath("inventario/slot1")
+slot2 = NodePath("inventario/slot2")
+slot3 = NodePath("inventario/slot3")
+slot4 = NodePath("inventario/slot4")
+slot5 = NodePath("inventario/slot5")
+slot6 = NodePath("inventario/slot6")
+slot7 = NodePath("inventario/slot7")
+slot8 = NodePath("inventario/slot8")
+slot9 = NodePath("inventario/slot9")
+slot10 = NodePath("inventario/slot10")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=364858354]
 offset_right = 128.0
@@ -52,61 +58,64 @@ text = "deberiamos tener una barra de inventario con 8 slots (ponele)
 y que en cada espacio del inventario entre perfeto la ESCENA
 de slotInventario q esta en: res:res://escenas/interfaz/inventario/slotInventario.gd"
 
-[node name="slot1" parent="." unique_id=827471245 instance=ExtResource("6_8jl4y")]
+[node name="InventarioResaltado" parent="." unique_id=1961580349 instance=ExtResource("5_4wubh")]
+position = Vector2(176, 344)
+
+[node name="inventario" type="HBoxContainer" parent="." unique_id=1988489999]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -16.0
+offset_left = -160.0
 offset_top = -32.0
-offset_right = 16.0
-offset_bottom = 0.0
+offset_right = 160.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+alignment = 1
 
-[node name="slot2" parent="." unique_id=524544901 instance=ExtResource("6_8jl4y")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -32.0
-offset_right = 48.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="slot1" parent="inventario" unique_id=827471245 instance=ExtResource("6_8jl4y")]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="slot3" parent="." unique_id=1112111774 instance=ExtResource("6_8jl4y")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 56.0
-offset_top = -32.0
-offset_right = 88.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="slot2" parent="inventario" unique_id=524544901 instance=ExtResource("6_8jl4y")]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="slot4" parent="." unique_id=1223162118 instance=ExtResource("6_8jl4y")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 88.0
-offset_top = -32.0
-offset_right = 120.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="slot3" parent="inventario" unique_id=1112111774 instance=ExtResource("6_8jl4y")]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="ResaltadoInventario" type="Node2D" parent="." unique_id=1727384950]
-top_level = true
-script = ExtResource("7_r3s4l")
+[node name="slot4" parent="inventario" unique_id=1223162118 instance=ExtResource("6_8jl4y")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="slot5" parent="inventario" unique_id=280631267 instance=ExtResource("6_8jl4y")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="slot6" parent="inventario" unique_id=2040961852 instance=ExtResource("6_8jl4y")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="slot7" parent="inventario" unique_id=318479804 instance=ExtResource("6_8jl4y")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="slot8" parent="inventario" unique_id=1025125924 instance=ExtResource("6_8jl4y")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="slot9" parent="inventario" unique_id=1589414287 instance=ExtResource("6_8jl4y")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="slot10" parent="inventario" unique_id=344838416 instance=ExtResource("6_8jl4y")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=372595194]
 anchors_preset = 1

@@ -9,7 +9,10 @@ var velocidad = 200.0
 var ultima_direccion = Vector2.DOWN
 var esta_actuando = false
 
+var escenaPrincipal
+
 func _ready() -> void:
+	escenaPrincipal = get_node("/root/escenaPrincipal")
 	animacion.animation_finished.connect(_on_animation_finished)
 	_actualizar_area_cultivo(ultima_direccion)
 
@@ -48,9 +51,12 @@ func _intentar_cultivar():
 	var tile_data = tilemap.get_cell_tile_data(pos_tile)
 	
 	if tile_data and tile_data.get_collision_polygons_count(1) > 0:
+		if escenaPrincipal.slotEnUso == null or escenaPrincipal.slotEnUso.texturaNombre != "icono_semilla":
+			return
 		print("suelo fertilizado")
 		var agujeroInstancia = agujeroPreload.instantiate()
 		agujeroInstancia.position = direccionVistaMarker.global_position
+		agujeroInstancia.cropRandom = escenaPrincipal.slotEnUso.texturaId
 		get_parent().call_deferred("add_child",agujeroInstancia)
 	else:
 		print("no hay suelo cultivable acá")
@@ -77,7 +83,8 @@ func _chequearAccionables():
 		for area in areasColisionantes:
 			if area.get_parent().cropListo == true:
 				notificacion.visible = true
-				area.get_parent().cosechar()
+				if escenaPrincipal.slotEnUso != null and escenaPrincipal.slotEnUso.texturaNombre == "icono_semilla":
+					area.get_parent().cosechar()
 	else:
 		notificacion.visible = false
 			

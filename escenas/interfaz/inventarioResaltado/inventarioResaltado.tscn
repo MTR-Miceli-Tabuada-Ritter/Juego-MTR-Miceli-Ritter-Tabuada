@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://e2fgdxd3fo8w"]
+
+[ext_resource type="Texture2D" uid="uid://ehqb8f8asd33" path="res://recursos/assetPack/Hud_Ui/item_box_hud.png" id="1_nltmv"]
+[ext_resource type="Script" uid="uid://5i0v441oitde" path="res://escenas/interfaz/inventarioResaltado/inventario_resaltado.gd" id="1_wf4yh"]
+
+[node name="InventarioResaltado" type="Node2D" unique_id=1961580349]
+script = ExtResource("1_wf4yh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1665265239]
+position = Vector2(16, 16)
+texture = ExtResource("1_nltmv")

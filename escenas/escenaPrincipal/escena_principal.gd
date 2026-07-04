@@ -10,6 +10,7 @@ var bajadaDeNocheDuracion = 5
 var tiempoTranscurrido = 0.0
 var slotEnUso = null
 
+
 func _process(_delta: float) -> void:
 	if bajadaDeNoche:
 		tiempoTranscurrido += 0.05
@@ -43,8 +44,11 @@ func terminarNoche():
 		mes += 1
 	cambioDia.emit()
 
-func cropRecolectado(rutaObjeto, cantidad):
-	interfaz.cropRecolectado(rutaObjeto, cantidad)
+func cropRecolectado(rutaObjeto, idObjeto, cantidad):
+	interfaz.cropRecolectado(rutaObjeto, idObjeto, cantidad)
 
 func setearSlotEnUso(slot):
 	slotEnUso = slot
+
+
+	
