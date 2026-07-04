@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://clc6ich6pmj0b"]
+
+[ext_resource type="Texture2D" uid="uid://be7yvdgga17fl" path="res://recursos/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Spring Crops.png" id="1_o8y0r"]
+
+[resource]
+atlas = ExtResource("1_o8y0r")
+region = Rect2(224, 96, 32, 32)
