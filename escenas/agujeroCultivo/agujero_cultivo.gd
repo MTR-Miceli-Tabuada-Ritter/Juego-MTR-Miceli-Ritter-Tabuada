@@ -8,16 +8,21 @@ var cropRandom
 var cropListo = false
 var rango = RandomNumberGenerator.new()
 var cropDesactivado = false
+var plantado = false
 
 var escenaPrincipal
 
 func _ready() -> void:
-	#cropRandom = rango.randi_range(0,crop.vframes - 1)
-	crop.visible=true
-	crop.frame_coords= Vector2(cropCrecimientoId,cropRandom)
+	crop.visible = false
 	escenaPrincipal = get_node("/root/escenaPrincipal")
+
+func plantar(idSemilla):
+	plantado = true
+	cropRandom = idSemilla
+	crop.visible = true
+	crop.frame_coords = Vector2(cropCrecimientoId,cropRandom)
 	escenaPrincipal.connect("cambioDia",_crecerCrop)
-	
+
 func _crecerCrop():
 	if cropCrecimientoId < 5:
 		cropCrecimientoId= cropCrecimientoId+1

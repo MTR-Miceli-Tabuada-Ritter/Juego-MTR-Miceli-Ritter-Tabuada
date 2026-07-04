@@ -18,10 +18,13 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var direccionMovimiento = Input.get_vector("izquierda", "derecha", "arriba", "abajo")
-	velocity = velocidad * direccionMovimiento
-	if direccionMovimiento != Vector2.ZERO:
-		ultima_direccion = direccionMovimiento
-		_actualizar_area_cultivo(ultima_direccion)
+	if esta_actuando:
+		velocity = Vector2.ZERO
+	else:
+		velocity = velocidad * direccionMovimiento
+		if direccionMovimiento != Vector2.ZERO:
+			ultima_direccion = direccionMovimiento
+			_actualizar_area_cultivo(ultima_direccion)
 	if Input.is_action_just_pressed("herramienta") and not esta_actuando:
 		esta_actuando = true
 		_procesar_animacion("Hacha", ultima_direccion)
@@ -49,15 +52,22 @@ func _intentar_cultivar():
 	# qué tile hay ahí y si tiene el physics layer "cultivable" (layer 1) asignado y chau
 	var pos_tile = tilemap.local_to_map(tilemap.to_local(direccionVistaMarker.global_position))
 	var tile_data = tilemap.get_cell_tile_data(pos_tile)
-	
+
 	if tile_data and tile_data.get_collision_polygons_count(1) > 0:
-		if escenaPrincipal.slotEnUso == null or escenaPrincipal.slotEnUso.texturaNombre != "icono_semilla":
+		if escenaPrincipal.slotEnUso == null:
 			return
-		print("suelo fertilizado")
-		var agujeroInstancia = agujeroPreload.instantiate()
-		agujeroInstancia.position = direccionVistaMarker.global_position
-		agujeroInstancia.cropRandom = escenaPrincipal.slotEnUso.texturaId
-		get_parent().call_deferred("add_child",agujeroInstancia)
+		var nombreAgujero = "agujero_" + str(int(round(direccionVistaMarker.global_position.x))) + "_" + str(int(round(direccionVistaMarker.global_position.y)))
+		var agujeroExistente = get_parent().get_node_or_null(nombreAgujero)
+		if escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 0:
+			if agujeroExistente == null:
+				print("suelo fertilizado")
+				var agujeroInstancia = agujeroPreload.instantiate()
+				agujeroInstancia.position = direccionVistaMarker.global_position
+				agujeroInstancia.name = nombreAgujero
+				get_parent().call_deferred("add_child",agujeroInstancia)
+		elif escenaPrincipal.slotEnUso.texturaNombre == "icono_semilla":
+			if agujeroExistente != null and not agujeroExistente.plantado:
+				agujeroExistente.plantar(escenaPrincipal.slotEnUso.texturaId)
 	else:
 		print("no hay suelo cultivable acá")
 

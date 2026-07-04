@@ -14,7 +14,10 @@ func setearSlot(tipoItem, idObjeto, valor):
 	texturaNombre = tipoItem
 	texturaId = idObjeto
 	texture = load(rutaIconos + tipoItem + "_" + str(idObjeto) + ".tres")
-	cambiarTexto(valor)
+	if tipoItem == "icono_herramienta":
+		textoCantidad.visible = false
+	else:
+		cambiarTexto(valor)
 	visible = true
 
 func cambiarTexto(valor):
