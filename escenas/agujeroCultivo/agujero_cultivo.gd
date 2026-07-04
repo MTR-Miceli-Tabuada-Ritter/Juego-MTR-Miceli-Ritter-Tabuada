@@ -14,6 +14,8 @@ var escenaPrincipal
 
 func _ready() -> void:
 	crop.visible = false
+	colisionArea.disabled = true
+	colisionArea.get_parent().interaccionar.connect(cosechar)
 	escenaPrincipal = get_node("/root/escenaPrincipal")
 
 func plantar(idSemilla):
@@ -28,7 +30,8 @@ func _crecerCrop():
 		cropCrecimientoId= cropCrecimientoId+1
 		crop.frame_coords = Vector2(cropCrecimientoId,cropRandom)
 	else:
-		cropListo= true
+		cropListo = true
+		colisionArea.disabled = false
 
 func cosechar():
 	if cropDesactivado == false:

@@ -8,6 +8,7 @@ var agujeroPreload = preload("res://escenas/agujeroCultivo/agujeroCultivo.tscn")
 var velocidad = 200.0
 var ultima_direccion = Vector2.DOWN
 var esta_actuando = false
+var masCercano = null
 
 var escenaPrincipal
 
@@ -28,6 +29,8 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("herramienta") and not esta_actuando:
 		esta_actuando = true
 		_procesar_animacion("Hacha", ultima_direccion)
+	if Input.is_action_just_pressed("interactuar") and masCercano != null and is_instance_valid(masCercano):
+		masCercano.interaccionar.emit()
 	if not esta_actuando:
 		if direccionMovimiento != Vector2.ZERO:
 			_procesar_animacion("correr", direccionMovimiento)
@@ -88,13 +91,18 @@ func _on_animation_finished():
 		_intentar_cultivar() 
 
 func _chequearAccionables():
-	var areasColisionantes: Array[Area2D] = accionablesArea.get_overlapping_areas() #devuelve todas las areas que esten colisionando con el pj
-	if areasColisionantes.size() > 0:
-		for area in areasColisionantes:
-			if area.get_parent().cropListo == true:
-				notificacion.visible = true
-				if escenaPrincipal.slotEnUso != null and escenaPrincipal.slotEnUso.texturaNombre == "icono_semilla":
-					area.get_parent().cosechar()
+	var areasColisionantes: Array[Area2D] = accionablesArea.get_overlapping_areas()
+	var distanciaCorta = INF
+	var proximo = null
+	for area in areasColisionantes:
+		var distancia = area.global_position.distance_to(global_position)
+		if distancia < distanciaCorta:
+			distanciaCorta = distancia
+			proximo = area
+	if proximo != null:
+		masCercano = proximo
+		notificacion.visible = true
 	else:
+		masCercano = null
 		notificacion.visible = false
 			
