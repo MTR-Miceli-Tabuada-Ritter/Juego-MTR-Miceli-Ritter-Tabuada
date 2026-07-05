@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://385dwtcg7rn7"
-path="res://.godot/imported/WaterTiles-6frames.png-04c8d70b7d9619ef93b4cd35ef30f218.ctex"
+uid="uid://bk882tnmj4jn3"
+path="res://.godot/imported/azada_32x32.png-c07d0bf1f9d58f816f22276ba1a40dfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://recursos/ForgottenMemories/WaterTiles-6frames.png"
-dest_files=["res://.godot/imported/WaterTiles-6frames.png-04c8d70b7d9619ef93b4cd35ef30f218.ctex"]
+source_file="res://recursos/iconos/azada_32x32.png"
+dest_files=["res://.godot/imported/azada_32x32.png-c07d0bf1f9d58f816f22276ba1a40dfd.ctex"]
 
 [params]
 

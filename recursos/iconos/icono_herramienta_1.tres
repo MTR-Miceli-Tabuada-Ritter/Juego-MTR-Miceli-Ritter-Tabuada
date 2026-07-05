@@ -1,7 +1,7 @@
-[gd_resource type="AtlasTexture" format=3]
+[gd_resource type="AtlasTexture" format=3 uid="uid://oisfyh3um7l0"]
 
-[ext_resource type="Texture2D" uid="uid://1dlwqg2ruh8k" path="res://icon.svg" id="1_icon"]
+[ext_resource type="Texture2D" uid="uid://ber3wy2sjqpoc" path="res://recursos/iconos/regadera_32x32.png" id="1_elfou"]
 
 [resource]
-atlas = ExtResource("1_icon")
+atlas = ExtResource("1_elfou")
 region = Rect2(0, 0, 32, 32)

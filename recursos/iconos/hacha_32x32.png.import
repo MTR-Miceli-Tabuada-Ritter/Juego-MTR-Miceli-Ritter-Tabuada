@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://385dwtcg7rn7"
-path="res://.godot/imported/WaterTiles-6frames.png-04c8d70b7d9619ef93b4cd35ef30f218.ctex"
+uid="uid://olex54vh560r"
+path="res://.godot/imported/hacha_32x32.png-1207a7d147dc252b1e9dea43480558e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://recursos/ForgottenMemories/WaterTiles-6frames.png"
-dest_files=["res://.godot/imported/WaterTiles-6frames.png-04c8d70b7d9619ef93b4cd35ef30f218.ctex"]
+source_file="res://recursos/iconos/hacha_32x32.png"
+dest_files=["res://.godot/imported/hacha_32x32.png-1207a7d147dc252b1e9dea43480558e5.ctex"]
 
 [params]
 

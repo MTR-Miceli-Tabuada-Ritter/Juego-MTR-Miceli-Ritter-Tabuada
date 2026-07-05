@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://385dwtcg7rn7"
-path="res://.godot/imported/WaterTiles-6frames.png-04c8d70b7d9619ef93b4cd35ef30f218.ctex"
+uid="uid://d6kopjmdtrsm"
+path="res://.godot/imported/marcador.png-f39e57428b586139efa25ba687d9e158.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://recursos/ForgottenMemories/WaterTiles-6frames.png"
-dest_files=["res://.godot/imported/WaterTiles-6frames.png-04c8d70b7d9619ef93b4cd35ef30f218.ctex"]
+source_file="res://recursos/assetPack/marcador.png"
+dest_files=["res://.godot/imported/marcador.png-f39e57428b586139efa25ba687d9e158.ctex"]
 
 [params]
 
