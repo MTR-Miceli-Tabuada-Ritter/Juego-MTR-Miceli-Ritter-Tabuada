@@ -14,13 +14,15 @@ func setearSlot(tipoItem, idObjeto, valor):
 	texturaNombre = tipoItem
 	texturaId = idObjeto
 	texture = load(rutaIconos + tipoItem + "_" + str(idObjeto) + ".tres")
-	if tipoItem == "icono_herramienta":
+	if tipoItem == "icono_herramienta" and idObjeto == 0:
 		textoCantidad.visible = false
 	else:
 		cambiarTexto(valor)
 	visible = true
 
 func cambiarTexto(valor):
-	cantidad += valor 
-	# el coso raro "%02d" dice que tiene q ser un decimal de 2 digitos osea en vez de "2" sería "02" 
+	cantidad += valor
+	if cantidad < 0:
+		cantidad = 0
+	# el coso raro "%02d" dice que tiene q ser un decimal de 2 digitos osea en vez de "2" sería "02"
 	textoCantidad.text = "%02d" % cantidad

@@ -80,6 +80,7 @@ interactuar={
 2d_physics/layer_2="obstaculo"
 2d_physics/layer_3="interactuable"
 2d_physics/layer_4="cultivable"
+2d_physics/layer_5="agua"
 
 [physics]
 
