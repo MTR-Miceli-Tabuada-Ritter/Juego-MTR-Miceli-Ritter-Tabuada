@@ -9,6 +9,7 @@ var cropListo = false
 var rango = RandomNumberGenerator.new()
 var cropDesactivado = false
 var plantado = false
+var regado = false
 
 var escenaPrincipal
 
@@ -26,12 +27,18 @@ func plantar(idSemilla):
 	escenaPrincipal.connect("cambioDia",_crecerCrop)
 
 func _crecerCrop():
+	crop.self_modulate = Color(1, 1, 1)
+	regado = false
 	if cropCrecimientoId < 5:
 		cropCrecimientoId= cropCrecimientoId+1
 		crop.frame_coords = Vector2(cropCrecimientoId,cropRandom)
 	else:
 		cropListo = true
 		colisionArea.disabled = false
+
+func regar():
+	regado = true
+	crop.self_modulate = Color(0.75, 0.75, 0.75)
 
 func cosechar():
 	if cropDesactivado == false:
