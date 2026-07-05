@@ -8,20 +8,29 @@ var agujeroPreload = preload("res://escenas/agujeroCultivo/agujeroCultivo.tscn")
 var velocidad = 200.0
 var ultima_direccion = Vector2.DOWN
 var esta_actuando = false
+var masCercano = null
+
+var escenaPrincipal
 
 func _ready() -> void:
+	escenaPrincipal = get_node("/root/escenaPrincipal")
 	animacion.animation_finished.connect(_on_animation_finished)
 	_actualizar_area_cultivo(ultima_direccion)
 
 func _physics_process(_delta: float) -> void:
 	var direccionMovimiento = Input.get_vector("izquierda", "derecha", "arriba", "abajo")
-	velocity = velocidad * direccionMovimiento
-	if direccionMovimiento != Vector2.ZERO:
-		ultima_direccion = direccionMovimiento
-		_actualizar_area_cultivo(ultima_direccion)
+	if esta_actuando:
+		velocity = Vector2.ZERO
+	else:
+		velocity = velocidad * direccionMovimiento
+		if direccionMovimiento != Vector2.ZERO:
+			ultima_direccion = direccionMovimiento
+			_actualizar_area_cultivo(ultima_direccion)
 	if Input.is_action_just_pressed("herramienta") and not esta_actuando:
 		esta_actuando = true
 		_procesar_animacion("Hacha", ultima_direccion)
+	if Input.is_action_just_pressed("interactuar") and masCercano != null and is_instance_valid(masCercano):
+		masCercano.interaccionar.emit()
 	if not esta_actuando:
 		if direccionMovimiento != Vector2.ZERO:
 			_procesar_animacion("correr", direccionMovimiento)
@@ -46,12 +55,22 @@ func _intentar_cultivar():
 	# qué tile hay ahí y si tiene el physics layer "cultivable" (layer 1) asignado y chau
 	var pos_tile = tilemap.local_to_map(tilemap.to_local(direccionVistaMarker.global_position))
 	var tile_data = tilemap.get_cell_tile_data(pos_tile)
-	
+
 	if tile_data and tile_data.get_collision_polygons_count(1) > 0:
-		print("suelo fertilizado")
-		var agujeroInstancia = agujeroPreload.instantiate()
-		agujeroInstancia.position = direccionVistaMarker.global_position
-		get_parent().call_deferred("add_child",agujeroInstancia)
+		if escenaPrincipal.slotEnUso == null:
+			return
+		var nombreAgujero = "agujero_" + str(int(round(direccionVistaMarker.global_position.x))) + "_" + str(int(round(direccionVistaMarker.global_position.y)))
+		var agujeroExistente = get_parent().get_node_or_null(nombreAgujero)
+		if escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 0:
+			if agujeroExistente == null:
+				print("suelo fertilizado")
+				var agujeroInstancia = agujeroPreload.instantiate()
+				agujeroInstancia.position = direccionVistaMarker.global_position
+				agujeroInstancia.name = nombreAgujero
+				get_parent().call_deferred("add_child",agujeroInstancia)
+		elif escenaPrincipal.slotEnUso.texturaNombre == "icono_semilla":
+			if agujeroExistente != null and not agujeroExistente.plantado:
+				agujeroExistente.plantar(escenaPrincipal.slotEnUso.texturaId)
 	else:
 		print("no hay suelo cultivable acá")
 
@@ -72,12 +91,18 @@ func _on_animation_finished():
 		_intentar_cultivar() 
 
 func _chequearAccionables():
-	var areasColisionantes: Array[Area2D] = accionablesArea.get_overlapping_areas() #devuelve todas las areas que esten colisionando con el pj
-	if areasColisionantes.size() > 0:
-		for area in areasColisionantes:
-			if area.get_parent().cropListo == true:
-				notificacion.visible = true
-				area.get_parent().cosechar()
+	var areasColisionantes: Array[Area2D] = accionablesArea.get_overlapping_areas()
+	var distanciaCorta = INF
+	var proximo = null
+	for area in areasColisionantes:
+		var distancia = area.global_position.distance_to(global_position)
+		if distancia < distanciaCorta:
+			distanciaCorta = distancia
+			proximo = area
+	if proximo != null:
+		masCercano = proximo
+		notificacion.visible = true
 	else:
+		masCercano = null
 		notificacion.visible = false
 			

@@ -4,13 +4,20 @@ extends TextureRect
 var rutaIconos = "res://recursos/iconos/"
 var estaEnUso = false
 var cantidad = 0
+var texturaNombre = ""
+var texturaId = 0
 
 #cada icono esta guardado en la ruta de arriba, se llamarian "icono_numero" y asi con todos, la 
 #idea es que sean .tres de tipo atlasTexture, q sacamos de una hoja de sprite
-func setearSlot(tipoItem, valor):
+func setearSlot(tipoItem, idObjeto, valor):
 	estaEnUso = true
-	texture = load(rutaIconos + tipoItem + ".tres")
-	cambiarTexto(valor)
+	texturaNombre = tipoItem
+	texturaId = idObjeto
+	texture = load(rutaIconos + tipoItem + "_" + str(idObjeto) + ".tres")
+	if tipoItem == "icono_herramienta":
+		textoCantidad.visible = false
+	else:
+		cambiarTexto(valor)
 	visible = true
 
 func cambiarTexto(valor):
