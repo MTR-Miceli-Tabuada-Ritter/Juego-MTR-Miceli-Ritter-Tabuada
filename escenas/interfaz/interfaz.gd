@@ -31,6 +31,8 @@ func setearTemporal():
 	slot6.setearSlot("icono_semilla", 1, 1)
 	slot7.setearSlot("icono_semilla", 2, 1)
 	slot8.setearSlot("icono_semilla", 3, 1)
+	slot9.setearSlot("icono_herramienta", 0, 1)
+	slot10.setearSlot("icono_herramienta", 1, 1)
 
 func _cambiarFecha():
 	diaTexto.text = centrar + "%02d" % [escenaPrincipal.dia]
@@ -53,24 +55,12 @@ func _process(delta: float) -> void:
 	horaTexto.text = centrar + "%02d:%02d" % [horas,minutos]
 
 func cropRecolectado(rutaObjeto, idObjeto, cantidad):
-	match idObjeto:
-		"0":
-			if slot1.estaEnUso == true:
-				slot1.cambiarTexto(cantidad)
-			else:
-				slot1.setearSlot(rutaObjeto,idObjeto, cantidad)
-		"1":
-			if slot2.estaEnUso:
-				slot2.cambiarTexto(cantidad)
-			else:
-				slot2.setearSlot(rutaObjeto,idObjeto, cantidad)
-		"2":
-			if slot3.estaEnUso:
-				slot3.cambiarTexto(cantidad)
-			else:
-				slot3.setearSlot(rutaObjeto, idObjeto, cantidad)
-		"3":
-			if slot4.estaEnUso:
-				slot4.cambiarTexto(cantidad)
-			else:
-				slot4.setearSlot(rutaObjeto, idObjeto, cantidad)
+	var slots = [slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10]
+	for slot in slots:
+		if slot.estaEnUso and slot.texturaNombre == rutaObjeto and slot.texturaId == idObjeto:
+			slot.cambiarTexto(cantidad)
+			return
+	for slot in slots:
+		if not slot.estaEnUso:
+			slot.setearSlot(rutaObjeto, idObjeto, cantidad)
+			return
