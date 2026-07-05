@@ -32,7 +32,7 @@ func setearTemporal():
 	slot7.setearSlot("icono_semilla", 2, 1)
 	slot8.setearSlot("icono_semilla", 3, 1)
 	slot9.setearSlot("icono_herramienta", 0, 1)
-	slot10.setearSlot("icono_herramienta", 1, 1)
+	slot10.setearSlot("icono_herramienta", 1, 100)
 
 func _cambiarFecha():
 	diaTexto.text = centrar + "%02d" % [escenaPrincipal.dia]
