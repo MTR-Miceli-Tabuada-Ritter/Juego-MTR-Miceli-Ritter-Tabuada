@@ -8,11 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://e2fgdxd3fo8w" path="res://escenas/interfaz/inventarioResaltado/inventarioResaltado.tscn" id="5_4wubh"]
 [ext_resource type="PackedScene" uid="uid://bpd57pgebrxwu" path="res://escenas/interfaz/inventario/slotInventario.tscn" id="6_8jl4y"]
 
-[node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "mesTexto", "diaTexto", "slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10")]
+[node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "mesTexto", "diaTexto", "plataTexto", "slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10")]
 script = ExtResource("1_6v4fd")
-horaTexto = NodePath("VBoxContainer/TextureRect/hora")
-mesTexto = NodePath("VBoxContainer/TextureRect/HBoxContainer/mes")
-diaTexto = NodePath("VBoxContainer/TextureRect/HBoxContainer/dia")
+horaTexto = NodePath("VBoxContainer/hora")
+mesTexto = NodePath("VBoxContainer/HBoxContainer/mes")
+diaTexto = NodePath("VBoxContainer/HBoxContainer/dia")
+plataTexto = NodePath("VBoxContainer/plata")
 slot1 = NodePath("inventario/slot1")
 slot2 = NodePath("inventario/slot2")
 slot3 = NodePath("inventario/slot3")
@@ -130,10 +131,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 expand_mode = 3
 
-[node name="hora" type="RichTextLabel" parent="VBoxContainer/TextureRect" unique_id=1850452812]
-layout_mode = 0
-offset_right = 51.0
-offset_bottom = 16.0
+[node name="hora" type="RichTextLabel" parent="VBoxContainer" unique_id=1850452812]
+layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_2ul7s")
 bbcode_enabled = true
@@ -143,14 +142,11 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TextureRect" unique_id=411577762]
-layout_mode = 0
-offset_top = 16.0
-offset_right = 51.0
-offset_bottom = 32.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=411577762]
+layout_mode = 2
 alignment = 1
 
-[node name="dia" type="RichTextLabel" parent="VBoxContainer/TextureRect/HBoxContainer" unique_id=1939408586]
+[node name="dia" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=1939408586]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_2ul7s")
@@ -161,7 +157,18 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="mes" type="RichTextLabel" parent="VBoxContainer/TextureRect/HBoxContainer" unique_id=1070571687]
+[node name="mes" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=1070571687]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_2ul7s")
+bbcode_enabled = true
+text = "00"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="plata" type="RichTextLabel" parent="VBoxContainer" unique_id=126212805]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_2ul7s")

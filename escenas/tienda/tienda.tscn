@@ -15,11 +15,11 @@ radius = 96.0
 default_font = ExtResource("4_653qh")
 default_font_size = 22
 
-[node name="Tienda" type="StaticBody2D" unique_id=944886235 node_paths=PackedStringArray("areaInteractuable", "dialogo", "dialogoTexto")]
+[node name="Tienda" type="StaticBody2D" unique_id=944886235 node_paths=PackedStringArray("areaInteractuable", "dialogoControl", "dialogoTexto")]
 script = ExtResource("1_653qh")
 areaInteractuable = NodePath("interactuable2")
-dialogo = NodePath("Control")
-dialogoTexto = NodePath("Control/HBoxContainer/RichTextLabel")
+dialogoControl = NodePath("dialogo")
+dialogoTexto = NodePath("dialogo/HBoxContainer/RichTextLabel")
 
 [node name="vendedor" type="Sprite2D" parent="." unique_id=434764527]
 position = Vector2(9.536743e-07, 9.536743e-07)
@@ -52,7 +52,7 @@ metadata/_custom_type_script = "uid://dfkms8outegjs"
 shape = SubResource("CircleShape2D_n1nu7")
 debug_color = Color(0.08569052, 0.07906958, 0.9999806, 0.41960785)
 
-[node name="Control" type="Control" parent="." unique_id=958089995]
+[node name="dialogo" type="Control" parent="." unique_id=958089995]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -90.0
@@ -60,7 +60,7 @@ offset_top = -118.0
 offset_right = 90.0
 offset_bottom = -48.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1900103100]
+[node name="HBoxContainer" type="HBoxContainer" parent="dialogo" unique_id=1900103100]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,7 +69,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/HBoxContainer" unique_id=1200731610]
+[node name="RichTextLabel" type="RichTextLabel" parent="dialogo/HBoxContainer" unique_id=1200731610]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_p0h1c")

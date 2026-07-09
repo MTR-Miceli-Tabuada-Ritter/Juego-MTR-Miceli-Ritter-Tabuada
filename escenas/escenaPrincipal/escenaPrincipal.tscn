@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dk5rypooucy0c" path="res://escenas/mapa/mapa.tscn" id="1_phdhe"]
 [ext_resource type="Script" uid="uid://ikk2a6fr3e5r" path="res://escenas/escenaPrincipal/escena_principal.gd" id="1_xo3ps"]
 [ext_resource type="PackedScene" uid="uid://tlr7aicmpoi0" path="res://escenas/interfaz/interfaz.tscn" id="3_xo3ps"]
+[ext_resource type="PackedScene" uid="uid://chkvcxkvnsdho" path="res://escenas/tienda/tienda.tscn" id="5_sbnnb"]
 
 [node name="escenaPrincipal" type="Node2D" unique_id=1856232161 node_paths=PackedStringArray("colorDeNoche", "interfaz")]
 y_sort_enabled = true
@@ -21,3 +22,6 @@ interfaz = NodePath("Interfaz")
 
 [node name="CharacterBody2D" parent="escenario" unique_id=1791083245 instance=ExtResource("1_44c1f")]
 position = Vector2(295, 205)
+
+[node name="Tienda" parent="escenario" unique_id=944886235 instance=ExtResource("5_sbnnb")]
+position = Vector2(575, -85)

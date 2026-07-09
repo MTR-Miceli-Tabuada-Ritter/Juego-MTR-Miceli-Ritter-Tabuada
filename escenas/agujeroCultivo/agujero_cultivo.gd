@@ -22,6 +22,7 @@ func _ready() -> void:
 func plantar(idSemilla):
 	plantado = true
 	cropRandom = idSemilla
+	cropCrecimientoId = 1
 	crop.visible = true
 	crop.frame_coords = Vector2(cropCrecimientoId,cropRandom)
 	escenaPrincipal.connect("cambioDia",_crecerCrop)
@@ -32,6 +33,9 @@ func _crecerCrop():
 	if cropCrecimientoId < 5:
 		cropCrecimientoId= cropCrecimientoId+1
 		crop.frame_coords = Vector2(cropCrecimientoId,cropRandom)
+		if cropCrecimientoId == 5:
+			cropListo = true
+			colisionArea.disabled = false
 	else:
 		cropListo = true
 		colisionArea.disabled = false
@@ -44,5 +48,5 @@ func cosechar():
 	if cropDesactivado == false:
 		cropDesactivado = true
 		colisionArea.disabled = true
-		escenaPrincipal.cropRecolectado("icono_cultivo", str(cropRandom), 1)
+		escenaPrincipal.cropRecolectado("icono_cultivo", cropRandom, 1)
 		call_deferred("queue_free")

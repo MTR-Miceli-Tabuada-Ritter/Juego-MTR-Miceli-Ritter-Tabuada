@@ -1,7 +1,10 @@
 extends CanvasLayer
+
 @export var horaTexto: RichTextLabel
 @export var mesTexto: RichTextLabel
 @export var diaTexto: RichTextLabel
+@export var plataTexto: RichTextLabel
+
 @export var slot1: TextureRect
 @export var slot2: TextureRect
 @export var slot3: TextureRect
@@ -23,6 +26,7 @@ var escenaPrincipal
 func _ready() -> void:
 	escenaPrincipal = get_node("/root/escenaPrincipal")
 	escenaPrincipal.connect("cambioDia",_cambiarFecha)
+	escenaPrincipal.connect("plataGanada", _cambiarPlata)
 	_cambiarFecha()
 	setearTemporal()
 
@@ -37,6 +41,9 @@ func setearTemporal():
 func _cambiarFecha():
 	diaTexto.text = centrar + "%02d" % [escenaPrincipal.dia]
 	mesTexto.text = centrar + "%02d" % [escenaPrincipal.mes]
+
+func _cambiarPlata():
+	plataTexto.text = "%03d" % [escenaPrincipal.plata]
 
 func _process(delta: float) -> void:
 	tiempoEnSegundos += delta * velocidadMultiplicador 
