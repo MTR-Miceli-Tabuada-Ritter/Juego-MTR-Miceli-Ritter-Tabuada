@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://chkvcxkvnsdho"]
+
+[ext_resource type="Script" uid="uid://lb0hahyxgy73" path="res://escenas/tienda/tienda.gd" id="1_653qh"]
+[ext_resource type="Texture2D" uid="uid://1dlwqg2ruh8k" path="res://icon.svg" id="2_p0h1c"]
+[ext_resource type="Script" uid="uid://dfkms8outegjs" path="res://globales/interactuable.gd" id="3_ibfep"]
+[ext_resource type="FontFile" uid="uid://bgr3pw1yjdpek" path="res://recursos/fuentes/PixelOperator.ttf" id="4_653qh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1nu7"]
+size = Vector2(128, 96)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n1nu7"]
+radius = 96.0
+
+[sub_resource type="Theme" id="Theme_p0h1c"]
+default_font = ExtResource("4_653qh")
+default_font_size = 22
+
+[node name="Tienda" type="StaticBody2D" unique_id=944886235 node_paths=PackedStringArray("areaInteractuable", "dialogo", "dialogoTexto")]
+script = ExtResource("1_653qh")
+areaInteractuable = NodePath("interactuable2")
+dialogo = NodePath("Control")
+dialogoTexto = NodePath("Control/HBoxContainer/RichTextLabel")
+
+[node name="vendedor" type="Sprite2D" parent="." unique_id=434764527]
+position = Vector2(9.536743e-07, 9.536743e-07)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_p0h1c")
+
+[node name="puesto" type="Sprite2D" parent="." unique_id=443858843]
+texture = ExtResource("2_p0h1c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645752323]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_n1nu7")
+debug_color = Color(1, 0, 0, 0.5294118)
+
+[node name="correcciones" type="Label" parent="." unique_id=1749673939]
+offset_left = -32.0
+offset_top = 64.0
+offset_right = 270.0
+offset_bottom = 113.0
+text = "el vendedor estaria detras del puesto...
+son dos sprites separados."
+
+[node name="interactuable2" type="Area2D" parent="." unique_id=323186901]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_ibfep")
+metadata/_custom_type_script = "uid://dfkms8outegjs"
+
+[node name="interactuable" type="CollisionShape2D" parent="interactuable2" unique_id=88593532]
+shape = SubResource("CircleShape2D_n1nu7")
+debug_color = Color(0.08569052, 0.07906958, 0.9999806, 0.41960785)
+
+[node name="Control" type="Control" parent="." unique_id=958089995]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -90.0
+offset_top = -118.0
+offset_right = 90.0
+offset_bottom = -48.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1900103100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/HBoxContainer" unique_id=1200731610]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_p0h1c")
+bbcode_enabled = true
+text = "texto de prueba"
+scroll_active = false

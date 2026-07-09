@@ -260,7 +260,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4naoc")
 }],
-"loop": false,
+"loop": 0,
 "name": &"CuchilloAbajo",
 "speed": 10.0
 }, {
@@ -277,7 +277,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ie13r")
 }],
-"loop": false,
+"loop": 0,
 "name": &"CuchilloArriba",
 "speed": 10.0
 }, {
@@ -294,7 +294,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8f517")
 }],
-"loop": false,
+"loop": 0,
 "name": &"CuchilloDerecha",
 "speed": 10.0
 }, {
@@ -305,7 +305,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sk04x")
 }],
-"loop": false,
+"loop": 0,
 "name": &"HachaAbajo",
 "speed": 10.0
 }, {
@@ -316,7 +316,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0vbv5")
 }],
-"loop": false,
+"loop": 0,
 "name": &"HachaArriba",
 "speed": 10.0
 }, {
@@ -327,7 +327,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pki18")
 }],
-"loop": false,
+"loop": 0,
 "name": &"HachaDerecha",
 "speed": 10.0
 }, {
@@ -344,7 +344,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jffbf")
 }],
-"loop": false,
+"loop": 0,
 "name": &"RegarAbajo",
 "speed": 3.0
 }, {
@@ -361,7 +361,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2svea")
 }],
-"loop": false,
+"loop": 0,
 "name": &"RegarArriba",
 "speed": 3.0
 }, {
@@ -378,7 +378,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wnm7w")
 }],
-"loop": false,
+"loop": 0,
 "name": &"RegarDerecha",
 "speed": 3.0
 }, {
@@ -401,7 +401,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vuisw")
 }],
-"loop": true,
+"loop": 1,
 "name": &"correrAbajo",
 "speed": 10.0
 }, {
@@ -424,7 +424,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nj5b7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"correrArriba",
 "speed": 10.0
 }, {
@@ -447,7 +447,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e6jxs")
 }],
-"loop": true,
+"loop": 1,
 "name": &"correrDerecha",
 "speed": 10.0
 }, {
@@ -470,7 +470,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pmqw1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idleAbajo",
 "speed": 10.0
 }, {
@@ -493,7 +493,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2bcvc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idleArriba",
 "speed": 10.0
 }, {
@@ -516,13 +516,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j7ogk")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idleDerecha",
 "speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycxet"]
-size = Vector2(10, 10)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3don6"]
 size = Vector2(30, 30)
@@ -540,11 +540,11 @@ accionablesArea = NodePath("accionables")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13692352]
 sprite_frames = SubResource("SpriteFrames_mnegl")
-animation = &"correrArriba"
+animation = &"idleAbajo"
 autoplay = "idleAbajo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1817492249]
-position = Vector2(0, 7)
+[node name="cuerpo" type="CollisionShape2D" parent="." unique_id=1817492249]
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_ycxet")
 debug_color = Color(0, 0.6313726, 0.45882353, 0.65882355)
 
