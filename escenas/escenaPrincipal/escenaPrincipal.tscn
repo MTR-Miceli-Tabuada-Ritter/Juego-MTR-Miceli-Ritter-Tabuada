@@ -24,4 +24,4 @@ interfaz = NodePath("Interfaz")
 position = Vector2(295, 205)
 
 [node name="Tienda" parent="escenario" unique_id=944886235 instance=ExtResource("5_sbnnb")]
-position = Vector2(575, -85)
+position = Vector2(382, -164)
