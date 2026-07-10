@@ -31,9 +31,9 @@ func _ready() -> void:
 	setearTemporal()
 
 func setearTemporal():
-	slot5.setearSlot("icono_semilla", 0, 1)
-	slot6.setearSlot("icono_semilla", 1, 1)
-	slot7.setearSlot("icono_semilla", 2, 1)
+	slot5.setearSlot("icono_semilla", 0, 14)
+	slot6.setearSlot("icono_semilla", 1, 15)
+	slot7.setearSlot("icono_semilla", 2, 15)
 	slot8.setearSlot("icono_semilla", 3, 1)
 	slot9.setearSlot("icono_herramienta", 0, 1)
 	slot10.setearSlot("icono_herramienta", 1, 100)

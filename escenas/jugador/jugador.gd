@@ -73,6 +73,7 @@ func _intentar_cultivar():
 		elif escenaPrincipal.slotEnUso.texturaNombre == "icono_semilla":
 			if agujeroExistente != null and not agujeroExistente.plantado:
 				agujeroExistente.plantar(escenaPrincipal.slotEnUso.texturaId)
+				escenaPrincipal.slotEnUso.cambiarTexto(-1)
 		elif escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 1:
 			if agujeroExistente != null and agujeroExistente.plantado and escenaPrincipal.slotEnUso.cantidad > 0:
 				escenaPrincipal.slotEnUso.cambiarTexto(-10)
