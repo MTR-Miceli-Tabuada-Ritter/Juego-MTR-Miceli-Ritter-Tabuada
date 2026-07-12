@@ -17,11 +17,15 @@ interfaz = NodePath("Interfaz")
 [node name="nocheColor" type="CanvasModulate" parent="." unique_id=410170653]
 
 [node name="escenario" type="Node2D" parent="." unique_id=1861657421]
+y_sort_enabled = true
 
 [node name="mapa" parent="escenario" unique_id=1376492760 instance=ExtResource("1_phdhe")]
+y_sort_enabled = true
 
 [node name="CharacterBody2D" parent="escenario" unique_id=1791083245 instance=ExtResource("1_44c1f")]
 position = Vector2(295, 205)
 
 [node name="Tienda" parent="escenario" unique_id=944886235 instance=ExtResource("5_sbnnb")]
 position = Vector2(382, -164)
+
+[editable path="escenario/mapa"]

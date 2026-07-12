@@ -260,7 +260,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4naoc")
 }],
-"loop": 0,
+"loop": false,
 "name": &"CuchilloAbajo",
 "speed": 10.0
 }, {
@@ -277,7 +277,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ie13r")
 }],
-"loop": 0,
+"loop": false,
 "name": &"CuchilloArriba",
 "speed": 10.0
 }, {
@@ -294,7 +294,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8f517")
 }],
-"loop": 0,
+"loop": false,
 "name": &"CuchilloDerecha",
 "speed": 10.0
 }, {
@@ -305,7 +305,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sk04x")
 }],
-"loop": 0,
+"loop": false,
 "name": &"HachaAbajo",
 "speed": 10.0
 }, {
@@ -316,7 +316,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0vbv5")
 }],
-"loop": 0,
+"loop": false,
 "name": &"HachaArriba",
 "speed": 10.0
 }, {
@@ -327,7 +327,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pki18")
 }],
-"loop": 0,
+"loop": false,
 "name": &"HachaDerecha",
 "speed": 10.0
 }, {
@@ -344,7 +344,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jffbf")
 }],
-"loop": 0,
+"loop": false,
 "name": &"RegarAbajo",
 "speed": 3.0
 }, {
@@ -361,7 +361,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2svea")
 }],
-"loop": 0,
+"loop": false,
 "name": &"RegarArriba",
 "speed": 3.0
 }, {
@@ -378,7 +378,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wnm7w")
 }],
-"loop": 0,
+"loop": false,
 "name": &"RegarDerecha",
 "speed": 3.0
 }, {
@@ -401,7 +401,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vuisw")
 }],
-"loop": 1,
+"loop": true,
 "name": &"correrAbajo",
 "speed": 10.0
 }, {
@@ -424,7 +424,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nj5b7")
 }],
-"loop": 1,
+"loop": true,
 "name": &"correrArriba",
 "speed": 10.0
 }, {
@@ -447,7 +447,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e6jxs")
 }],
-"loop": 1,
+"loop": true,
 "name": &"correrDerecha",
 "speed": 10.0
 }, {
@@ -470,7 +470,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pmqw1")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idleAbajo",
 "speed": 10.0
 }, {
@@ -493,7 +493,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2bcvc")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idleArriba",
 "speed": 10.0
 }, {
@@ -516,7 +516,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j7ogk")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idleDerecha",
 "speed": 10.0
 }]
@@ -531,7 +531,6 @@ size = Vector2(30, 30)
 size = Vector2(32, 24)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1791083245 node_paths=PackedStringArray("direccionVistaMarker", "animacion", "notificacion", "accionablesArea")]
-z_index = 10
 script = ExtResource("1_8cmsc")
 direccionVistaMarker = NodePath("Marker2D")
 animacion = NodePath("AnimatedSprite2D")
