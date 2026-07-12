@@ -27,9 +27,17 @@ func _physics_process(_delta: float) -> void:
 		if direccionMovimiento != Vector2.ZERO:
 			ultima_direccion = direccionMovimiento
 			_actualizar_area_cultivo(ultima_direccion)
+	if not esta_actuando and direccionMovimiento != Vector2.ZERO:
+		SonidosGlobales.reproducirSonidoCaminar()
+	else:
+		SonidosGlobales.detenerSonidoCaminar()
 	if Input.is_action_just_pressed("herramienta") and not esta_actuando:
 		esta_actuando = true
 		_procesar_animacion("Hacha", ultima_direccion)
+		if escenaPrincipal.slotEnUso != null and escenaPrincipal.slotEnUso.texturaId == 1:
+			SonidosGlobales.reproducirSonidoRegar()
+		elif escenaPrincipal.slotEnUso != null and escenaPrincipal.slotEnUso.texturaId == 0:
+			SonidosGlobales.reproducirSonidoCortar()
 	if Input.is_action_just_pressed("interactuar") and masCercano != null and is_instance_valid(masCercano):
 		masCercano.interaccionar.emit()
 	if not esta_actuando:
@@ -74,6 +82,7 @@ func _intentar_cultivar():
 			if agujeroExistente != null and not agujeroExistente.plantado:
 				agujeroExistente.plantar(escenaPrincipal.slotEnUso.texturaId)
 				escenaPrincipal.slotEnUso.cambiarTexto(-1)
+				SonidosGlobales.reproducirSonidoPlantar()
 		elif escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 1:
 			if agujeroExistente != null and agujeroExistente.plantado and escenaPrincipal.slotEnUso.cantidad > 0:
 				escenaPrincipal.slotEnUso.cambiarTexto(-10)
@@ -83,10 +92,13 @@ func _intentar_cultivar():
 
 func _chequearAgua():
 	var pos_tile = tilemapAgua.local_to_map(tilemapAgua.to_local(direccionVistaMarker.global_position))
-	var tile_data = tilemapAgua.get_cell_tile_data(pos_tile)
-	if tile_data and tile_data.get_collision_polygons_count(2) > 0:
-		if escenaPrincipal.slotEnUso != null and escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 1:
-			escenaPrincipal.slotEnUso.cambiarTexto(100 - escenaPrincipal.slotEnUso.cantidad)
+	var adyacentes = [Vector2i(0,0), Vector2i(1,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(0,-1)]
+	for offset in adyacentes:
+		var tile_data = tilemapAgua.get_cell_tile_data(pos_tile + offset)
+		if tile_data and tile_data.get_collision_polygons_count(2) > 0:
+			if escenaPrincipal.slotEnUso != null and escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 1:
+				escenaPrincipal.slotEnUso.cambiarTexto(100 - escenaPrincipal.slotEnUso.cantidad)
+			return
 
 func _procesar_animacion(estado: String, direccion: Vector2):
 	if abs(direccion.x) > abs(direccion.y):
@@ -102,7 +114,8 @@ func _procesar_animacion(estado: String, direccion: Vector2):
 func _on_animation_finished():
 	if esta_actuando:
 		esta_actuando = false
-		_intentar_cultivar() 
+		SonidosGlobales.detenerSonidoRegar()
+		_intentar_cultivar()
 
 func _chequearAccionables():
 	var areasColisionantes: Array[Area2D] = accionablesArea.get_overlapping_areas()

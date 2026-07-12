@@ -38,7 +38,7 @@ func cambiarTexto(valor):
 	cantidad += valor
 	if cantidad <= 0:
 		cantidad = 0
-		# solo las semillas (tipo 0) se borran al agotarse
+		textoCantidad.text = "%02d" % cantidad
 		if valorTipoSlot == 0:
 			borrarSlot()
 		return
