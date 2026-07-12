@@ -27,9 +27,17 @@ func _physics_process(_delta: float) -> void:
 		if direccionMovimiento != Vector2.ZERO:
 			ultima_direccion = direccionMovimiento
 			_actualizar_area_cultivo(ultima_direccion)
+	if not esta_actuando and direccionMovimiento != Vector2.ZERO:
+		SonidosGlobales.reproducirSonidoCaminar()
+	else:
+		SonidosGlobales.detenerSonidoCaminar()
 	if Input.is_action_just_pressed("herramienta") and not esta_actuando:
 		esta_actuando = true
 		_procesar_animacion("Hacha", ultima_direccion)
+		if escenaPrincipal.slotEnUso != null and escenaPrincipal.slotEnUso.texturaId == 1:
+			SonidosGlobales.reproducirSonidoRegar()
+		elif escenaPrincipal.slotEnUso != null and escenaPrincipal.slotEnUso.texturaId == 0:
+			SonidosGlobales.reproducirSonidoCortar()
 	if Input.is_action_just_pressed("interactuar") and masCercano != null and is_instance_valid(masCercano):
 		masCercano.interaccionar.emit()
 	if not esta_actuando:
@@ -74,6 +82,7 @@ func _intentar_cultivar():
 			if agujeroExistente != null and not agujeroExistente.plantado:
 				agujeroExistente.plantar(escenaPrincipal.slotEnUso.texturaId)
 				escenaPrincipal.slotEnUso.cambiarTexto(-1)
+				SonidosGlobales.reproducirSonidoPlantar()
 		elif escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 1:
 			if agujeroExistente != null and agujeroExistente.plantado and escenaPrincipal.slotEnUso.cantidad > 0:
 				escenaPrincipal.slotEnUso.cambiarTexto(-10)
@@ -105,6 +114,7 @@ func _procesar_animacion(estado: String, direccion: Vector2):
 func _on_animation_finished():
 	if esta_actuando:
 		esta_actuando = false
+		SonidosGlobales.detenerSonidoRegar()
 		_intentar_cultivar()
 
 func _chequearAccionables():

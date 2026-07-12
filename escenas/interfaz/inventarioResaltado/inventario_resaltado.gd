@@ -38,6 +38,7 @@ func moverSlotArriba() -> void:
 		slotId = 10
 	else:
 		slotId -= 1
+	SonidosGlobales.reproducirSonidoSeleccionar()
 	cambiarPosicion()
 
 
@@ -46,4 +47,5 @@ func moverSlotAbajo() -> void:
 		slotId = 1
 	else:
 		slotId += 1
+	SonidosGlobales.reproducirSonidoSeleccionar()
 	cambiarPosicion()
