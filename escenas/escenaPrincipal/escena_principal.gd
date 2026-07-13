@@ -1,6 +1,5 @@
 extends Node2D
 signal cambioDia()
-signal plataGanada()
 
 @export var colorDeNoche: CanvasModulate
 @export var interfaz: CanvasLayer
@@ -55,6 +54,3 @@ func cropRecolectado(rutaObjeto, idObjeto, cantidad):
 
 func setearSlotEnUso(slot):
 	slotEnUso = slot
-
-
-	
