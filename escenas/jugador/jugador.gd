@@ -69,7 +69,7 @@ func _intentar_cultivar():
 	if tile_data and tile_data.get_collision_polygons_count(1) > 0:
 		if escenaPrincipal.slotEnUso == null:
 			return
-		var nombreAgujero = "agujero_" + str(int(round(direccionVistaMarker.global_position.x))) + "_" + str(int(round(direccionVistaMarker.global_position.y)))
+		var nombreAgujero = "agujero_" + str(pos_tile.x) + "_" + str(pos_tile.y)
 		var escenario = escenaPrincipal.get_node("escenario")
 		var agujeroExistente = escenario.get_node_or_null(nombreAgujero)
 		if escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 0:
