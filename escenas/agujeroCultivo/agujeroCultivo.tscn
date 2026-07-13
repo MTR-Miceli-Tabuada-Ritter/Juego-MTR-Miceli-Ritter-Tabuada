@@ -12,9 +12,10 @@ region = Rect2(288, 128, 32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whsvw"]
 size = Vector2(36, 36)
 
-[node name="AgujeroCultivo" type="Node2D" unique_id=1214211286 node_paths=PackedStringArray("crop", "colisionArea")]
+[node name="AgujeroCultivo" type="Node2D" unique_id=1214211286 node_paths=PackedStringArray("spriteAgujero", "spriteCrop", "colisionArea")]
 script = ExtResource("1_rfq02")
-crop = NodePath("crop")
+spriteAgujero = NodePath("Sprite2D")
+spriteCrop = NodePath("crop")
 colisionArea = NodePath("Area2D/CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1752363328]

@@ -70,14 +70,16 @@ func _intentar_cultivar():
 		if escenaPrincipal.slotEnUso == null:
 			return
 		var nombreAgujero = "agujero_" + str(int(round(direccionVistaMarker.global_position.x))) + "_" + str(int(round(direccionVistaMarker.global_position.y)))
-		var agujeroExistente = get_parent().get_node_or_null(nombreAgujero)
+		var escenario = escenaPrincipal.get_node("escenario")
+		var agujeroExistente = escenario.get_node_or_null(nombreAgujero)
 		if escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 0:
 			if agujeroExistente == null:
 				print("suelo fertilizado")
 				var agujeroInstancia = agujeroPreload.instantiate()
 				agujeroInstancia.position = direccionVistaMarker.global_position
 				agujeroInstancia.name = nombreAgujero
-				get_parent().call_deferred("add_child",agujeroInstancia)
+				agujeroInstancia.z_index = -1
+				escenario.call_deferred("add_child",agujeroInstancia)
 		elif escenaPrincipal.slotEnUso.texturaNombre == "icono_semilla":
 			if agujeroExistente != null and not agujeroExistente.plantado:
 				agujeroExistente.plantar(escenaPrincipal.slotEnUso.texturaId)
