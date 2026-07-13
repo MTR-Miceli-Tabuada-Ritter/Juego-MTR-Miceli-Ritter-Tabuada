@@ -931,9 +931,10 @@ debug_color = Color(0.08569052, 0.07906958, 0.9999806, 0.41960785)
 layout_mode = 3
 anchors_preset = 0
 offset_left = -90.0
-offset_top = -118.0
+offset_top = -145.0
 offset_right = 90.0
-offset_bottom = -48.0
+offset_bottom = -75.0
+metadata/_edit_group_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="dialogo" unique_id=1900103100]
 layout_mode = 1
