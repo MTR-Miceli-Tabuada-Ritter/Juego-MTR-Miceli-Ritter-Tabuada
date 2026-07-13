@@ -28,5 +28,3 @@ position = Vector2(382, -164)
 
 [node name="CharacterBody2D" parent="escenario" unique_id=1791083245 instance=ExtResource("1_44c1f")]
 position = Vector2(295, 205)
-
-[editable path="escenario/mapa"]
