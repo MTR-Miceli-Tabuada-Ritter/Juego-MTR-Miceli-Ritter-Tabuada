@@ -1,5 +1,6 @@
 extends Node2D
 signal cambioDia()
+signal plataGanada()
 
 @export var colorDeNoche: CanvasModulate
 @export var interfaz: CanvasLayer
