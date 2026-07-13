@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://bq1aoaaj1org7"]
+
+[ext_resource type="FontFile" uid="uid://urg65k11tdh3" path="res://recursos/fuentes/fuenteBotonesEas.ttf" id="1_yxnde"]
+
+[resource]
+default_font = ExtResource("1_yxnde")
+default_font_size = 26

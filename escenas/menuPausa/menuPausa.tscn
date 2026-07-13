@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cmu4e064xxirm"]
+
+[ext_resource type="Script" uid="uid://dp25g24qo32fi" path="res://escenas/menuPausa/menu_pausa.gd" id="1_34hfb"]
+[ext_resource type="FontFile" uid="uid://c5m0py66pqvv6" path="res://recursos/fuentes/fuenteTituloGrapeSoda.ttf" id="1_cfm2s"]
+[ext_resource type="Script" uid="uid://bv66n82b0j57x" path="res://escenas/menuPausa/reanudar.gd" id="3_5yitd"]
+[ext_resource type="Theme" uid="uid://bq1aoaaj1org7" path="res://recursos/fuentes/boton.tres" id="3_o76uj"]
+[ext_resource type="Script" uid="uid://rq7st2sebrb7" path="res://escenas/menuPausa/salir.gd" id="4_d1po6"]
+
+[sub_resource type="Theme" id="Theme_34hfb"]
+default_font = ExtResource("1_cfm2s")
+default_font_size = 78
+
+[node name="MenuPausa" type="CanvasLayer" unique_id=1711928337]
+process_mode = 3
+script = ExtResource("1_34hfb")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2659924]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4509804)
+
+[node name="Label" type="Label" parent="." unique_id=2113287172]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -119.0
+offset_right = 95.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_34hfb")
+text = "Pausa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=570753192]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="reanudar" type="Button" parent="VBoxContainer" unique_id=1738148282]
+layout_mode = 2
+theme = ExtResource("3_o76uj")
+text = "Reanudar"
+script = ExtResource("3_5yitd")
+
+[node name="salir" type="Button" parent="VBoxContainer" unique_id=1047336737]
+layout_mode = 2
+theme = ExtResource("3_o76uj")
+text = "Salir"
+script = ExtResource("4_d1po6")

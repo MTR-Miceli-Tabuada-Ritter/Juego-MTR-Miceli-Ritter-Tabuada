@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://tlr7aicmpoi0" path="res://escenas/interfaz/interfaz.tscn" id="3_xo3ps"]
 [ext_resource type="PackedScene" uid="uid://chkvcxkvnsdho" path="res://escenas/tienda/tienda.tscn" id="5_sbnnb"]
 [ext_resource type="AudioStream" uid="uid://cndhkcasm7ncv" path="res://recursos/audio/musica/musicaFondo.mp3" id="6_iwntd"]
+[ext_resource type="PackedScene" uid="uid://cmu4e064xxirm" path="res://escenas/menuPausa/menuPausa.tscn" id="7_iqabn"]
 
 [node name="escenaPrincipal" type="Node2D" unique_id=1856232161 node_paths=PackedStringArray("colorDeNoche", "interfaz")]
 y_sort_enabled = true
@@ -33,3 +34,6 @@ position = Vector2(295, 205)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=321322868]
 stream = ExtResource("6_iwntd")
 autoplay = true
+
+[node name="MenuPausa" parent="." unique_id=1711928337 instance=ExtResource("7_iqabn")]
+visible = false
