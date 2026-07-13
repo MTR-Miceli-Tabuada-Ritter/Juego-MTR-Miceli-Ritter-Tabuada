@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0.08855995, 0.0885599, 0.0885599, 1)
 config/icon="uid://c5dx631v6eel2"
 
+[autoload]
+
+SonidosGlobales="*res://globales/sonidosGlobales.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -30,7 +34,8 @@ folder_colors={
 "res://addons/": "purple",
 "res://escenas/": "blue",
 "res://globales/": "gray",
-"res://recursos/": "teal"
+"res://recursos/": "teal",
+"res://recursos/audio/": "green"
 }
 
 [global_group]
@@ -73,10 +78,6 @@ interactuar={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
-
-[autoload]
-
-SonidosGlobales="*res://globales/sonidosGlobales.gd"
 
 [layer_names]
 
