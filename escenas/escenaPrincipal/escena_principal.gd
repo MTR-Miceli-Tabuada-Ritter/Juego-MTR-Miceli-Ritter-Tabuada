@@ -4,7 +4,7 @@ signal cambioDia()
 @export var colorDeNoche: CanvasModulate
 @export var interfaz: CanvasLayer
 
-var dia =1
+var dia = 1
 var mes = 1
 var plata = 0
 

@@ -19,7 +19,7 @@ extends CanvasLayer
 
 var esDeNoche = false
 var tiempoEnSegundos = 21600.0
-var velocidadMultiplicador = 10000.0
+var velocidadMultiplicador = 1000.0
 var centrar = "[center]"
 var escenaPrincipal
 
