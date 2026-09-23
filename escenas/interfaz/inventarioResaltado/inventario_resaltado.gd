@@ -24,4 +24,3 @@ func moverSlotAbajo() -> void:
 		indiceSlot += 1
 	SonidosGlobales.reproducirSonidoSeleccionar()
 	cambiarPosicion()
-
