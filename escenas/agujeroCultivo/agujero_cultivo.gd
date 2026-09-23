@@ -1,6 +1,5 @@
-extends Node2D
+extends "res://globales/bloqueCultivable.gd"
 @export var velocidadCrecimiento = 1.5
-@export var spriteAgujero: Sprite2D
 @export var spriteCrop: Sprite2D
 @export var colisionArea: CollisionShape2D
 

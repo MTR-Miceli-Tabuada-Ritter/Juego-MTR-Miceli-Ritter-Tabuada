@@ -1,51 +1,27 @@
-extends Node2D
+extends "res://globales/selectorSlot.gd"
 
 var nodoInventario
-var escenaPrincipal
-
-var slotNombre = "slot"
-var slotId = 1
-var puedeSeleccionar = false
 
 func _ready() -> void:
-	escenaPrincipal = get_node("/root/escenaPrincipal")
 	nodoInventario = get_node("/root/escenaPrincipal/Interfaz/inventario")
-	cambiarPosicion()
+	super._ready()
 
-func _input(event: InputEvent):
-	if puedeSeleccionar and event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			puedeSeleccionar = false
-			moverSlotArriba()
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			puedeSeleccionar = false
-			moverSlotAbajo()
-
-
-func cambiarPosicion():
-	var slot = nodoInventario.get_node(slotNombre + str(slotId))
-	self.global_position = Vector2(slot.global_position.x, slot.global_position.y)
-	if slot.stack != null:
-		escenaPrincipal.setearSlotEnUso(slot)
-	else:
-		escenaPrincipal.setearSlotEnUso(null)
-	await get_tree().create_timer(0.025).timeout
-	puedeSeleccionar = true
-	
+func obtenerContenedorSlots() -> Node:
+	return nodoInventario
 
 func moverSlotArriba() -> void:
-	if slotId == 1:
-		slotId = 10
+	if indiceSlot == 1:
+		indiceSlot = 10
 	else:
-		slotId -= 1
+		indiceSlot -= 1
 	SonidosGlobales.reproducirSonidoSeleccionar()
 	cambiarPosicion()
-
 
 func moverSlotAbajo() -> void:
-	if slotId == 10:
-		slotId = 1
+	if indiceSlot == 10:
+		indiceSlot = 1
 	else:
-		slotId += 1
+		indiceSlot += 1
 	SonidosGlobales.reproducirSonidoSeleccionar()
 	cambiarPosicion()
+

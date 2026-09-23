@@ -69,7 +69,7 @@ func _intentar_cultivar():
 		var stack = escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
 		if stack == null:
 			return
-		var nombreAgujero = "agujero_" + str(pos_tile.x) + "_" + str(pos_tile.y)
+		var nombreAgujero = bloqueCultivable.obtenerNombre(pos_tile)
 		var escenario = escenaPrincipal.get_node("escenario")
 		var agujeroExistente = escenario.get_node_or_null(nombreAgujero)
 		# el item decide que hacer con el agujero (cavar, plantar, regar); jugador solo detecta el entorno

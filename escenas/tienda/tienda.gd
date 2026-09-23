@@ -36,8 +36,7 @@ func modoVenta():
 		_mostrarDialogo("no me interesa ese objeto de mierda")
 	else:
 		_mostrarDialogo("Mhmm... por ese objeto te puedo dar: " + "%03d" % [stack.item.precio_venta])
-		escenaPrincipal.plata += stack.item.precio_venta
-		escenaPrincipal.plataGanada.emit()
+		escenaPrincipal.agregarPlata(stack.item.precio_venta)
 		stack.quitar(1)#vendemos 1 unidad del objeto, se resta.
 		escenaPrincipal.slotEnUso.actualizar_visual()
 

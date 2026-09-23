@@ -55,3 +55,7 @@ func cropRecolectado(item: Item, cantidad: int):
 
 func setearSlotEnUso(slot):
 	slotEnUso = slot
+
+func agregarPlata(monto):
+	plata += monto
+	plataGanada.emit()

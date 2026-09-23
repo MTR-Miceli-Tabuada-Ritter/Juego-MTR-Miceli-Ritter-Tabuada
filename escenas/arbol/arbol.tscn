@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dac6jtwdwk3dj"]
 
 [ext_resource type="Texture2D" uid="uid://by6fagtwnqt1" path="res://recursos/assetPack/Overworld_Tileset.png" id="1_yxpsy"]
+[ext_resource type="Script" path="res://escenas/arbol/arbol.gd" id="2_arbol"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qqnc"]
 atlas = ExtResource("1_yxpsy")
@@ -12,6 +13,7 @@ size = Vector2(22, 20)
 [node name="Arbol" type="StaticBody2D" unique_id=317442876]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("2_arbol")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1401159612]
 texture = SubResource("AtlasTexture_4qqnc")

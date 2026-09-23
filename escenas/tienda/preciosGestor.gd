@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends "res://globales/objetoEstaticoMundo.gd"
 class_name preciosGestor
 
 #precios venta
