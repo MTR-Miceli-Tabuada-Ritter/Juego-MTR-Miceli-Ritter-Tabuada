@@ -27,18 +27,19 @@ func getPrecioPorId(txt, id):
 		return null
 	
 func modoVenta():
-	if escenaPrincipal.slotEnUso == null or escenaPrincipal.slotEnUso.estaEnUso == false:
+	var stack = escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
+	if stack == null:
 		_mostrarDialogo("Joven, no dispone de nada para vender...")
 		return
-	
-	var respuesta = getPrecioPorId(escenaPrincipal.slotEnUso.texturaNombre , escenaPrincipal.slotEnUso.texturaId)
-	if respuesta == null:
+
+	if stack.item.precio_venta < 0:
 		_mostrarDialogo("no me interesa ese objeto de mierda")
 	else:
-		_mostrarDialogo("Mhmm... por ese objeto te puedo dar: " + "%03d" % [respuesta])
-		escenaPrincipal.plata += respuesta
+		_mostrarDialogo("Mhmm... por ese objeto te puedo dar: " + "%03d" % [stack.item.precio_venta])
+		escenaPrincipal.plata += stack.item.precio_venta
 		escenaPrincipal.plataGanada.emit()
-		escenaPrincipal.slotEnUso.cambiarTexto(-1)#-1 porque vendemos 1 unidad del objeto, se resta.
+		stack.quitar(1)#vendemos 1 unidad del objeto, se resta.
+		escenaPrincipal.slotEnUso.actualizar_visual()
 
 func _mostrarDialogo(dialogoX):
 	dialogoTexto.text = dialogoX

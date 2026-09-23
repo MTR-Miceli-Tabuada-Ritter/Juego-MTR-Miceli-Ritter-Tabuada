@@ -33,11 +33,10 @@ func _physics_process(_delta: float) -> void:
 		SonidosGlobales.detenerSonidoCaminar()
 	if Input.is_action_just_pressed("herramienta") and not esta_actuando:
 		esta_actuando = true
-		_procesar_animacion("Hacha", ultima_direccion)
-		if escenaPrincipal.slotEnUso != null and escenaPrincipal.slotEnUso.texturaId == 1:
-			SonidosGlobales.reproducirSonidoRegar()
-		elif escenaPrincipal.slotEnUso != null and escenaPrincipal.slotEnUso.texturaId == 0:
-			SonidosGlobales.reproducirSonidoCortar()
+		var stack_en_uso = escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
+		_procesar_animacion(stack_en_uso.item.nombre_animacion if stack_en_uso != null else "Hacha", ultima_direccion)
+		if stack_en_uso != null:
+			stack_en_uso.item.sonido_al_usar()
 	if Input.is_action_just_pressed("interactuar") and masCercano != null and is_instance_valid(masCercano):
 		masCercano.interaccionar.emit()
 	if not esta_actuando:
@@ -67,28 +66,15 @@ func _intentar_cultivar():
 	var tile_data = tilemap.get_cell_tile_data(pos_tile)
 
 	if tile_data and tile_data.get_collision_polygons_count(1) > 0:
-		if escenaPrincipal.slotEnUso == null:
+		var stack = escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
+		if stack == null:
 			return
 		var nombreAgujero = "agujero_" + str(pos_tile.x) + "_" + str(pos_tile.y)
 		var escenario = escenaPrincipal.get_node("escenario")
 		var agujeroExistente = escenario.get_node_or_null(nombreAgujero)
-		if escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 0:
-			if agujeroExistente == null:
-				print("suelo fertilizado")
-				var agujeroInstancia = agujeroPreload.instantiate()
-				agujeroInstancia.position = direccionVistaMarker.global_position
-				agujeroInstancia.name = nombreAgujero
-				agujeroInstancia.z_index = -1
-				escenario.call_deferred("add_child",agujeroInstancia)
-		elif escenaPrincipal.slotEnUso.texturaNombre == "icono_semilla":
-			if agujeroExistente != null and not agujeroExistente.plantado:
-				agujeroExistente.plantar(escenaPrincipal.slotEnUso.texturaId)
-				escenaPrincipal.slotEnUso.cambiarTexto(-1)
-				SonidosGlobales.reproducirSonidoPlantar()
-		elif escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 1:
-			if agujeroExistente != null and agujeroExistente.plantado and escenaPrincipal.slotEnUso.cantidad > 0:
-				escenaPrincipal.slotEnUso.cambiarTexto(-10)
-				agujeroExistente.regar()
+		# el item decide que hacer con el agujero (cavar, plantar, regar); jugador solo detecta el entorno
+		stack.item.usar(self, agujeroExistente, stack)
+		escenaPrincipal.slotEnUso.actualizar_visual()
 	else:
 		print("no hay suelo cultivable acá")
 
@@ -98,8 +84,10 @@ func _chequearAgua():
 	for offset in adyacentes:
 		var tile_data = tilemapAgua.get_cell_tile_data(pos_tile + offset)
 		if tile_data and tile_data.get_collision_polygons_count(2) > 0:
-			if escenaPrincipal.slotEnUso != null and escenaPrincipal.slotEnUso.texturaNombre == "icono_herramienta" and escenaPrincipal.slotEnUso.texturaId == 1:
-				escenaPrincipal.slotEnUso.cambiarTexto(100 - escenaPrincipal.slotEnUso.cantidad)
+			var stack = escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
+			if stack != null and stack.item is ItemRegadera:
+				stack.item.recargar(stack)
+				escenaPrincipal.slotEnUso.actualizar_visual()
 			return
 
 func _procesar_animacion(estado: String, direccion: Vector2):

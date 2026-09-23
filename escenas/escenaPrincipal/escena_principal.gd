@@ -49,9 +49,9 @@ func terminarNoche():
 		mes += 1
 	cambioDia.emit()
 
-func cropRecolectado(rutaObjeto, idObjeto, cantidad):
+func cropRecolectado(item: Item, cantidad: int):
 	SonidosGlobales.reproducirSonidoLogro()
-	interfaz.cropRecolectado(rutaObjeto, idObjeto, cantidad)
+	interfaz.cropRecolectado(item, cantidad)
 
 func setearSlotEnUso(slot):
 	slotEnUso = slot

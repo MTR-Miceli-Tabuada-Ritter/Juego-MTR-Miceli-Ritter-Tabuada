@@ -5,7 +5,7 @@ extends Node2D
 @export var colisionArea: CollisionShape2D
 
 var cropCrecimientoId = 0
-var cropRandom
+var semilla: Item
 var cropListo = false #es true cuando el cultivo no puede crecer mas
 var rango = RandomNumberGenerator.new()
 var cropDesactivado = false
@@ -20,12 +20,12 @@ func _ready() -> void:
 	colisionArea.get_parent().interaccionar.connect(cosechar)
 	escenaPrincipal = get_node("/root/escenaPrincipal")
 
-func plantar(idSemilla):
+func plantar(item_semilla: Item):
 	plantado = true
-	cropRandom = idSemilla
+	semilla = item_semilla
 	cropCrecimientoId = 1
 	spriteCrop.visible = true
-	spriteCrop.frame_coords = Vector2(cropCrecimientoId,cropRandom)
+	spriteCrop.frame_coords = Vector2(cropCrecimientoId, semilla.fila_sprite)
 	escenaPrincipal.connect("cambioDia",_crecerCrop)
 
 func _crecerCrop():
@@ -39,7 +39,7 @@ func _crecerCrop():
 	if cropDesactivado == false && cropListo == false:
 		if cropCrecimientoId < 5:
 			cropCrecimientoId = cropCrecimientoId + 1
-			spriteCrop.frame_coords = Vector2(cropCrecimientoId, cropRandom)
+			spriteCrop.frame_coords = Vector2(cropCrecimientoId, semilla.fila_sprite)
 		else:
 			cropListo = true
 			colisionArea.disabled = false
@@ -53,5 +53,5 @@ func cosechar():
 	if cropDesactivado == false:
 		cropDesactivado = true
 		colisionArea.disabled = true
-		escenaPrincipal.cropRecolectado("icono_cultivo", cropRandom, 1)
+		escenaPrincipal.cropRecolectado(semilla.cultivo_resultante, 1)
 		call_deferred("queue_free")

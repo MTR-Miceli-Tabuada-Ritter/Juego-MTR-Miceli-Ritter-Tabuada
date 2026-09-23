@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemCultivo" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://globales/items/item_cultivo.gd" id="1"]
+[ext_resource type="Texture2D" path="res://recursos/iconos/icono_cultivo_3.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = "cultivo_3"
+icono = ExtResource("2")
+precio_venta = 11

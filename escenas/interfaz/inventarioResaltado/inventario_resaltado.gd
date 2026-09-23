@@ -25,7 +25,7 @@ func _input(event: InputEvent):
 func cambiarPosicion():
 	var slot = nodoInventario.get_node(slotNombre + str(slotId))
 	self.global_position = Vector2(slot.global_position.x, slot.global_position.y)
-	if slot.estaEnUso:
+	if slot.stack != null:
 		escenaPrincipal.setearSlotEnUso(slot)
 	else:
 		escenaPrincipal.setearSlotEnUso(null)
