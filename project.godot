@@ -19,6 +19,8 @@ config/icon="uid://drwm0qbnb5km2"
 [autoload]
 
 SonidosGlobales="*res://globales/sonidosGlobales.gd"
+PhantomCameraManager="*uid://duq6jhf6unyis"
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [display]
 
@@ -27,6 +29,10 @@ window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [file_customization]
 
