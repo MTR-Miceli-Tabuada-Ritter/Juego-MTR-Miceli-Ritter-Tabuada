@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="ItemSemilla" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="ItemSemilla" format=3 uid="uid://dfk5ugvyiysro"]
 
-[ext_resource type="Script" path="res://globales/items/item_semilla.gd" id="1"]
-[ext_resource type="Texture2D" path="res://recursos/iconos/icono_semilla_3.tres" id="2"]
-[ext_resource type="Resource" path="res://recursos/items/cultivo_3.tres" id="3"]
+[ext_resource type="Script" uid="uid://cvjwgsfb6ur85" path="res://globales/items/item_semilla.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b2g6tgh1f0338" path="res://recursos/iconos/icono_semilla_3.tres" id="2"]
+[ext_resource type="Resource" uid="uid://7ws5k4xb0ihg" path="res://recursos/items/cultivo_3.tres" id="3"]
 
 [resource]
 script = ExtResource("1")
+cultivo_resultante = ExtResource("3")
+fila_sprite = 3
 id = "semilla_3"
 icono = ExtResource("2")
 precio_venta = 5
-fila_sprite = 3
-cultivo_resultante = ExtResource("3")

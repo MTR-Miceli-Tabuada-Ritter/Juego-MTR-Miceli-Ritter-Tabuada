@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ItemCultivo" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="ItemCultivo" format=3 uid="uid://baxpoy0g2lhfp"]
 
-[ext_resource type="Script" path="res://globales/items/item_cultivo.gd" id="1"]
-[ext_resource type="Texture2D" path="res://recursos/iconos/icono_cultivo_0.tres" id="2"]
+[ext_resource type="Script" uid="uid://doe1rmv1k1jou" path="res://globales/items/item_cultivo.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bkttoo6wvtq0s" path="res://recursos/iconos/icono_cultivo_0.tres" id="2"]
 
 [resource]
 script = ExtResource("1")

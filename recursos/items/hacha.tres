@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ItemHacha" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="ItemHacha" format=3 uid="uid://cyumljqtip76b"]
 
-[ext_resource type="Script" path="res://globales/items/item_hacha.gd" id="1"]
-[ext_resource type="Texture2D" path="res://recursos/iconos/icono_herramienta_0.tres" id="2"]
+[ext_resource type="Script" uid="uid://djda70rk7w0ru" path="res://globales/items/item_hacha.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://buew8o4758ioi" path="res://recursos/iconos/icono_herramienta_0.tres" id="2"]
 
 [resource]
 script = ExtResource("1")

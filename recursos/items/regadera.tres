@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ItemRegadera" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="ItemRegadera" format=3 uid="uid://bnrldyes708ag"]
 
-[ext_resource type="Script" path="res://globales/items/item_regadera.gd" id="1"]
-[ext_resource type="Texture2D" path="res://recursos/iconos/icono_herramienta_1.tres" id="2"]
+[ext_resource type="Script" uid="uid://yub5ojnjijb8" path="res://globales/items/item_regadera.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://oisfyh3um7l0" path="res://recursos/iconos/icono_herramienta_1.tres" id="2"]
 
 [resource]
 script = ExtResource("1")
