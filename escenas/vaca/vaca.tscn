@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b76h3j3ihqr0q"]
+
+[ext_resource type="Script" uid="uid://81fyhtwt0k1n" path="res://escenas/vaca/vaca.gd" id="1_vaca"]
+[ext_resource type="Texture2D" uid="uid://bjp01mpugew8j" path="res://recursos/Farm RPG FREE 16x16 - Tiny Asset Pack/Farm Animals/Male Cow Brown.png" id="2_wro0r"]
+[ext_resource type="Script" uid="uid://dfkms8outegjs" path="res://globales/interactuable.gd" id="3_vaca"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mt85"]
+atlas = ExtResource("2_wro0r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou2ry"]
+atlas = ExtResource("2_wro0r")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1nu7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mt85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou2ry")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vaca"]
+size = Vector2(32, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vaca"]
+radius = 40.0
+
+[node name="Vaca" type="StaticBody2D" unique_id=1418051168]
+collision_layer = 2
+script = ExtResource("1_vaca")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=220904252]
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_n1nu7")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=509407499]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_vaca")
+debug_color = Color(0.7294118, 0, 0, 0.41960785)
+
+[node name="interactuable" type="Area2D" parent="." unique_id=2005647010]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_vaca")
+metadata/_custom_type_script = "uid://dfkms8outegjs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactuable" unique_id=1178597598]
+shape = SubResource("CircleShape2D_vaca")
+
+[connection signal="interaccionar" from="interactuable" to="." method="_on_interactuable_interaccionar"]

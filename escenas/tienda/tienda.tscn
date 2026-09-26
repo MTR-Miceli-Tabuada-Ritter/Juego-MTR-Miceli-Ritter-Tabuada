@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://drm8oh6aqfeej" path="res://recursos/Farm RPG FREE 16x16 - Tiny Asset Pack/Character/Idle.png" id="2_ibfep"]
 [ext_resource type="Script" uid="uid://dfkms8outegjs" path="res://globales/interactuable.gd" id="3_ibfep"]
 [ext_resource type="Texture2D" uid="uid://by6fagtwnqt1" path="res://recursos/assetPack/Overworld_Tileset.png" id="3_p0h1c"]
-[ext_resource type="FontFile" uid="uid://bgr3pw1yjdpek" path="res://recursos/fuentes/PixelOperator.ttf" id="4_653qh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onuxv"]
 atlas = ExtResource("2_ibfep")
@@ -37,7 +36,7 @@ animations = [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_nhwep")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 8.0
 }]
@@ -888,15 +887,13 @@ size = Vector2(128, 96)
 [sub_resource type="CircleShape2D" id="CircleShape2D_n1nu7"]
 radius = 96.0
 
-[sub_resource type="Theme" id="Theme_p0h1c"]
-default_font = ExtResource("4_653qh")
-default_font_size = 22
-
 [node name="Tienda" type="StaticBody2D" unique_id=944886235 node_paths=PackedStringArray("areaInteractuable", "dialogoControl", "dialogoTexto")]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_653qh")
 areaInteractuable = NodePath("interactuable2")
-dialogoControl = NodePath("dialogo")
-dialogoTexto = NodePath("dialogo/HBoxContainer/RichTextLabel")
+dialogoControl = NodePath("")
+dialogoTexto = NodePath("")
 
 [node name="vendedor" type="AnimatedSprite2D" parent="." unique_id=1859031613]
 position = Vector2(-1.9999981, 21.499998)
@@ -927,28 +924,4 @@ position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_n1nu7")
 debug_color = Color(0.08569052, 0.07906958, 0.9999806, 0.41960785)
 
-[node name="dialogo" type="Control" parent="." unique_id=958089995]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -90.0
-offset_top = -145.0
-offset_right = 90.0
-offset_bottom = -75.0
-metadata/_edit_group_ = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="dialogo" unique_id=1900103100]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="dialogo/HBoxContainer" unique_id=1200731610]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = SubResource("Theme_p0h1c")
-bbcode_enabled = true
-text = "texto de prueba"
-scroll_active = false
+[connection signal="body_entered" from="interactuable2" to="." method="_on_interactuable_2_body_entered"]

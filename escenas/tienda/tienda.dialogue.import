@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://vcpew6qp7cst"
+path="res://.godot/imported/tienda.dialogue-981c99e24dfe313d55efd69cd2c2160c.tres"
+
+[deps]
+
+source_file="res://escenas/tienda/tienda.dialogue"
+dest_files=["res://.godot/imported/tienda.dialogue-981c99e24dfe313d55efd69cd2c2160c.tres"]
+
+[params]
+
+defaults=true

@@ -21,6 +21,11 @@ config/icon="uid://drwm0qbnb5km2"
 SonidosGlobales="*res://globales/sonidosGlobales.gd"
 PhantomCameraManager="*uid://duq6jhf6unyis"
 DialogueManager="*uid://c3rodes2l3gxb"
+PausaDialogo="*res://globales/pausaDialogo.gd"
+
+[dialogue_manager]
+
+runtime/balloon_path="res://escenas/tienda/balloon.tscn"
 
 [display]
 
@@ -90,6 +95,10 @@ pausar={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://escenas/tienda/tienda.dialogue", "res://escenas/vaca/vaca.dialogue")
 
 [layer_names]
 

@@ -4,13 +4,18 @@ extends preciosGestor
 @export var dialogoControl: Control
 @export var dialogoTexto: RichTextLabel
 
+const DIALOGO_TIENDA = preload("res://escenas/tienda/tienda.dialogue")
+
 var escenaPrincipal
 var lista
 
 func _ready() -> void:
 	escenaPrincipal = get_node("/root/escenaPrincipal")
-	areaInteractuable.interaccionar.connect(modoVenta)
+	areaInteractuable.interaccionar.connect(abrirDialogoTienda)
 	
+
+func abrirDialogoTienda():
+	DialogueManager.show_dialogue_balloon(DIALOGO_TIENDA, "", [self])
 
 func getPrecioPorId(txt, id):
 	match (txt):
@@ -25,24 +30,37 @@ func getPrecioPorId(txt, id):
 		return lista[id]
 	else:
 		return null
-	
-func modoVenta():
-	var stack = escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
-	if stack == null:
-		_mostrarDialogo("Joven, no dispone de nada para vender...")
+
+#region API usada por las líneas del diálogo de la tienda (tienda.dialogue)
+
+func hay_objeto_para_vender() -> bool:
+	return _stack_en_uso() != null
+
+func es_objeto_vendible() -> bool:
+	var stack = _stack_en_uso()
+	return stack != null and stack.item.precio_venta >= 0
+
+func nombre_objeto_actual() -> String:
+	var stack = _stack_en_uso()
+	return stack.item.id if stack != null else ""
+
+func precio_objeto_actual() -> int:
+	var stack = _stack_en_uso()
+	return stack.item.precio_venta if stack != null else 0
+
+func vender_objeto_actual() -> void:
+	var stack = _stack_en_uso()
+	if stack == null or stack.item.precio_venta < 0:
 		return
+	escenaPrincipal.agregarPlata(stack.item.precio_venta)
+	stack.quitar(1)#vendemos 1 unidad del objeto, se resta.
+	escenaPrincipal.slotEnUso.actualizar_visual()
 
-	if stack.item.precio_venta < 0:
-		_mostrarDialogo("no me interesa ese objeto de mierda")
-	else:
-		_mostrarDialogo("Mhmm... por ese objeto te puedo dar: " + "%03d" % [stack.item.precio_venta])
-		escenaPrincipal.agregarPlata(stack.item.precio_venta)
-		stack.quitar(1)#vendemos 1 unidad del objeto, se resta.
-		escenaPrincipal.slotEnUso.actualizar_visual()
+func _stack_en_uso():
+	return escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
 
-func _mostrarDialogo(dialogoX):
-	dialogoTexto.text = dialogoX
-	dialogoControl.visible = true
-	await get_tree().create_timer(1.5).timeout
-	dialogoControl.visible = false
-	
+#endregion
+
+
+func _on_interactuable_2_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

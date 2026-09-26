@@ -1,0 +1,15 @@
+~ start
+if hay_objeto_para_vender():
+	if es_objeto_vendible():
+		Vendedor: Tenés {{nombre_objeto_actual()}} en la mano. ¿Te lo compro por {{precio_objeto_actual()}} de plata?
+		- Sí, vendelo
+			do vender_objeto_actual()
+			Vendedor: ¡Trato hecho! Ahí tenés tu plata.
+		- No, gracias
+			Vendedor: Como quieras.
+	else:
+		Vendedor: No me interesa ese objeto de mierda.
+else:
+	Vendedor: No tenés nada para vender ahora mismo.
+Vendedor: ¡Que tengas un buen día!
+=> END
