@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://besrfofs8inh"
+path="res://.godot/imported/vaca.dialogue-d0bb4b7e3a29fcdd7cfa87264f5c553b.tres"
+
+[deps]
+
+source_file="res://escenas/vaca/vaca.dialogue"
+dest_files=["res://.godot/imported/vaca.dialogue-d0bb4b7e3a29fcdd7cfa87264f5c553b.tres"]
+
+[params]
+
+defaults=true

@@ -1,11 +1,7 @@
 extends StaticBody2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+const DIALOGO_VACA = preload("res://escenas/vaca/vaca.dialogue")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_interactuable_interaccionar() -> void:
+	DialogueManager.show_dialogue_balloon(DIALOGO_VACA)
