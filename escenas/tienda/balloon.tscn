@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bhq7gqc4bt6go" path="res://escenas/tienda/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="FontFile" uid="uid://urg65k11tdh3" path="res://recursos/fuentes/fuenteBotonesEas.ttf" id="2_ilkp1"]
+[ext_resource type="StyleBox" uid="uid://dpgrfmidme6ft" path="res://recursos/panelDialogos.tres" id="2_ilkp1"]
+[ext_resource type="Theme" uid="uid://dn4hsbxxhkdgk" path="res://recursos/fuentes/dialogos.tres" id="3_15cpw"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="3_72ixx"]
-[ext_resource type="Theme" uid="uid://b3oaqeiabphl1" path="res://recursos/fuentes/interfaz.tres" id="4_15cpw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 content_margin_left = 20.0
@@ -77,10 +77,6 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
-[sub_resource type="Theme" id="Theme_m8mjt"]
-default_font = ExtResource("2_ilkp1")
-default_font_size = 17
-
 [sub_resource type="Animation" id="Animation_nlsx6"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -117,14 +113,30 @@ _data = {
 &"progress": SubResource("Animation_qkmqt")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8mjt"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5653058, 0.29696283, 0.08680228, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+expand_margin_left = 15.0
+expand_margin_top = 7.0
+expand_margin_right = 15.0
+expand_margin_bottom = 7.0
+
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=38036521]
-layer = 100
 process_mode = 3
+layer = 100
 script = ExtResource("1_36de5")
 
 [node name="Balloon" type="Control" parent="." unique_id=154399927]
 unique_name_in_owner = true
-modulate = Color(1, 0.6117647, 0.27058825, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -146,6 +158,7 @@ grow_vertical = 0
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = ExtResource("2_ilkp1")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer" unique_id=903640783]
 layout_mode = 2
@@ -162,7 +175,8 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
-theme = SubResource("Theme_m8mjt")
+theme = ExtResource("3_15cpw")
+theme_override_colors/default_color = Color(0.7973306, 0.4377885, 0.16528773, 1)
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -172,7 +186,8 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("4_15cpw")
+theme = ExtResource("3_15cpw")
+theme_override_colors/default_color = Color(0.7973306, 0.4377885, 0.16528773, 1)
 text = "Dialogue..."
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=418507161]
@@ -184,6 +199,7 @@ size_flags_vertical = 8
 unique_name_in_owner = true
 position = Vector2(8, 0)
 scale = Vector2(0.6, 0.6)
+color = Color(0.79607844, 0.4392157, 0.16470589, 1)
 polygon = PackedVector2Array(0, 0, 10, 10, 20, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=1602634471]
@@ -211,7 +227,9 @@ response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/CenterContainer/ResponsesMenu" unique_id=1446810977]
 layout_mode = 2
-theme = ExtResource("4_15cpw")
+theme = ExtResource("3_15cpw")
+theme_override_colors/font_color = Color(0.9393342, 0.64544564, 0.32335418, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_m8mjt")
 text = "Response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1162558754]

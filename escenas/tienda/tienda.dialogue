@@ -1,7 +1,7 @@
 ~ start
 if hay_objeto_para_vender():
 	if es_objeto_vendible():
-		Vendedor: Tenés {{nombre_objeto_actual()}} en la mano. ¿Te lo compro por {{precio_objeto_actual()}} de plata?
+		Vendedor: Tenés [color=#f0a552]{{nombre_objeto_actual()}}[/color] en la mano. Te puedo ofrecer [color=#f0a552] {{precio_objeto_actual()}}[/color] moneditas [speed=0.1]...
 		- Sí, vendelo
 			do vender_objeto_actual()
 			Vendedor: ¡Trato hecho! Ahí tenés tu plata.
