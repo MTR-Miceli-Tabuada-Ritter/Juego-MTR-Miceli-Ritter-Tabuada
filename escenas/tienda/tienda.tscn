@@ -37,7 +37,7 @@ animations = [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_nhwep")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 8.0
 }]
@@ -952,3 +952,5 @@ theme = SubResource("Theme_p0h1c")
 bbcode_enabled = true
 text = "texto de prueba"
 scroll_active = false
+
+[connection signal="body_entered" from="interactuable2" to="." method="_on_interactuable_2_body_entered"]

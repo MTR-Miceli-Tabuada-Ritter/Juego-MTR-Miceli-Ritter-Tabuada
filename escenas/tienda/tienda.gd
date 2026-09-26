@@ -4,13 +4,20 @@ extends preciosGestor
 @export var dialogoControl: Control
 @export var dialogoTexto: RichTextLabel
 
+const DIALOGO_PRUEBA = preload("res://escenas/tienda/tienda.dialogue")
+
 var escenaPrincipal
 var lista
 
 func _ready() -> void:
 	escenaPrincipal = get_node("/root/escenaPrincipal")
 	areaInteractuable.interaccionar.connect(modoVenta)
+	areaInteractuable.interaccionar.connect(abrirDialogoDePrueba)
 	
+
+func abrirDialogoDePrueba():
+	DialogueManager.show_dialogue_balloon(DIALOGO_PRUEBA)
+
 
 func getPrecioPorId(txt, id):
 	match (txt):
@@ -46,3 +53,7 @@ func _mostrarDialogo(dialogoX):
 	await get_tree().create_timer(1.5).timeout
 	dialogoControl.visible = false
 	
+
+
+func _on_interactuable_2_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
