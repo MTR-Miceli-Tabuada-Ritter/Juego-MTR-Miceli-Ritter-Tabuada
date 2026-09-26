@@ -10,6 +10,9 @@ var reproductorSonidoPlantar: AudioStreamPlayer
 var sonidoSeleccionar1 = preload("res://recursos/audio/sonidos/Seleccionar1.mp3")
 var sonidoSeleccionar2 = preload("res://recursos/audio/sonidos/Seleccionar2.mp3")
 
+var sonidoCortar1 = preload("res://recursos/audio/sonidos/Cortar1.mp3")
+var sonidoCortar2 = preload("res://recursos/audio/sonidos/Cortar2.mp3")
+
 func _ready() -> void:
 	reproductorSonidoCaminar = AudioStreamPlayer.new()
 	add_child(reproductorSonidoCaminar)
@@ -18,7 +21,6 @@ func _ready() -> void:
 
 	reproductorSonidoCortar = AudioStreamPlayer.new()
 	add_child(reproductorSonidoCortar)
-	reproductorSonidoCortar.stream = preload("res://recursos/audio/sonidos/Cortar1.mp3")
 	reproductorSonidoCortar.set_bus("SFX")
 
 	reproductorSonidoRegar = AudioStreamPlayer.new()
@@ -47,7 +49,12 @@ func reproducirSonidoCaminar() -> void:
 func detenerSonidoCaminar() -> void:
 	reproductorSonidoCaminar.stop()
 
-func reproducirSonidoCortar() -> void:
+func reproducirSonidoCortarExito() -> void:
+	reproductorSonidoCortar.stream = sonidoCortar1
+	reproductorSonidoCortar.play()
+
+func reproducirSonidoCortarFallo() -> void:
+	reproductorSonidoCortar.stream = sonidoCortar2
 	reproductorSonidoCortar.play()
 
 func reproducirSonidoRegar() -> void:
