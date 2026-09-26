@@ -22,6 +22,10 @@ SonidosGlobales="*res://globales/sonidosGlobales.gd"
 PhantomCameraManager="*uid://duq6jhf6unyis"
 DialogueManager="*uid://c3rodes2l3gxb"
 
+[dialogue_manager]
+
+runtime/balloon_path="res://escenas/tienda/balloon.tscn"
+
 [display]
 
 window/size/viewport_width=640
