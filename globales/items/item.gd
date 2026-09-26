@@ -15,3 +15,6 @@ func usar(_jugador, _agujero, _stack: ItemStack) -> void:
 
 func sonido_al_usar() -> void:
 	pass
+
+func sonido_al_fallar() -> void:
+	pass

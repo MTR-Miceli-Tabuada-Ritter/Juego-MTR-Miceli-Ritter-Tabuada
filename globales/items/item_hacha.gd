@@ -3,6 +3,7 @@ extends ItemHerramienta
 
 func usar(jugador, agujero, _stack: ItemStack) -> void:
 	if agujero != null:
+		sonido_al_fallar()
 		return
 	var tilemap: TileMapLayer = jugador.tilemap
 	var pos_tile = tilemap.local_to_map(tilemap.to_local(jugador.direccionVistaMarker.global_position))
@@ -12,6 +13,7 @@ func usar(jugador, agujero, _stack: ItemStack) -> void:
 	agujero_instancia.name = bloqueCultivable.obtenerNombre(pos_tile)
 	agujero_instancia.z_index = -1
 	jugador.escenaPrincipal.get_node("escenario").call_deferred("add_child", agujero_instancia)
+	SonidosGlobales.reproducirSonidoCortarExito()
 
-func sonido_al_usar() -> void:
-	SonidosGlobales.reproducirSonidoCortar()
+func sonido_al_fallar() -> void:
+	SonidosGlobales.reproducirSonidoCortarFallo()

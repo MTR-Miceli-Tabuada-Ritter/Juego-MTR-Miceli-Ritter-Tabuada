@@ -77,6 +77,9 @@ func _intentar_cultivar():
 		escenaPrincipal.slotEnUso.actualizar_visual()
 	else:
 		print("no hay suelo cultivable acá")
+		var stack_fuera_de_rango = escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
+		if stack_fuera_de_rango != null:
+			stack_fuera_de_rango.item.sonido_al_fallar()
 
 func _chequearAgua():
 	var pos_tile = tilemapAgua.local_to_map(tilemapAgua.to_local(direccionVistaMarker.global_position))
