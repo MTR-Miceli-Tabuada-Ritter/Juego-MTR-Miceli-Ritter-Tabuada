@@ -1,4 +1,14 @@
 ~ start
 Vaca: Muuu...
-Vaca: (La vaca te mira masticando pasto y sigue con lo suyo)
+(La vaca te mira masticando pasto y se da cuenta que no te reconoce)
+Vaca: Chico[speed=0.2]...[/speed] no te veo cara conocida,[wait=0.8] me doy cuenta que no sos de por acá.
+Vaca: Estas en la [color=#f0a552]Isla Ramona[/color],[wait=0.8] quizas te sirva saber eso.
+Vaca: Ah bueno, también hay algunas [color=#f0a552]Facciónes[/color] por acá.[wait=0.8] Supongo que las irás conociendo.
+Vaca: No es que me importe tanto, [wait=0.4]pero[wait=0.4][speed=0.4] como se supone que llegaste acá?[/speed] [wait=0.4]
+- Solo aparecí, ni siquiera recuerdo mi nombre
+	Vaca: Ajá... bueno... nos vemos,[wait=0.4] supongo.[wait=0.4] Ojalá encuentres tu nombre,[wait=0.4] el profesor Beitía seguro lo pida para la próxima entrega.
+- No sé.
+	Vaca: Bueno,[wait=0.4] ojalá a los devs se le ocurran mejores opciones para la próxima[speed=0.2]... [/speed]
+Vaca: Pero bueno[speed=0.2]... [/speed]Muuu[speed=0.2]... [/speed]
+(La vaca se da vuelta y parece querer seguir con lo suyo, quizas sea mejor dejarla tranquila[speed=0.2]...[/speed] las vacas que conoces no hablan)
 => END

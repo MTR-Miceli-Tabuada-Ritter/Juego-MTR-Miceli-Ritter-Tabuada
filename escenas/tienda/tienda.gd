@@ -6,6 +6,13 @@ extends preciosGestor
 
 const DIALOGO_TIENDA = preload("res://escenas/tienda/tienda.dialogue")
 
+const NOMBRES_SEMILLAS = {
+	"semilla_0": "semilla de frutilla",
+	"semilla_1": "semilla de cebolla",
+	"semilla_2": "semilla de papa",
+	"semilla_3": "semilla de zanahoria",
+}
+
 var escenaPrincipal
 var lista
 
@@ -42,7 +49,9 @@ func es_objeto_vendible() -> bool:
 
 func nombre_objeto_actual() -> String:
 	var stack = _stack_en_uso()
-	return stack.item.id if stack != null else ""
+	if stack == null:
+		return ""
+	return NOMBRES_SEMILLAS.get(stack.item.id, stack.item.id)
 
 func precio_objeto_actual() -> int:
 	var stack = _stack_en_uso()

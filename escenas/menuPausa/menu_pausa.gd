@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pausar"):
+	if event.is_action_pressed("pausar") and not PausaDialogo.dialogo_activo:
 		alternar_pausa()
 
 func alternar_pausa():
