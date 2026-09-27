@@ -130,6 +130,74 @@ expand_margin_top = 7.0
 expand_margin_right = 15.0
 expand_margin_bottom = 7.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilkp1"]
+bg_color = Color(0, 0, 0, 0.41960785)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5647059, 0.29803923, 0.08627451, 0.50980395)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+expand_margin_left = 15.0
+expand_margin_top = 7.0
+expand_margin_right = 15.0
+expand_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15cpw"]
+bg_color = Color(0.08209083, 0.021425433, 0.0019394301, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.78171796, 0.4270765, 0.15678835, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+expand_margin_left = 15.0
+expand_margin_top = 7.0
+expand_margin_right = 15.0
+expand_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hh4oq"]
+bg_color = Color(0.1584723, 0.15847233, 0.1584723, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.36259246, 0.3625925, 0.3625925, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+expand_margin_left = 15.0
+expand_margin_top = 7.0
+expand_margin_right = 15.0
+expand_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_524dv"]
+bg_color = Color(0.05418496, 0.011123691, 0.0016509886, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8669471, 0.5592021, 0.21723557, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+expand_margin_left = 15.0
+expand_margin_top = 7.0
+expand_margin_right = 15.0
+expand_margin_bottom = 7.0
+
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=38036521]
 process_mode = 3
 layer = 100
@@ -212,7 +280,10 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -176.0
+offset_left = -218.0
+offset_top = 10.0
+offset_right = -24.0
+offset_bottom = -61.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -220,7 +291,7 @@ grow_vertical = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_constants/separation = 2
+theme_override_constants/separation = 20
 alignment = 1
 script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
@@ -230,6 +301,10 @@ layout_mode = 2
 theme = ExtResource("3_15cpw")
 theme_override_colors/font_color = Color(0.9393342, 0.64544564, 0.32335418, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_m8mjt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ilkp1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_15cpw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hh4oq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_524dv")
 text = "Response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1162558754]
