@@ -25,7 +25,7 @@ PausaDialogo="*res://globales/pausaDialogo.gd"
 
 [dialogue_manager]
 
-runtime/balloon_path="res://escenas/tienda/balloon.tscn"
+runtime/balloon_path="res://globales/balloon.tscn"
 
 [display]
 
