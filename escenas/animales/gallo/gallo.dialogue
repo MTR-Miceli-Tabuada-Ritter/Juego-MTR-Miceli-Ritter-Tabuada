@@ -1,0 +1,10 @@
+~ start
+Gallo: [wait=0.4]Pa [wait=0.4]pa [wait=0.8]Papoi!
+(no estas seguro de que un [color=#f0a552]gallo[/color] haga exactamente ese sonido,[wait=0.8] pero te parece curiosamente gracioso[wait=0.8] por alguna razón)
+Gallo: [speed=0.6]YO[wait=0.8] soy el [color=#f0a552]gallo[/color], [wait=1]YO[wait=0.8] soy de la [color=#f0a552]facción de los gallos[/color],[wait=1] YO CUIDO [wait=0.8]a mis gallos[wait=1] y gallinas, [wait=0.4]obviamente,[wait=0.4] sino no tendriamos mas gallos[wait=0.8] ni gallinas.
+(hay un silencio incomodo,[wait=2] bastante [wait=0.6]incomodo)
+(decile algo al pollo,[wait=0.6] estas muy incomodo[wait=1] porfavor)
+- Eeeh, hola
+	Gallo: Hola EXTRAÑO, [wait=1] si sabes que los NO ANIMALES no son comúnes por acá [wait=2] mejor dicho:[wait=2] NO SON BIENVENIDOS ACÁ.
+	(sentís que el papagallo te esta intentado intimidar, [wait=1]pero realmente no sentís nada.[wait=1] Quizás sea porque sos un espacio en la memoria de una computadora [wait=0.8]y no un ser viviente,[wait=1.5] pero te parece que esto no tiene nada que ver con el juego [wait=1]entonces seguís escuchando al gallus)
+=> END

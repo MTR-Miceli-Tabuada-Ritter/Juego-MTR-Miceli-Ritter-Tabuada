@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://besrfofs8inh"
+path="res://.godot/imported/vaca.dialogue-104b5cc214ef43f9f78b6ca9e9864cba.tres"
+
+[deps]
+
+source_file="res://escenas/animales/vaca/vaca.dialogue"
+dest_files=["res://.godot/imported/vaca.dialogue-104b5cc214ef43f9f78b6ca9e9864cba.tres"]
+
+[params]
+
+defaults=true

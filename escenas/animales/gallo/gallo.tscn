@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cjmnenboj3sfm"]
+
+[ext_resource type="Script" uid="uid://caf8v12wra53s" path="res://escenas/animales/gallo/gallo.gd" id="1_gilyf"]
+[ext_resource type="Texture2D" uid="uid://jex2c51ot0fb" path="res://recursos/Farm RPG FREE 16x16 - Tiny Asset Pack/Farm Animals/Chicken Red.png" id="2_muds0"]
+[ext_resource type="Script" uid="uid://dfkms8outegjs" path="res://globales/interactuable.gd" id="3_n43w5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjvfu"]
+atlas = ExtResource("2_muds0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dup61"]
+atlas = ExtResource("2_muds0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1nu7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjvfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dup61")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vaca"]
+size = Vector2(28, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vaca"]
+radius = 40.0
+
+[node name="Gallo" type="StaticBody2D" unique_id=1418051168]
+collision_layer = 32
+script = ExtResource("1_gilyf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=220904252]
+sprite_frames = SubResource("SpriteFrames_n1nu7")
+animation = &"idle"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.9922107
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=509407499]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_vaca")
+debug_color = Color(0.7294118, 0, 0, 0.41960785)
+
+[node name="interactuable" type="Area2D" parent="." unique_id=2005647010]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_n43w5")
+metadata/_custom_type_script = "uid://dfkms8outegjs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactuable" unique_id=1178597598]
+shape = SubResource("CircleShape2D_vaca")
+
+[connection signal="interaccionar" from="interactuable" to="." method="_on_interactuable_interaccionar"]

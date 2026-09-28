@@ -257,6 +257,7 @@ size_flags_vertical = 3
 theme = ExtResource("3_15cpw")
 theme_override_colors/default_color = Color(0.7973306, 0.4377885, 0.16528773, 1)
 text = "Dialogue..."
+seconds_per_step = 0.03
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=418507161]
 custom_minimum_size = Vector2(20, 10)

@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://tlr7aicmpoi0" path="res://escenas/interfaz/interfaz.tscn" id="3_xo3ps"]
 [ext_resource type="PackedScene" uid="uid://chkvcxkvnsdho" path="res://escenas/tienda/tienda.tscn" id="5_sbnnb"]
 [ext_resource type="AudioStream" uid="uid://cndhkcasm7ncv" path="res://recursos/audio/musica/musicaFondo.mp3" id="6_iwntd"]
+[ext_resource type="PackedScene" uid="uid://cjmnenboj3sfm" path="res://escenas/animales/gallo/gallo.tscn" id="7_bhuw7"]
 [ext_resource type="PackedScene" uid="uid://cmu4e064xxirm" path="res://escenas/menuPausa/menuPausa.tscn" id="7_iqabn"]
-[ext_resource type="PackedScene" uid="uid://b76h3j3ihqr0q" path="res://escenas/vaca/vaca.tscn" id="8_amjam"]
+[ext_resource type="PackedScene" uid="uid://b76h3j3ihqr0q" path="res://escenas/animales/vaca/vaca.tscn" id="8_amjam"]
 
 [node name="escenaPrincipal" type="Node2D" unique_id=1856232161 node_paths=PackedStringArray("colorDeNoche", "interfaz")]
 y_sort_enabled = true
@@ -32,12 +33,15 @@ position = Vector2(501, -221)
 [node name="CharacterBody2D" parent="escenario" unique_id=1791083245 instance=ExtResource("1_44c1f")]
 position = Vector2(295, 205)
 
+[node name="Vaca" parent="escenario" unique_id=1418051168 instance=ExtResource("8_amjam")]
+position = Vector2(142, 182)
+
+[node name="Gallo" parent="escenario" unique_id=1067668568 instance=ExtResource("7_bhuw7")]
+position = Vector2(865, -48)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=321322868]
 stream = ExtResource("6_iwntd")
 autoplay = true
 
 [node name="MenuPausa" parent="." unique_id=1711928337 instance=ExtResource("7_iqabn")]
 visible = false
-
-[node name="Vaca" parent="." unique_id=1418051168 instance=ExtResource("8_amjam")]
-position = Vector2(142, 182)

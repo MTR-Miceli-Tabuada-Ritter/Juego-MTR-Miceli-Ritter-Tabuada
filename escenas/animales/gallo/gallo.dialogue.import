@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://hxrqdl554hjb"
+path="res://.godot/imported/gallo.dialogue-d660cb2e17612a2807ca343cb9bae722.tres"
+
+[deps]
+
+source_file="res://escenas/animales/gallo/gallo.dialogue"
+dest_files=["res://.godot/imported/gallo.dialogue-d660cb2e17612a2807ca343cb9bae722.tres"]
+
+[params]
+
+defaults=true
