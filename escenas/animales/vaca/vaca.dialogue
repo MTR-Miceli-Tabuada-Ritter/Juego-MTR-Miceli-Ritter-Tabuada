@@ -1,4 +1,4 @@
-~ start
+~ primera_vez
 Vaca: Muuu...
 (La vaca te mira masticando pasto y se da cuenta que no te reconoce)
 Vaca: Chico[speed=0.2]...[/speed] no te veo cara conocida,[wait=0.8] me doy cuenta que no sos de por acá.
@@ -11,4 +11,9 @@ Vaca: No es que me importe tanto, [wait=0.4]pero[wait=0.4][speed=0.4] como se su
 	Vaca: Bueno,[wait=0.4] ojalá a los devs se le ocurran mejores opciones para la próxima[speed=0.2]... [/speed]
 Vaca: Pero bueno[speed=0.2]... [/speed]Muuu[speed=0.2]... [/speed]
 (La vaca se da vuelta y parece querer seguir con lo suyo, quizas sea mejor dejarla tranquila[speed=0.2]...[/speed] las vacas que conoces no hablan)
+=> END
+
+~ otra_vez
+Vaca: Muu Mu-[wait=0.8]u Que haces acá?[wait=0.8] Anda a explorar la isla, no estoy programada para hacer nada mas interesante [wait=0.4]en serio.
+Vaca: ...
 => END
