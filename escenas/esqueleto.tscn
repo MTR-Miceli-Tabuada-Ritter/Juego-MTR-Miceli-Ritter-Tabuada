@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://c0nqno3qe3m21"]
 
-[ext_resource type="Script" uid="uid://b3geuil2l78b2" path="res://escenas/esqueleto.gd" id="1_pki2l"]
 [ext_resource type="Texture2D" uid="uid://h63rah00agln" path="res://recursos/Cute_Fantasy_Free/Enemies/Skeleton.png" id="2_hvwh6"]
 [ext_resource type="PackedScene" uid="uid://bx82xb4ku6i42" path="res://escenas/salud_componente.tscn" id="3_dvue8"]
 [ext_resource type="PackedScene" uid="uid://c8xvpt4y4jafr" path="res://escenas/hurtbox_componente.tscn" id="4_gxh5t"]
@@ -63,7 +62,6 @@ radius = 26.0
 [node name="Esqueleto" type="CharacterBody2D" unique_id=1885121538]
 collision_layer = 64
 collision_mask = 35
-script = ExtResource("1_pki2l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1138243893]
 sprite_frames = SubResource("SpriteFrames_h6ly3")
@@ -74,7 +72,7 @@ shape = SubResource("CircleShape2D_h6ly3")
 debug_color = Color(0.972549, 0, 0, 0.41960785)
 
 [node name="saludComponente" parent="." unique_id=267581185 instance=ExtResource("3_dvue8")]
-SALUD_MAX = 30
+SALUD_MAX = 50
 
 [node name="hurtboxComponente" parent="." unique_id=1186058951 node_paths=PackedStringArray("componenteSalud") instance=ExtResource("4_gxh5t")]
 collision_layer = 64

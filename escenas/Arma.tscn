@@ -11,7 +11,7 @@ script = ExtResource("1_lnk1s")
 
 [node name="hurtboxComponente" parent="." unique_id=1186058951 instance=ExtResource("2_n40n2")]
 collision_layer = 1
-collision_mask = 64
+collision_mask = 98
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponente" unique_id=1820827340]
 shape = SubResource("CircleShape2D_h6ly3")
