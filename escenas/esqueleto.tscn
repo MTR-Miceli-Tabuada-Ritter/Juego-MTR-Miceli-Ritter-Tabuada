@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://c0nqno3qe3m21"]
+
+[ext_resource type="Script" uid="uid://b3geuil2l78b2" path="res://escenas/esqueleto.gd" id="1_pki2l"]
+[ext_resource type="Texture2D" uid="uid://h63rah00agln" path="res://recursos/Cute_Fantasy_Free/Enemies/Skeleton.png" id="2_hvwh6"]
+[ext_resource type="PackedScene" uid="uid://bx82xb4ku6i42" path="res://escenas/salud_componente.tscn" id="3_dvue8"]
+[ext_resource type="PackedScene" uid="uid://c8xvpt4y4jafr" path="res://escenas/hurtbox_componente.tscn" id="4_gxh5t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvue8"]
+atlas = ExtResource("2_hvwh6")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxh5t"]
+atlas = ExtResource("2_hvwh6")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua3ig"]
+atlas = ExtResource("2_hvwh6")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sahu7"]
+atlas = ExtResource("2_hvwh6")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2qjt"]
+atlas = ExtResource("2_hvwh6")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h77sa"]
+atlas = ExtResource("2_hvwh6")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6ly3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvue8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxh5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua3ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sahu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2qjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h77sa")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6ly3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_21ccn"]
+radius = 26.0
+
+[node name="Esqueleto" type="CharacterBody2D" unique_id=1885121538]
+collision_layer = 64
+collision_mask = 35
+script = ExtResource("1_pki2l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1138243893]
+sprite_frames = SubResource("SpriteFrames_h6ly3")
+
+[node name="cuerpo" type="CollisionShape2D" parent="." unique_id=1972967145]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_h6ly3")
+debug_color = Color(0.972549, 0, 0, 0.41960785)
+
+[node name="saludComponente" parent="." unique_id=267581185 instance=ExtResource("3_dvue8")]
+SALUD_MAX = 30
+
+[node name="hurtboxComponente" parent="." unique_id=1186058951 node_paths=PackedStringArray("componenteSalud") instance=ExtResource("4_gxh5t")]
+collision_layer = 64
+collision_mask = 1
+componenteSalud = NodePath("../saludComponente")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponente" unique_id=1514183871]
+shape = SubResource("CircleShape2D_21ccn")
