@@ -30,6 +30,7 @@ shape = SubResource("RectangleShape2D_yxpsy")
 debug_color = Color(0.9647059, 0, 0, 0.41960785)
 
 [node name="hurtboxComponente" parent="." unique_id=1186058951 node_paths=PackedStringArray("componenteSalud") instance=ExtResource("3_ukssn")]
+collision_layer = 2
 componenteSalud = NodePath("../saludComponente")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponente" unique_id=1460163295]

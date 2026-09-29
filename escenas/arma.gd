@@ -1,7 +1,7 @@
 extends Node2D
 
 var danioAtaque = 10
-var fuerzaEmpujeAtaque = 100
+var fuerzaEmpujeAtaque = 200
 
 @onready var areaAtaque: Area2D = $hurtboxComponente
 

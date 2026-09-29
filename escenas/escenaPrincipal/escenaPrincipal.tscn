@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cjmnenboj3sfm" path="res://escenas/animales/gallo/gallo.tscn" id="7_bhuw7"]
 [ext_resource type="PackedScene" uid="uid://cmu4e064xxirm" path="res://escenas/menuPausa/menuPausa.tscn" id="7_iqabn"]
 [ext_resource type="PackedScene" uid="uid://b76h3j3ihqr0q" path="res://escenas/animales/vaca/vaca.tscn" id="8_amjam"]
+[ext_resource type="PackedScene" uid="uid://dac6jtwdwk3dj" path="res://escenas/arbol/arbol.tscn" id="9_laq3f"]
 [ext_resource type="PackedScene" uid="uid://c0nqno3qe3m21" path="res://escenas/esqueleto.tscn" id="10_ehepm"]
 
 [node name="escenaPrincipal" type="Node2D" unique_id=1856232161 node_paths=PackedStringArray("colorDeNoche", "interfaz")]
@@ -42,6 +43,9 @@ position = Vector2(865, -48)
 
 [node name="Esqueleto" parent="escenario" unique_id=1885121538 instance=ExtResource("10_ehepm")]
 position = Vector2(219, 273)
+
+[node name="Arbol" parent="escenario" unique_id=317442876 instance=ExtResource("9_laq3f")]
+position = Vector2(406, 293)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=321322868]
 stream = ExtResource("6_iwntd")
