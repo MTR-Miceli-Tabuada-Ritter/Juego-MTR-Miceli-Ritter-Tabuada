@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cqfypce0gw5od" path="res://recursos/Cute_Fantasy_Free/Player/Player.png" id="2_26844"]
 [ext_resource type="Texture2D" uid="uid://c0tksjup2h7wm" path="res://recursos/Cute_Fantasy_Free/Player/Player_Actions.png" id="3_qsk7m"]
 [ext_resource type="Texture2D" uid="uid://b7vwkicncm4kx" path="res://recursos/assetPack/Hud_Ui/select_icon_ui.png" id="4_3don6"]
+[ext_resource type="PackedScene" uid="uid://dhvtai6hgaxju" path="res://escenas/Arma.tscn" id="5_jkpmm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3don6"]
 atlas = ExtResource("2_26844")
@@ -530,8 +531,8 @@ size = Vector2(32, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3w17"]
 radius = 32.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1791083245 node_paths=PackedStringArray("direccionVistaMarker", "animacion", "notificacion", "accionablesArea")]
-collision_mask = 38
+[node name="Jugador" type="CharacterBody2D" unique_id=1791083245 node_paths=PackedStringArray("direccionVistaMarker", "animacion", "notificacion", "accionablesArea")]
+collision_mask = 102
 script = ExtResource("1_8cmsc")
 direccionVistaMarker = NodePath("Marker2D")
 animacion = NodePath("AnimatedSprite2D")
@@ -573,3 +574,5 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_3don6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=250702629]
+
+[node name="Arma" parent="." unique_id=565178407 instance=ExtResource("5_jkpmm")]

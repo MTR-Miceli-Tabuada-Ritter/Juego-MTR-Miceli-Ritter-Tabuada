@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dhvtai6hgaxju"]
+
+[ext_resource type="Script" uid="uid://cnhm310hc8iuj" path="res://escenas/arma.gd" id="1_lnk1s"]
+[ext_resource type="PackedScene" uid="uid://c8xvpt4y4jafr" path="res://escenas/hurtbox_componente.tscn" id="2_n40n2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6ly3"]
+radius = 50.0
+
+[node name="Arma" type="Node2D" unique_id=565178407]
+script = ExtResource("1_lnk1s")
+
+[node name="hurtboxComponente" parent="." unique_id=1186058951 instance=ExtResource("2_n40n2")]
+collision_layer = 1
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponente" unique_id=1820827340]
+shape = SubResource("CircleShape2D_h6ly3")
+debug_color = Color(1.347661e-06, 0.6378639, 0.39061245, 0.41960785)

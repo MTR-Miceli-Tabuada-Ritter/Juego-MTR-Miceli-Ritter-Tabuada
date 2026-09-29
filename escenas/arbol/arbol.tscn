@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://dac6jtwdwk3dj"]
 
 [ext_resource type="Texture2D" uid="uid://by6fagtwnqt1" path="res://recursos/assetPack/Overworld_Tileset.png" id="1_yxpsy"]
-[ext_resource type="Script" path="res://escenas/arbol/arbol.gd" id="2_arbol"]
+[ext_resource type="Script" uid="uid://drwvd5ga4log6" path="res://escenas/arbol/arbol.gd" id="2_arbol"]
+[ext_resource type="PackedScene" uid="uid://c8xvpt4y4jafr" path="res://escenas/hurtbox_componente.tscn" id="3_ukssn"]
+[ext_resource type="PackedScene" uid="uid://bx82xb4ku6i42" path="res://escenas/salud_componente.tscn" id="4_r3vx5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qqnc"]
 atlas = ExtResource("1_yxpsy")
@@ -9,6 +11,9 @@ region = Rect2(96, 288, 64, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxpsy"]
 size = Vector2(22, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6ly3"]
+radius = 47.0
 
 [node name="Arbol" type="StaticBody2D" unique_id=317442876]
 collision_layer = 2
@@ -22,3 +27,13 @@ offset = Vector2(0, -11.51)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1750915021]
 position = Vector2(-1, 13)
 shape = SubResource("RectangleShape2D_yxpsy")
+debug_color = Color(0.9647059, 0, 0, 0.41960785)
+
+[node name="hurtboxComponente" parent="." unique_id=1186058951 node_paths=PackedStringArray("componenteSalud") instance=ExtResource("3_ukssn")]
+componenteSalud = NodePath("../saludComponente")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponente" unique_id=1460163295]
+shape = SubResource("CircleShape2D_h6ly3")
+
+[node name="saludComponente" parent="." unique_id=267581185 instance=ExtResource("4_r3vx5")]
+SALUD_MAX = 30
