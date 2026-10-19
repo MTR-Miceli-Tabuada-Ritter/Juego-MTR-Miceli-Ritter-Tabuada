@@ -1,0 +1,73 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://escenas/animales/cerdo/cerdo.gd" id="1_cerdo"]
+[ext_resource type="Texture2D" uid="uid://bj1xotk12hsqf" path="res://recursos/Farm RPG FREE 16x16 - Tiny Asset Pack/Farm Animals/Pink Pig.png" id="2_cerdo"]
+[ext_resource type="Script" uid="uid://dfkms8outegjs" path="res://globales/interactuable.gd" id="3_cerdo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cerdo1"]
+atlas = ExtResource("2_cerdo")
+region = Rect2(17, 57, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cerdo2"]
+atlas = ExtResource("2_cerdo")
+region = Rect2(161, 57, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cerdo3"]
+atlas = ExtResource("2_cerdo")
+region = Rect2(306, 57, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cerdo4"]
+atlas = ExtResource("2_cerdo")
+region = Rect2(451, 57, 102, 87)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cerdo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cerdo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cerdo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cerdo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cerdo4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cerdo"]
+size = Vector2(34, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cerdo"]
+radius = 40.0
+
+[node name="Cerdo" type="StaticBody2D"]
+collision_layer = 32
+script = ExtResource("1_cerdo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_cerdo")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_cerdo")
+debug_color = Color(0.7294118, 0, 0, 0.41960785)
+
+[node name="interactuable" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_cerdo")
+metadata/_custom_type_script = "uid://dfkms8outegjs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactuable"]
+shape = SubResource("CircleShape2D_cerdo")
+
+[connection signal="interaccionar" from="interactuable" to="." method="_on_interactuable_interaccionar"]

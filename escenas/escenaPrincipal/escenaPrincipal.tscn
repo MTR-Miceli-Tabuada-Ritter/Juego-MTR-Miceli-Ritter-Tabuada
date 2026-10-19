@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cmu4e064xxirm" path="res://escenas/menuPausa/menuPausa.tscn" id="7_iqabn"]
 [ext_resource type="PackedScene" uid="uid://b76h3j3ihqr0q" path="res://escenas/animales/vaca/vaca.tscn" id="8_amjam"]
 [ext_resource type="PackedScene" uid="uid://dac6jtwdwk3dj" path="res://escenas/arbol/arbol.tscn" id="9_laq3f"]
-[ext_resource type="PackedScene" uid="uid://c0nqno3qe3m21" path="res://escenas/esqueleto.tscn" id="10_ehepm"]
+[ext_resource type="PackedScene" path="res://escenas/esqueleto.tscn" id="10_ehepm"]
+[ext_resource type="PackedScene" path="res://escenas/animales/cerdo/cerdo.tscn" id="11_cerdo"]
 
 [node name="escenaPrincipal" type="Node2D" unique_id=1856232161 node_paths=PackedStringArray("colorDeNoche", "interfaz")]
 y_sort_enabled = true
@@ -26,13 +27,16 @@ y_sort_enabled = true
 
 [node name="mapa" parent="escenario" unique_id=1376492760 instance=ExtResource("1_phdhe")]
 y_sort_enabled = true
-position = Vector2(-2365, -617)
+position = Vector2(-2411, -678)
 
 [node name="CharacterBody2D" parent="escenario" unique_id=1791083245 instance=ExtResource("1_44c1f")]
 position = Vector2(295, 205)
 
 [node name="Vaca" parent="escenario" unique_id=1418051168 instance=ExtResource("8_amjam")]
 position = Vector2(142, 182)
+
+[node name="Cerdo" parent="escenario" unique_id=581309372 instance=ExtResource("11_cerdo")]
+position = Vector2(60, 240)
 
 [node name="Gallo" parent="escenario" unique_id=1067668568 instance=ExtResource("7_bhuw7")]
 position = Vector2(865, -48)

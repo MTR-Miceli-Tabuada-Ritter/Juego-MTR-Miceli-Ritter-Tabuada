@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://bpuxp6gw2aeit"
+path="res://.godot/imported/cerdo.dialogue-2795f03672386ef6bccd3908921097ce.tres"
+
+[deps]
+
+source_file="res://escenas/animales/cerdo/cerdo.dialogue"
+dest_files=["res://.godot/imported/cerdo.dialogue-2795f03672386ef6bccd3908921097ce.tres"]
+
+[params]
+
+defaults=true

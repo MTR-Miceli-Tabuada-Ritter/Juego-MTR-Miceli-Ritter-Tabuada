@@ -1,0 +1,18 @@
+~ primera_vez
+Cerdo: Oinc[wait=0.4] oinc...
+(El cerdo levanta el hocico del barro y te mira con cara de pocos amigos)
+Cerdo: Hmpf[speed=0.2]...[/speed] otro que viene a [color=#f0a552]molestar[/color] mientras como.
+Cerdo: Mirá,[wait=0.8] yo no pertenezco a ninguna [color=#f0a552]facción[/color].[wait=0.8] Estoy muy ocupado [wait=0.4]comiendo.
+Cerdo: Si querés saber algo de la isla,[wait=0.4] preguntale a la vaca.[wait=0.8] Ella habla mucho,[wait=0.4] yo[wait=0.4] [speed=0.4]no[/speed].
+- Ok, perdón por molestar
+	Cerdo: Eso, [wait=0.4]eso.[wait=0.8] Educado el chico.
+- ¿Qué estás comiendo?
+	Cerdo: [speed=0.4]No[/speed] te importa.[wait=0.8] Es mío.
+Cerdo: Oinc[speed=0.2]... [/speed]
+(El cerdo vuelve a hundir el hocico en el barro,[wait=0.8] la conversación parece haber terminado)
+=> END
+
+~ otra_vez
+Cerdo: Oinc.[wait=0.8] Seguís acá?[wait=0.8] Dejame comer en paz.
+Cerdo: ....
+=> END
