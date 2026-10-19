@@ -9,6 +9,20 @@ func _ready() -> void:
 func obtenerContenedorSlots() -> Node:
 	return nodoInventario
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not puedeSeleccionar or not (event is InputEventKey) or not event.pressed or event.echo:
+		return
+	var nuevoIndice := 0
+	if event.keycode >= KEY_1 and event.keycode <= KEY_9:
+		nuevoIndice = event.keycode - KEY_0
+	elif event.keycode == KEY_0:
+		nuevoIndice = 10
+	if nuevoIndice == 0 or nuevoIndice == indiceSlot:
+		return
+	indiceSlot = nuevoIndice
+	SonidosGlobales.reproducirSonidoSeleccionar()
+	cambiarPosicion()
+
 func moverSlotArriba() -> void:
 	if indiceSlot == 1:
 		indiceSlot = 10

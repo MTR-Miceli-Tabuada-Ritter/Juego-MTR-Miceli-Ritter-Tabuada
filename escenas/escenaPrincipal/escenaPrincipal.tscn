@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dk5rypooucy0c" path="res://escenas/mapa/mapa.tscn" id="1_phdhe"]
 [ext_resource type="Script" uid="uid://ikk2a6fr3e5r" path="res://escenas/escenaPrincipal/escena_principal.gd" id="1_xo3ps"]
 [ext_resource type="PackedScene" uid="uid://tlr7aicmpoi0" path="res://escenas/interfaz/interfaz.tscn" id="3_xo3ps"]
-[ext_resource type="PackedScene" uid="uid://chkvcxkvnsdho" path="res://escenas/tienda/tienda.tscn" id="5_sbnnb"]
 [ext_resource type="AudioStream" uid="uid://cndhkcasm7ncv" path="res://recursos/audio/musica/musicaFondo.mp3" id="6_iwntd"]
 [ext_resource type="PackedScene" uid="uid://cjmnenboj3sfm" path="res://escenas/animales/gallo/gallo.tscn" id="7_bhuw7"]
 [ext_resource type="PackedScene" uid="uid://cmu4e064xxirm" path="res://escenas/menuPausa/menuPausa.tscn" id="7_iqabn"]
@@ -28,9 +27,6 @@ y_sort_enabled = true
 [node name="mapa" parent="escenario" unique_id=1376492760 instance=ExtResource("1_phdhe")]
 y_sort_enabled = true
 position = Vector2(-2365, -617)
-
-[node name="Tienda" parent="escenario" unique_id=944886235 instance=ExtResource("5_sbnnb")]
-position = Vector2(501, -221)
 
 [node name="CharacterBody2D" parent="escenario" unique_id=1791083245 instance=ExtResource("1_44c1f")]
 position = Vector2(295, 205)
