@@ -10,6 +10,7 @@ var velocidad = 200.0
 var ultima_direccion = Vector2.DOWN
 var esta_actuando = false
 var masCercano = null
+var _indice_accion: int = -1
 
 var escenaPrincipal
 
@@ -33,7 +34,8 @@ func _physics_process(_delta: float) -> void:
 		SonidosGlobales.detenerSonidoCaminar()
 	if Input.is_action_just_pressed("herramienta") and not esta_actuando:
 		esta_actuando = true
-		var stack_en_uso = escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
+		_indice_accion = InventarioJugador.indice_seleccionado
+		var stack_en_uso := InventarioJugador.inventario.obtener_stack(_indice_accion)
 		_procesar_animacion(stack_en_uso.item.nombre_animacion if stack_en_uso != null else "Hacha", ultima_direccion)
 		if stack_en_uso != null:
 			stack_en_uso.item.sonido_al_usar()
@@ -66,7 +68,7 @@ func _intentar_cultivar():
 	var tile_data = tilemap.get_cell_tile_data(pos_tile)
 
 	if tile_data and tile_data.get_collision_polygons_count(1) > 0:
-		var stack = escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
+		var stack := InventarioJugador.inventario.obtener_stack(_indice_accion)
 		if stack == null:
 			return
 		var nombreAgujero = bloqueCultivable.obtenerNombre(pos_tile)
@@ -74,10 +76,9 @@ func _intentar_cultivar():
 		var agujeroExistente = escenario.get_node_or_null(nombreAgujero)
 		# el item decide que hacer con el agujero (cavar, plantar, regar); jugador solo detecta el entorno
 		stack.item.usar(self, agujeroExistente, stack)
-		escenaPrincipal.slotEnUso.actualizar_visual()
 	else:
 		print("no hay suelo cultivable acá")
-		var stack_fuera_de_rango = escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
+		var stack_fuera_de_rango := InventarioJugador.inventario.obtener_stack(_indice_accion)
 		if stack_fuera_de_rango != null:
 			stack_fuera_de_rango.item.sonido_al_fallar()
 
@@ -87,10 +88,9 @@ func _chequearAgua():
 	for offset in adyacentes:
 		var tile_data = tilemapAgua.get_cell_tile_data(pos_tile + offset)
 		if tile_data and tile_data.get_collision_polygons_count(2) > 0:
-			var stack = escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
+			var stack := InventarioJugador.obtener_stack_seleccionado()
 			if stack != null and stack.item is ItemRegadera:
-				stack.item.recargar(stack)
-				escenaPrincipal.slotEnUso.actualizar_visual()
+				InventarioJugador.inventario.recargar_cargas(InventarioJugador.indice_seleccionado)
 			return
 
 func _procesar_animacion(estado: String, direccion: Vector2):
@@ -109,6 +109,13 @@ func _on_animation_finished():
 		esta_actuando = false
 		SonidosGlobales.detenerSonidoRegar()
 		_intentar_cultivar()
+		_indice_accion = -1
+
+func consumir_item(cantidad: int) -> bool:
+	return InventarioJugador.inventario.quitar_de_slot(_indice_accion, cantidad)
+
+func consumir_cargas(cantidad: int) -> bool:
+	return InventarioJugador.inventario.consumir_cargas(_indice_accion, cantidad)
 
 func _chequearAccionables():
 	var areasColisionantes: Array[Area2D] = accionablesArea.get_overlapping_areas()

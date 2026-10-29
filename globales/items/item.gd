@@ -4,6 +4,7 @@ extends Resource
 @export var id: String = ""
 @export var icono: Texture2D
 @export var max_stack: int = 100
+@export var capacidad_carga: int = 0 # Agua/durabilidad, no cantidad de objetos.
 @export var precio_venta: int = -1 # -1 = no se puede vender
 @export var oculta_contador: bool = false
 @export var muestra_barra_progreso: bool = false

@@ -49,8 +49,10 @@ func regar():
 	spriteCrop.self_modulate = Color(0.5, 0.5, 0.5)
 
 func cosechar():
-	if cropDesactivado == false:
+	if not cropDesactivado and cropListo:
+		if escenaPrincipal.cropRecolectado(semilla.cultivo_resultante, 1) != 0:
+			# Sin espacio: el cultivo permanece disponible para volver a intentar.
+			return
 		cropDesactivado = true
 		colisionArea.disabled = true
-		escenaPrincipal.cropRecolectado(semilla.cultivo_resultante, 1)
 		call_deferred("queue_free")

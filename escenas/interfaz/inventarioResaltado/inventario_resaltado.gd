@@ -3,7 +3,7 @@ extends "res://globales/selectorSlot.gd"
 var nodoInventario
 
 func _ready() -> void:
-	nodoInventario = get_node("/root/escenaPrincipal/Interfaz/inventario")
+	nodoInventario = get_parent().get_node("inventario")
 	super._ready()
 
 func obtenerContenedorSlots() -> Node:

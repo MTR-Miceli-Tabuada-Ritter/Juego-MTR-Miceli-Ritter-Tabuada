@@ -7,13 +7,26 @@ signal plataGanada()
 
 var dia = 1
 var mes = 1
-var plata = 0
+var plata: int:
+	get:
+		return InventarioJugador.plata
 
 var bajadaDeNoche = false
 var amaneciendo = false
 var bajadaDeNocheDuracion = 5
 var tiempoTranscurrido = 0.0
-var slotEnUso = null
+
+func _ready() -> void:
+	InventarioJugador.plata_cambiada.connect(_notificar_plata)
+
+func _notificar_plata() -> void:
+	plataGanada.emit()
+
+func iniciar_nueva_partida() -> void:
+	InventarioJugador.reiniciar()
+	dia = 1
+	mes = 1
+	cambioDia.emit()
 
 
 func _process(_delta: float) -> void:
@@ -49,13 +62,11 @@ func terminarNoche():
 		mes += 1
 	cambioDia.emit()
 
-func cropRecolectado(item: Item, cantidad: int):
-	SonidosGlobales.reproducirSonidoLogro()
-	interfaz.cropRecolectado(item, cantidad)
-
-func setearSlotEnUso(slot):
-	slotEnUso = slot
+func cropRecolectado(item: Item, cantidad: int) -> int:
+	var sobrante := InventarioJugador.inventario.agregar_item(item, cantidad)
+	if sobrante < cantidad:
+		SonidosGlobales.reproducirSonidoLogro()
+	return sobrante
 
 func agregarPlata(monto):
-	plata += monto
-	plataGanada.emit()
+	InventarioJugador.agregar_plata(monto)

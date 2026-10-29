@@ -1,0 +1,159 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://escenas/interfaz/mochila/slot_mochila.gd" id="1_script"]
+[ext_resource type="FontFile" path="res://recursos/fuentes/PixelOperator.ttf" id="2_fuente"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_slot"]
+bg_color = Color(0.27, 0.21, 0.16, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.48, 0.36, 0.23, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_left = 2
+corner_radius_bottom_right = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_foco"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.87, 0.65, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_agua_fondo"]
+bg_color = Color(0.08, 0.12, 0.16, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_agua"]
+bg_color = Color(0.38, 0.76, 0.91, 1)
+
+[sub_resource type="Theme" id="Theme_slot"]
+default_font = ExtResource("2_fuente")
+default_font_size = 14
+Button/styles/normal = SubResource("StyleBox_slot")
+Button/styles/hover = SubResource("StyleBox_slot")
+Button/styles/pressed = SubResource("StyleBox_slot")
+Button/styles/focus = SubResource("StyleBox_foco")
+Label/colors/font_color = Color(1, 0.91, 0.74, 1)
+Label/colors/font_outline_color = Color(0.12, 0.09, 0.07, 1)
+Label/constants/outline_size = 2
+ProgressBar/styles/background = SubResource("StyleBox_agua_fondo")
+ProgressBar/styles/fill = SubResource("StyleBox_agua")
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_tooltip"]
+content_margin_left = 6.0
+content_margin_top = 4.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+bg_color = Color(0.14, 0.1, 0.08, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7, 0.51, 0.29, 1)
+
+[node name="SlotMochila" type="Button"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_slot")
+theme_override_styles/normal = SubResource("StyleBox_slot")
+theme_override_styles/hover = SubResource("StyleBox_slot")
+theme_override_styles/pressed = SubResource("StyleBox_slot")
+script = ExtResource("1_script")
+
+[node name="Vacio" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.48, 0.37, 0.27, 1)
+theme_override_constants/outline_size = 0
+text = "·"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icono" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture_filter = 1
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Numero" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 14.0
+offset_bottom = 13.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.84, 0.72, 0.55, 1)
+theme_override_font_sizes/font_size = 12
+text = "1"
+
+[node name="Equipado" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -7.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = 7.0
+grow_horizontal = 0
+mouse_filter = 2
+color = Color(0.66, 0.85, 0.5, 1)
+
+[node name="Cantidad" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 20.0
+offset_right = -3.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "14"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Cargas" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -5.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+show_percentage = false

@@ -22,6 +22,7 @@ SonidosGlobales="*res://globales/sonidosGlobales.gd"
 PhantomCameraManager="*uid://duq6jhf6unyis"
 DialogueManager="*uid://c3rodes2l3gxb"
 PausaDialogo="*res://globales/pausaDialogo.gd"
+InventarioJugador="*res://globales/inventario/inventario_jugador.gd"
 
 [dialogue_manager]
 
