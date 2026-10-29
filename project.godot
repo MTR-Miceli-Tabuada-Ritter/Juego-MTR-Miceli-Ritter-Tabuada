@@ -23,6 +23,7 @@ PhantomCameraManager="*uid://duq6jhf6unyis"
 DialogueManager="*uid://c3rodes2l3gxb"
 PausaDialogo="*res://globales/pausaDialogo.gd"
 InventarioJugador="*res://globales/inventario/inventario_jugador.gd"
+GestorMisiones="*res://globales/misiones/gestor_misiones.gd"
 
 [dialogue_manager]
 

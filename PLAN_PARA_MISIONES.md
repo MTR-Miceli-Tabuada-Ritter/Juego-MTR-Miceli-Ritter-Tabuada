@@ -1,8 +1,35 @@
 # Plan para el sistema de misiones
 
+## Estado de implementación — 29/10/2026
+
+Se implementó la base de las etapas 1 a 4 descritas abajo:
+
+- [Inventario](globales/inventario/inventario.gd) independiente de treinta posiciones,
+  con apilamiento, sobrantes explícitos e intercambios atómicos.
+- [InventarioJugador](globales/inventario/inventario_jugador.gd) como propietario
+  de los datos, la selección y el dinero; la barra rápida es una vista.
+- [Mision](globales/misiones/mision.gd), [ObjetivoMision](globales/misiones/objetivo_mision.gd),
+  sus tres subtipos, [MisionActiva](globales/misiones/mision_activa.gd) y
+  [GestorMisiones](globales/misiones/gestor_misiones.gd).
+- Tres encargos jugables del Gallo: papas (30 monedas), conversación con la Vaca
+  (20) y derrota de un esqueleto (20). El ejemplo combinado se prueba automáticamente,
+  pero no se ofrece como cuarto encargo en el juego.
+- Emisión de muerte única, atribución al jugador y conversaciones mediante hitos.
+- Cargas de regadera separadas de la cantidad de objetos y visibles en su espacio.
+- [Escena manual de prueba](tests/escena_prueba_misiones.tscn), para ejecutar con F6,
+  y [pruebas automáticas](tests/run_tests.gd) sobre modelos y escenas reales.
+
+No se implementaron las ampliaciones de la etapa 5: guardado, diario, pantalla de
+mochila completa, piezas del bote y nuevas reglas de progresión. El soporte de
+recompensas de objetos sí está disponible y probado, aunque los encargos iniciales
+usan dinero. La capacidad inicial elegida es treinta y se puede configurar.
+
+Las secciones siguientes conservan la propuesta original como referencia de diseño;
+la «situación actual» de su sección 2 describe el punto de partida anterior a estos cambios.
+
 ## 1. Propósito y alcance
 
-Este documento es una propuesta de diseño y una hoja de ruta, no una implementación.
+Este documento describe el diseño y la hoja de ruta del sistema.
 La primera prueba será una misión del Gallo que pide tres papas, pero el sistema no
 debe asumir que todas las misiones consisten en entregar objetos.
 
@@ -402,11 +429,11 @@ recursos de definición para guardar la partida.
 
 La arquitectura propuesta no depende de cerrar ahora estas decisiones:
 
-- Cantidad de espacios iniciales y forma de ampliar la mochila.
-- Valor exacto de la recompensa del Gallo.
-- Texto definitivo y punto concreto del diálogo que cumplirá «hablar con la Vaca».
-- Enemigo y escenario usados para probar derrotas atribuibles al jugador.
+- Forma de ampliar la mochila; la capacidad inicial implementada es treinta.
+- Balance definitivo de los premios; el prototipo usa 30/20/20 monedas.
+- Ajustes narrativos de los encargos; la Vaca ya tiene un hito de conversación concreto.
+- Más enemigos y reposición de enemigos; el prototipo usa el esqueleto existente.
 - Diseño visual del diario y de la mochila completa.
 
-Hasta implementar, todas las clases y APIs nuevas mencionadas aquí son propuestas.
-No se modifican los complementos de terceros ni las mecánicas actuales con este documento.
+Las clases implementadas y su alcance se indican al principio de este documento.
+Los complementos de terceros permanecen sin modificaciones.

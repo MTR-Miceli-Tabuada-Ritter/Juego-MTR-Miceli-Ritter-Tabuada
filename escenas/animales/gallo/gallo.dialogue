@@ -4,8 +4,112 @@ Gallo: [wait=0.4]Pa [wait=0.4]pa [wait=0.8]Papoi!
 Gallo: [speed=0.6]YO[wait=0.8] soy el [color=#f0a552]gallo[/color], [wait=1]YO[wait=0.8] soy de la [color=#f0a552]facción de los gallos[/color],[wait=1] YO CUIDO [wait=0.8]a mis gallos[wait=1] y gallinas, [wait=0.4]obviamente,[wait=0.4] sino no tendriamos mas gallos[wait=0.8] ni gallinas.
 (hay un silencio incomodo,[wait=1.6] bastante [wait=0.6]incomodo)
 (decile algo al pollo,[wait=0.6] estas muy incomodo[wait=1] porfavor)
-- Eeeh, hola
+- Eeeh, hola [#accion=saludar]
 Gallo: Hola [wait=0.4][speed=0.4]EXTRAÑO[/speed], [wait=1]si sabes que los [wait=0.4][speed=0.4][color=#f31]NO ANIMALES[/color][/speed][wait=0.4] no son comúnes por acá [wait=1.6]mejor dicho:[wait=1.6] [color=#f31][speed=0.4]NO SON BIENVENIDOS[/speed][/color].
 (sentís que el papagallo te esta intentado intimidar, [wait=1]pero realmente no sentís nada.[wait=1] Quizás sea porque solo estas ocupando un espacio temporal en la memoria de una computadora,[wait=0.8] sos un invento [wait=0.8]y no un ser viviente,[wait=1.5] pero te parece que esto no tiene nada que ver con el juego [wait=1]entonces seguís escuchando a la gallina)
 
-=> END
+do terminar_presentacion()
+=> misiones
+
+~ misiones
+Gallo: Si querés ayudar a la granja, tengo tres encargos. Podés elegir más de uno y volver cuando quieras. [#menu=misiones]
+- Sobre las tres papas [#accion=papas] => papas
+- Sobre el mensaje para la Vaca [#accion=vaca] => vaca
+- Sobre el esqueleto [#accion=esqueleto] => esqueleto
+- Hasta después [#accion=salir] => END
+
+~ papas
+if mision_disponible("gallo_papas"):
+	Gallo: Traeme tres papas cosechadas, no semillas. Te doy 30 monedas cuando me las entregues. ¿Aceptás? [#estado=oferta]
+	- Acepto el encargo de las papas [#accion=aceptar] => aceptar_papas
+	- Ahora no [#accion=volver] => misiones
+elif mision_activa("gallo_papas"):
+	if puede_entregar_mision("gallo_papas"):
+		Gallo: Ya tenés las tres papas. ¿Querés entregármelas por las 30 monedas? [#estado=lista]
+		- Entregar tres papas [#accion=entregar] => entregar_papas
+		- Me las guardo por ahora [#accion=volver] => misiones
+	else:
+		Gallo: Tenés {{papas_disponibles()}} de las tres papas cosechadas que necesito. Buscalas en tu inventario y volvé; las semillas no sirven. [#estado=recordatorio]
+elif mision_completada("gallo_papas"):
+	Gallo: Las papas ya están entregadas y las 30 monedas ya son tuyas. ¡Gracias! [#estado=completada]
+=> misiones
+
+~ aceptar_papas
+do aceptar_mision("gallo_papas")
+if ultima_operacion_exitosa:
+	Gallo: ¡Anotado! Cuando tengas las tres papas, elegí este encargo para entregarlas. [#estado=aceptada]
+else:
+	Gallo: Ese encargo ya no está disponible para aceptar. Revisemos cómo va. [#estado=aceptacion_fallida]
+=> misiones
+
+~ entregar_papas
+do entregar_mision("gallo_papas")
+if ultima_operacion_exitosa:
+	Gallo: ¡Recibí las tres papas! Ahí tenés tus 30 monedas. [#estado=entregada]
+else:
+	Gallo: No pudimos hacer la entrega. Revisá que el encargo esté activo y que tengas las tres papas; no te quité nada ni pagué una recompensa. [#estado=entrega_fallida]
+=> misiones
+
+~ vaca
+if mision_disponible("gallo_vaca"):
+	Gallo: Preguntale a la Vaca si mañana puede revisar el cerco. Escuchá su respuesta y volvé a contármela por 20 monedas. ¿Aceptás? [#estado=oferta]
+	- Acepto llevar el mensaje [#accion=aceptar] => aceptar_vaca
+	- Ahora no [#accion=volver] => misiones
+elif mision_activa("gallo_vaca"):
+	if puede_entregar_mision("gallo_vaca"):
+		Gallo: Ya hablaste con la Vaca sobre mi encargo. ¿Me contás su respuesta? [#estado=lista]
+		- Contar la respuesta y cobrar [#accion=entregar] => entregar_vaca
+		- Más tarde [#accion=volver] => misiones
+	else:
+		Gallo: Hablá con la Vaca de mi mensaje y escuchá qué responde sobre el cerco. Después volvé por las 20 monedas. [#estado=recordatorio]
+elif mision_completada("gallo_vaca"):
+	Gallo: Ya me contaste la respuesta de la Vaca y recibiste tus 20 monedas. [#estado=completada]
+=> misiones
+
+~ aceptar_vaca
+do aceptar_mision("gallo_vaca")
+if ultima_operacion_exitosa:
+	Gallo: ¡Gracias! Decile a la Vaca que vas de mi parte. [#estado=aceptada]
+else:
+	Gallo: Ese encargo ya no está disponible para aceptar. Revisemos cómo va. [#estado=aceptacion_fallida]
+=> misiones
+
+~ entregar_vaca
+do entregar_mision("gallo_vaca")
+if ultima_operacion_exitosa:
+	Gallo: ¡Entonces mañana revisa el cerco! Gracias por traerme la respuesta. Acá están tus 20 monedas. [#estado=entregada]
+else:
+	Gallo: Todavía no puedo dar por terminado el mensaje. Revisá el encargo y hablá con la Vaca de mi parte; no pagué una recompensa. [#estado=entrega_fallida]
+=> misiones
+
+~ esqueleto
+if mision_disponible("gallo_esqueleto"):
+	Gallo: Un esqueleto ronda la granja. Derrotá a uno y vení a avisarme: te doy 20 monedas. ¿Aceptás? [#estado=oferta]
+	- Acepto encargarme del esqueleto [#accion=aceptar] => aceptar_esqueleto
+	- Ahora no [#accion=volver] => misiones
+elif mision_activa("gallo_esqueleto"):
+	if puede_entregar_mision("gallo_esqueleto"):
+		Gallo: ¡Derrotaste al esqueleto! ¿Querés confirmar el encargo y cobrar? [#estado=lista]
+		- Confirmar la derrota y cobrar [#accion=entregar] => entregar_esqueleto
+		- Más tarde [#accion=volver] => misiones
+	else:
+		Gallo: Todavía falta que derrotes a un esqueleto. Cuando lo hagas, volvé por tus 20 monedas. [#estado=recordatorio]
+elif mision_completada("gallo_esqueleto"):
+	Gallo: Ya me avisaste de ese esqueleto y te pagué las 20 monedas. ¡Buen trabajo! [#estado=completada]
+=> misiones
+
+~ aceptar_esqueleto
+do aceptar_mision("gallo_esqueleto")
+if ultima_operacion_exitosa:
+	Gallo: Queda anotado. Derrotá al esqueleto y después volvé a hablar conmigo. [#estado=aceptada]
+else:
+	Gallo: Ese encargo ya no está disponible para aceptar. Revisemos cómo va. [#estado=aceptacion_fallida]
+=> misiones
+
+~ entregar_esqueleto
+do entregar_mision("gallo_esqueleto")
+if ultima_operacion_exitosa:
+	Gallo: La granja está más tranquila. Ahí tenés tus 20 monedas por el esqueleto. [#estado=entregada]
+else:
+	Gallo: No puedo confirmar esa derrota todavía. Revisá el encargo; no pagué una recompensa. [#estado=entrega_fallida]
+=> misiones

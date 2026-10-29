@@ -15,6 +15,7 @@ var _indice_accion: int = -1
 var escenaPrincipal
 
 func _ready() -> void:
+	add_to_group("jugador")
 	escenaPrincipal = get_node("/root/escenaPrincipal")
 	animacion.animation_finished.connect(_on_animation_finished)
 	_actualizar_area_cultivo(ultima_direccion)

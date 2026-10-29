@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Mision" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://globales/misiones/mision.gd" id="1_mision"]
+[ext_resource type="Script" path="res://globales/misiones/objetivo_entregar_items.gd" id="2_entrega"]
+[ext_resource type="Script" path="res://globales/misiones/objetivo_hablar_con_npc.gd" id="3_charla"]
+[ext_resource type="Script" path="res://globales/misiones/objetivo_derrotar_enemigos.gd" id="4_derrota"]
+[ext_resource type="Script" path="res://globales/misiones/objetivo_mision.gd" id="5_base"]
+
+[sub_resource type="Resource" id="Objetivo_papas"]
+script = ExtResource("2_entrega")
+id = "entregar_papas"
+descripcion = "Conseguí tres papas para entregar al Gallo."
+item_id = "cultivo_2"
+cantidad_requerida = 3
+
+[sub_resource type="Resource" id="Objetivo_vaca"]
+script = ExtResource("3_charla")
+id = "hablar_vaca"
+descripcion = "Terminá la conversación del encargo con la Vaca."
+npc_id = "vaca"
+conversacion_id = "encargo_gallo"
+
+[sub_resource type="Resource" id="Objetivo_esqueleto"]
+script = ExtResource("4_derrota")
+id = "derrotar_esqueleto"
+descripcion = "Derrotá a un esqueleto."
+tipo_enemigo = "esqueleto"
+cantidad_requerida = 1
+
+[resource]
+script = ExtResource("1_mision")
+id = "ejemplo_combinada"
+titulo = "Un día ocupado en la granja"
+descripcion = "Ejemplo de editor y pruebas: todos los objetivos son obligatorios y pueden resolverse en cualquier orden."
+npc_otorgante_id = "gallo"
+npc_receptor_id = "gallo"
+objetivos = Array[ExtResource("5_base")]([SubResource("Objetivo_papas"), SubResource("Objetivo_vaca"), SubResource("Objetivo_esqueleto")])
+recompensa_dinero = 50

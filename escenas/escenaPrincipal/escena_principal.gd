@@ -23,6 +23,7 @@ func _notificar_plata() -> void:
 	plataGanada.emit()
 
 func iniciar_nueva_partida() -> void:
+	GestorMisiones.reiniciar()
 	InventarioJugador.reiniciar()
 	dia = 1
 	mes = 1
