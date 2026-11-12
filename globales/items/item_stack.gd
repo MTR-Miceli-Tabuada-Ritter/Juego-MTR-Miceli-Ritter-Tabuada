@@ -3,10 +3,12 @@ extends RefCounted
 
 var item: Item
 var cantidad: int
+var cargas: int
 
 func _init(item_inicial: Item, cantidad_inicial: int = 0) -> void:
 	item = item_inicial
 	cantidad = cantidad_inicial
+	cargas = item.capacidad_carga if item != null else 0
 
 func agregar(cantidad_a_sumar: int) -> int:
 	cantidad += cantidad_a_sumar

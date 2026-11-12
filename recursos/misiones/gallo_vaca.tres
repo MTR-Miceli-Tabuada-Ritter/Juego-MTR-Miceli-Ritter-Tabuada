@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Mision" format=3 uid="uid://j8trx5xob43r"]
+
+[ext_resource type="Script" uid="uid://e22hjhl1xor" path="res://globales/misiones/mision.gd" id="1_mision"]
+[ext_resource type="Script" uid="uid://bo2udq2crfp3l" path="res://globales/misiones/objetivo_hablar_con_npc.gd" id="2_charla"]
+[ext_resource type="Script" uid="uid://rd13acww75rs" path="res://globales/misiones/objetivo_mision.gd" id="3_base"]
+[ext_resource type="Script" uid="uid://bdsh8olnoh2y6" path="res://globales/misiones/recompensa_item.gd" id="3_cv217"]
+
+[sub_resource type="Resource" id="Objetivo_vaca"]
+script = ExtResource("2_charla")
+npc_id = "vaca"
+conversacion_id = "encargo_gallo"
+id = "hablar_vaca"
+descripcion = "Hablá con la Vaca sobre el encargo del Gallo."
+
+[resource]
+script = ExtResource("1_mision")
+id = "gallo_vaca"
+titulo = "Un mensaje para la Vaca"
+descripcion = "Llevá el mensaje a la Vaca y volvé con el Gallo."
+npc_otorgante_id = "gallo"
+npc_receptor_id = "gallo"
+objetivos = Array[ExtResource("3_base")]([SubResource("Objetivo_vaca")])
+recompensa_dinero = 20

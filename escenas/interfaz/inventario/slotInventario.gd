@@ -1,7 +1,7 @@
 extends TextureRect
 
 @export var textoCantidad: Label
-@export var progreso: TextureProgressBar
+@export var progreso: Range
 var stack: ItemStack = null
 
 func set_stack(nuevo_stack: ItemStack) -> void:
@@ -10,8 +10,6 @@ func set_stack(nuevo_stack: ItemStack) -> void:
 
 # vuelve a dibujar el slot a partir del stack actual; llamar despues de mutar su cantidad
 func actualizar_visual() -> void:
-	if stack != null and stack.esta_vacio() and stack.item.se_elimina_al_agotarse:
-		stack = null
 	# no ocultamos el slot (visible=true) para que el HBoxContainer no reordene los demas
 	# y el resaltado de inventario no se desplace al lugar equivocado
 	if stack == null:
@@ -28,5 +26,6 @@ func actualizar_visual() -> void:
 	textoCantidad.text = "%02d" % stack.cantidad
 	if progreso:
 		progreso.visible = stack.item.muestra_barra_progreso
-		progreso.value = stack.cantidad
+		progreso.max_value = maxi(stack.item.capacidad_carga, 1)
+		progreso.value = stack.cargas
 	visible = true

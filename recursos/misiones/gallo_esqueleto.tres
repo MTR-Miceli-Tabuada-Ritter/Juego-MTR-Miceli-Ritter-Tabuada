@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Mision" format=3 uid="uid://blfn12ooc4ci6"]
+
+[ext_resource type="Script" uid="uid://e22hjhl1xor" path="res://globales/misiones/mision.gd" id="1_mision"]
+[ext_resource type="Script" uid="uid://t4l8sayg76kk" path="res://globales/misiones/objetivo_derrotar_enemigos.gd" id="2_derrota"]
+[ext_resource type="Script" uid="uid://rd13acww75rs" path="res://globales/misiones/objetivo_mision.gd" id="3_base"]
+[ext_resource type="Script" uid="uid://bdsh8olnoh2y6" path="res://globales/misiones/recompensa_item.gd" id="3_c7eke"]
+
+[sub_resource type="Resource" id="Objetivo_esqueleto"]
+script = ExtResource("2_derrota")
+tipo_enemigo = "esqueleto"
+id = "derrotar_esqueleto"
+descripcion = "Derrotá a un esqueleto y avisale al Gallo."
+
+[resource]
+script = ExtResource("1_mision")
+id = "gallo_esqueleto"
+titulo = "El esqueleto de la granja"
+descripcion = "El Gallo te pide que derrotes a un esqueleto."
+npc_otorgante_id = "gallo"
+npc_receptor_id = "gallo"
+objetivos = Array[ExtResource("3_base")]([SubResource("Objetivo_esqueleto")])
+recompensa_dinero = 20

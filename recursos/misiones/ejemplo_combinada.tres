@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Mision" format=3 uid="uid://ck4gdjq7yy5lp"]
+
+[ext_resource type="Script" uid="uid://e22hjhl1xor" path="res://globales/misiones/mision.gd" id="1_mision"]
+[ext_resource type="Script" uid="uid://dxbqfqs3e4g4p" path="res://globales/misiones/objetivo_entregar_items.gd" id="2_entrega"]
+[ext_resource type="Script" uid="uid://bo2udq2crfp3l" path="res://globales/misiones/objetivo_hablar_con_npc.gd" id="3_charla"]
+[ext_resource type="Script" uid="uid://t4l8sayg76kk" path="res://globales/misiones/objetivo_derrotar_enemigos.gd" id="4_derrota"]
+[ext_resource type="Script" uid="uid://rd13acww75rs" path="res://globales/misiones/objetivo_mision.gd" id="5_base"]
+[ext_resource type="Script" uid="uid://bdsh8olnoh2y6" path="res://globales/misiones/recompensa_item.gd" id="5_wsl1x"]
+
+[sub_resource type="Resource" id="Objetivo_papas"]
+script = ExtResource("2_entrega")
+item_id = "cultivo_2"
+cantidad_requerida = 3
+id = "entregar_papas"
+descripcion = "Conseguí tres papas para entregar al Gallo."
+
+[sub_resource type="Resource" id="Objetivo_vaca"]
+script = ExtResource("3_charla")
+npc_id = "vaca"
+conversacion_id = "encargo_gallo"
+id = "hablar_vaca"
+descripcion = "Terminá la conversación del encargo con la Vaca."
+
+[sub_resource type="Resource" id="Objetivo_esqueleto"]
+script = ExtResource("4_derrota")
+tipo_enemigo = "esqueleto"
+id = "derrotar_esqueleto"
+descripcion = "Derrotá a un esqueleto."
+
+[resource]
+script = ExtResource("1_mision")
+id = "ejemplo_combinada"
+titulo = "Un día ocupado en la granja"
+descripcion = "Ejemplo de editor y pruebas: todos los objetivos son obligatorios y pueden resolverse en cualquier orden."
+npc_otorgante_id = "gallo"
+npc_receptor_id = "gallo"
+objetivos = Array[ExtResource("5_base")]([SubResource("Objetivo_papas"), SubResource("Objetivo_vaca"), SubResource("Objetivo_esqueleto")])
+recompensa_dinero = 50

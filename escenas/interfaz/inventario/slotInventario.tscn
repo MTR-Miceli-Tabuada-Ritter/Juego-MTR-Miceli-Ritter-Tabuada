@@ -7,11 +7,30 @@
 [sub_resource type="LabelSettings" id="LabelSettings_jwvfp"]
 font = ExtResource("3_r2f0x")
 
-[node name="slot1" type="TextureRect" unique_id=827471245 node_paths=PackedStringArray("textoCantidad")]
+[sub_resource type="StyleBoxFlat" id="StyleBox_agua_fondo"]
+bg_color = Color(0.06, 0.1, 0.18, 0.9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_agua"]
+bg_color = Color(0.2, 0.65, 1, 1)
+
+[node name="slot1" type="TextureRect" unique_id=827471245 node_paths=PackedStringArray("textoCantidad", "progreso")]
 offset_right = 32.0
 offset_bottom = 32.0
 script = ExtResource("1_6d03k")
 textoCantidad = NodePath("Label")
+progreso = NodePath("Progreso")
+
+[node name="Progreso" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBox_agua_fondo")
+theme_override_styles/fill = SubResource("StyleBox_agua")
+show_percentage = false
 
 [node name="Label" type="Label" parent="." unique_id=1595789542]
 layout_mode = 1

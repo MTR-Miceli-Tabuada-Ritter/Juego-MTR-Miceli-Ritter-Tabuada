@@ -18,6 +18,7 @@ Cada animal ofrece una misión distinta, y al completarlas el protagonista obtie
 - Nombre del proyecto: no consolidado todavía
 - Objetivo actual: construir la base del juego, mecánicas, historia y progresión principal
 - Futuras mejoras: ampliar contenido, pulir jugabilidad, mejorar narrativa y terminar la experiencia completa
+- Guía del prototipo de misiones e inventario: [PLAN_PARA_MISIONES.md](PLAN_PARA_MISIONES.md#prototipo-de-misiones-e-inventario)
 
 ## Objetivo principal
 

@@ -61,12 +61,12 @@ func vender_objeto_actual() -> void:
 	var stack = _stack_en_uso()
 	if stack == null or stack.item.precio_venta < 0:
 		return
-	escenaPrincipal.agregarPlata(stack.item.precio_venta)
-	stack.quitar(1)#vendemos 1 unidad del objeto, se resta.
-	escenaPrincipal.slotEnUso.actualizar_visual()
+	var precio: int = stack.item.precio_venta
+	if InventarioJugador.consumir_seleccion(1):
+		InventarioJugador.agregar_plata(precio)
 
 func _stack_en_uso():
-	return escenaPrincipal.slotEnUso.stack if escenaPrincipal.slotEnUso != null else null
+	return InventarioJugador.obtener_stack_seleccionado()
 
 #endregion
 
