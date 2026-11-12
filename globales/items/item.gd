@@ -11,6 +11,9 @@ extends Resource
 @export var nombre_animacion: String = "Hacha"
 @export var se_elimina_al_agotarse: bool = false
 
+func obtener_nombre() -> String:
+	return id.replace("_", " ").capitalize()
+
 func usar(_jugador, _agujero, _stack: ItemStack) -> void:
 	pass
 

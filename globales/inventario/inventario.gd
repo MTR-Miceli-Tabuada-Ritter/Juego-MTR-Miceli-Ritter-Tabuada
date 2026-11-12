@@ -104,7 +104,20 @@ func establecer_stack(indice: int, stack: ItemStack) -> bool:
 func mover_o_intercambiar(origen: int, destino: int) -> bool:
 	if origen < 0 or destino < 0 or origen >= capacidad or destino >= capacidad or origen == destino:
 		return false
-	var anterior := _slots[destino]
+	var stack_origen: ItemStack = _slots[origen]
+	var anterior: ItemStack = _slots[destino]
+	if stack_origen != null and anterior != null and stack_origen.item.id == anterior.item.id \
+		and stack_origen.item.max_stack > 1 and stack_origen.item.capacidad_carga == 0 \
+		and anterior.item.capacidad_carga == 0:
+		var transferible: int = min(stack_origen.cantidad, anterior.item.max_stack - anterior.cantidad)
+		if transferible <= 0:
+			return false
+		anterior.cantidad += transferible
+		stack_origen.cantidad -= transferible
+		if stack_origen.cantidad == 0:
+			_slots[origen] = null
+		notificar_cambio()
+		return true
 	_slots[destino] = _slots[origen]
 	_slots[origen] = anterior
 	notificar_cambio()

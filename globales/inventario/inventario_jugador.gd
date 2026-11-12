@@ -8,6 +8,7 @@ signal partida_reiniciada
 var inventario := Inventario.new(30)
 var indice_seleccionado: int = 0
 var plata: int = 0
+var ventana_abierta: bool = false
 
 
 func _ready() -> void:
@@ -16,6 +17,7 @@ func _ready() -> void:
 
 
 func reiniciar() -> void:
+	ventana_abierta = false
 	inventario.reiniciar()
 	indice_seleccionado = 0
 	plata = 0

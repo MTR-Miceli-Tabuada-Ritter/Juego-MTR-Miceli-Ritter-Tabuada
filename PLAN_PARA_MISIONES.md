@@ -1,6 +1,6 @@
 # Plan para el sistema de misiones
 
-## Estado de implementación — 29/10/2026
+## Estado de implementación — 12/11/2026
 
 Se implementó la base de las etapas 1 a 4 descritas abajo:
 
@@ -16,13 +16,58 @@ Se implementó la base de las etapas 1 a 4 descritas abajo:
   pero no se ofrece como cuarto encargo en el juego.
 - Emisión de muerte única, atribución al jugador y conversaciones mediante hitos.
 - Cargas de regadera separadas de la cantidad de objetos y visibles en su espacio.
+- [Mochila completa](escenas/interfaz/mochila/mochila.tscn) integrada al juego:
+  treinta espacios, movimiento, intercambio y combinación de pilas; se abre con I/Tab.
 - [Escena manual de prueba](tests/escena_prueba_misiones.tscn), para ejecutar con F6,
   y [pruebas automáticas](tests/run_tests.gd) sobre modelos y escenas reales.
 
-No se implementaron las ampliaciones de la etapa 5: guardado, diario, pantalla de
-mochila completa, piezas del bote y nuevas reglas de progresión. El soporte de
-recompensas de objetos sí está disponible y probado, aunque los encargos iniciales
-usan dinero. La capacidad inicial elegida es treinta y se puede configurar.
+No se implementaron las ampliaciones restantes de la etapa 5: guardado, diario,
+piezas del bote y nuevas reglas de progresión. El soporte de recompensas de objetos
+sí está disponible y probado, aunque los encargos iniciales usan dinero. La capacidad
+inicial elegida es treinta y se puede configurar.
+
+## Prototipo de misiones e inventario
+
+El Gallo ofrece tres encargos independientes: entregar tres papas cosechadas,
+llevar un mensaje a la Vaca y derrotar un esqueleto. Se aceptan expresamente y se
+cobran al regresar al Gallo; no se completan por abrir una conversación. Las
+recompensas iniciales son 30, 20 y 20 monedas, respectivamente.
+
+Para probar sin esperar una cosecha:
+
+1. Abrir [tests/escena_prueba_misiones.tscn](tests/escena_prueba_misiones.tscn) en Godot 4.7.
+2. Ejecutar esa escena con **F6**. Incluye tres papas y coloca al Gallo cerca del jugador.
+3. Acercarse, pulsar **E**, terminar la presentación y elegir un encargo.
+4. Aceptar y entregar las papas; para el mensaje, hablar con la Vaca sobre el
+	encargo y escuchar su respuesta. Para la derrota, aceptar **antes** de atacar
+	al esqueleto con **K**.
+5. Volver al Gallo para cobrar. **R** reinicia únicamente esta escena de prueba.
+
+La partida normal no regala papas ni acepta misiones automáticamente. La barra
+rápida muestra diez posiciones de un inventario de treinta; la selección por
+rueda o teclas **1–0**, el uso, la cosecha y la venta trabajan sobre el modelo.
+La mochila completa se abre con **I** o **Tab** y permite mover, intercambiar y
+combinar pilas en el mismo inventario. Los objetos fuera de la barra cuentan para
+entregas. Una cosecha sin espacio permanece en el mundo.
+
+Las misiones son recursos de `Mision` compuestos por objetivos; no se crea una
+subclase por encargo. Los tipos actuales son `ObjetivoEntregarItems`,
+`ObjetivoHablarConNPC` y `ObjetivoDerrotarEnemigos`. Definiciones y progreso están
+separados. Ver el [ejemplo de objetivos combinados](recursos/misiones/ejemplo_combinada.tres).
+
+### Pruebas automáticas
+
+Desde la raíz, ejecutar `godot --headless --editor --path . --import` para importar
+los recursos y luego `godot --headless --path . --script res://tests/run_tests.gd`.
+Reemplazar `godot` por la ruta del ejecutable instalado si no está en el PATH.
+El [ejecutor](tests/run_tests.gd) devuelve un código distinto de cero ante fallos.
+Comprueba inventario, recompensas atómicas, objetivos múltiples, eventos de
+combate, conversaciones y la escena real con entrega durante la pausa.
+
+Inventario y misiones sobreviven a un cambio de escena dentro de la partida,
+pero **todavía no se guardan al cerrar el juego**. Para una partida nueva,
+reiniciar los servicios mediante `iniciar_nueva_partida()` y recrear la escena
+del mundo; cambiar de vista por sí solo no reinicia el progreso.
 
 Las secciones siguientes conservan la propuesta original como referencia de diseño;
 la «situación actual» de su sección 2 describe el punto de partida anterior a estos cambios.
@@ -389,7 +434,6 @@ Estas pruebas demuestran que el diseño no es un sistema de entregas renombrado.
 
 ### Etapa 5: ampliaciones posteriores
 
-- Ventana de inventario completo, movimiento de objetos y accesos rápidos.
 - Diario de misiones y notificaciones visuales de progreso.
 - Guardado conjunto de inventario, misiones y recompensas ya confirmadas.
 - Recompensas de objetos y partes del bote.
@@ -433,7 +477,7 @@ La arquitectura propuesta no depende de cerrar ahora estas decisiones:
 - Balance definitivo de los premios; el prototipo usa 30/20/20 monedas.
 - Ajustes narrativos de los encargos; la Vaca ya tiene un hito de conversación concreto.
 - Más enemigos y reposición de enemigos; el prototipo usa el esqueleto existente.
-- Diseño visual del diario y de la mochila completa.
+- Diseño visual del diario y futuros ajustes de la mochila, si hicieran falta.
 
 Las clases implementadas y su alcance se indican al principio de este documento.
 Los complementos de terceros permanecen sin modificaciones.

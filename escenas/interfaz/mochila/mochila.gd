@@ -68,7 +68,7 @@ func cerrar(reanudar: bool = true) -> void:
 	_habilitar_slots(false)
 	if is_instance_valid(_pantalla):
 		_pantalla.hide()
-	if is_instance_valid(_cerrar):
+	if is_instance_valid(_cerrar) and _cerrar.is_inside_tree():
 		_cerrar.release_focus()
 	if not era_propia:
 		return
@@ -118,7 +118,7 @@ func mover_stack(origen: int, destino: int) -> bool:
 		_cancelar_seleccion()
 		_estado.text = "El origen está vacío. Elegí otro objeto."
 		return false
-	var nombre := stack.item.obtener_nombre()
+	var nombre: String = stack.item.obtener_nombre()
 	# El modelo emite su señal dentro de la operación: limpiar ANTES de llamarlo.
 	_limpiar_origen()
 	var movido := _inventario.mover_o_intercambiar(origen, destino)
