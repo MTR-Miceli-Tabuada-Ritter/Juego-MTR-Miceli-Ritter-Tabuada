@@ -77,6 +77,13 @@ func obtener_estado(id: String) -> int:
 	return registro.estado
 
 
+func obtener_titulo(id: String) -> String:
+	if not _catalogo.has(id):
+		return ""
+	var mision: Mision = _catalogo[id]
+	return mision.titulo
+
+
 func obtener_progreso(id: String) -> Dictionary:
 	if not _catalogo.has(id):
 		return {}

@@ -21,7 +21,8 @@ func reiniciar() -> void:
 	inventario.reiniciar()
 	indice_seleccionado = 0
 	plata = 0
-	# Mismo equipo inicial que antes, sin depender de que exista la interfaz.
+	# Equipo inicial y papas para probar las entregas del Gallo.
+	inventario.establecer_stack(0, ItemStack.new(preload("res://recursos/items/cultivo_2.tres"), 3))
 	inventario.establecer_stack(4, ItemStack.new(preload("res://recursos/items/semilla_0.tres"), 14))
 	inventario.establecer_stack(5, ItemStack.new(preload("res://recursos/items/semilla_1.tres"), 15))
 	inventario.establecer_stack(6, ItemStack.new(preload("res://recursos/items/semilla_2.tres"), 15))

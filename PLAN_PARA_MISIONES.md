@@ -18,13 +18,15 @@ Se implementó la base de las etapas 1 a 4 descritas abajo:
 - Cargas de regadera separadas de la cantidad de objetos y visibles en su espacio.
 - [Mochila completa](escenas/interfaz/mochila/mochila.tscn) integrada al juego:
   treinta espacios, movimiento, intercambio y combinación de pilas; se abre con I/Tab.
+- Avisos visuales al aceptar una misión, actualizar objetivos, estar lista para entregar
+  y completar.
 - [Escena manual de prueba](tests/escena_prueba_misiones.tscn), para ejecutar con F6,
   y [pruebas automáticas](tests/run_tests.gd) sobre modelos y escenas reales.
 
-No se implementaron las ampliaciones restantes de la etapa 5: guardado, diario,
-piezas del bote y nuevas reglas de progresión. El soporte de recompensas de objetos
-sí está disponible y probado, aunque los encargos iniciales usan dinero. La capacidad
-inicial elegida es treinta y se puede configurar.
+No se implementaron las ampliaciones restantes de la etapa 5: guardado, diario de
+misiones, piezas del bote y nuevas reglas de progresión. El soporte de recompensas
+de objetos sí está disponible y probado, aunque los encargos iniciales usan dinero.
+La capacidad inicial elegida es treinta y se puede configurar.
 
 ## Prototipo de misiones e inventario
 
@@ -43,8 +45,9 @@ Para probar sin esperar una cosecha:
 	al esqueleto con **K**.
 5. Volver al Gallo para cobrar. **R** reinicia únicamente esta escena de prueba.
 
-La partida normal no regala papas ni acepta misiones automáticamente. La barra
-rápida muestra diez posiciones de un inventario de treinta; la selección por
+La partida normal comienza con tres papas para probar las entregas, pero no
+acepta misiones automáticamente. La barra rápida muestra diez posiciones de un
+inventario de treinta; la selección por
 rueda o teclas **1–0**, el uso, la cosecha y la venta trabajan sobre el modelo.
 La mochila completa se abre con **I** o **Tab** y permite mover, intercambiar y
 combinar pilas en el mismo inventario. Los objetos fuera de la barra cuentan para
@@ -68,6 +71,10 @@ Inventario y misiones sobreviven a un cambio de escena dentro de la partida,
 pero **todavía no se guardan al cerrar el juego**. Para una partida nueva,
 reiniciar los servicios mediante `iniciar_nueva_partida()` y recrear la escena
 del mundo; cambiar de vista por sí solo no reinicia el progreso.
+
+El HUD muestra avisos al aceptar una misión, avanzar en sus objetivos, quedar
+lista para entregar y completar. Cada aviso desaparece automáticamente después
+de unos segundos.
 
 Las secciones siguientes conservan la propuesta original como referencia de diseño;
 la «situación actual» de su sección 2 describe el punto de partida anterior a estos cambios.
@@ -434,7 +441,8 @@ Estas pruebas demuestran que el diseño no es un sistema de entregas renombrado.
 
 ### Etapa 5: ampliaciones posteriores
 
-- Diario de misiones y notificaciones visuales de progreso.
+- Diario de misiones para consultar las misiones activas y completadas; los avisos
+  de progreso ya están implementados.
 - Guardado conjunto de inventario, misiones y recompensas ya confirmadas.
 - Recompensas de objetos y partes del bote.
 - Objetivos nuevos, etapas, prerrequisitos, plazos, fracaso o repetición si el juego
