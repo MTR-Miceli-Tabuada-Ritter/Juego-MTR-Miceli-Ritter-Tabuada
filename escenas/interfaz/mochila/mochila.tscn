@@ -125,6 +125,7 @@ script = ExtResource("1_script")
 
 [node name="Pantalla" type="Control" parent="." unique_id=748007125]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

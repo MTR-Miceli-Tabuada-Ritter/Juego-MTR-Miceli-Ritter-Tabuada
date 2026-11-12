@@ -7,13 +7,13 @@
 [ext_resource type="AudioStream" uid="uid://cndhkcasm7ncv" path="res://recursos/audio/musica/musicaFondo.mp3" id="6_iwntd"]
 [ext_resource type="PackedScene" uid="uid://cjmnenboj3sfm" path="res://escenas/animales/gallo/gallo.tscn" id="7_bhuw7"]
 [ext_resource type="PackedScene" uid="uid://cmu4e064xxirm" path="res://escenas/menuPausa/menuPausa.tscn" id="7_iqabn"]
-[ext_resource type="PackedScene" path="res://escenas/interfaz/mochila/mochila.tscn" id="12_mochila"]
-[ext_resource type="PackedScene" path="res://escenas/interfaz/misiones/notificaciones_misiones.tscn" id="13_notificaciones"]
-[ext_resource type="PackedScene" path="res://escenas/interfaz/misiones/diario_misiones.tscn" id="14_diario"]
 [ext_resource type="PackedScene" uid="uid://b76h3j3ihqr0q" path="res://escenas/animales/vaca/vaca.tscn" id="8_amjam"]
 [ext_resource type="PackedScene" uid="uid://dac6jtwdwk3dj" path="res://escenas/arbol/arbol.tscn" id="9_laq3f"]
-[ext_resource type="PackedScene" path="res://escenas/esqueleto.tscn" id="10_ehepm"]
+[ext_resource type="PackedScene" uid="uid://c0nqno3qe3m21" path="res://escenas/esqueleto.tscn" id="10_ehepm"]
 [ext_resource type="PackedScene" path="res://escenas/animales/cerdo/cerdo.tscn" id="11_cerdo"]
+[ext_resource type="PackedScene" uid="uid://i5ma8ns01jkr" path="res://escenas/interfaz/mochila/mochila.tscn" id="12_mochila"]
+[ext_resource type="PackedScene" uid="uid://c5iam05gi5pw5" path="res://escenas/interfaz/misiones/notificaciones_misiones.tscn" id="13_notificaciones"]
+[ext_resource type="PackedScene" uid="uid://ccpg1lvh15vtf" path="res://escenas/interfaz/misiones/diario_misiones.tscn" id="14_diario"]
 
 [node name="escenaPrincipal" type="Node2D" unique_id=1856232161 node_paths=PackedStringArray("colorDeNoche", "interfaz")]
 y_sort_enabled = true
@@ -57,8 +57,8 @@ autoplay = true
 [node name="MenuPausa" parent="." unique_id=1711928337 instance=ExtResource("7_iqabn")]
 visible = false
 
-[node name="Mochila" parent="." instance=ExtResource("12_mochila")]
+[node name="Mochila" parent="." unique_id=1506699460 instance=ExtResource("12_mochila")]
 
-[node name="NotificacionesMisiones" parent="." instance=ExtResource("13_notificaciones")]
+[node name="NotificacionesMisiones" parent="." unique_id=1424562923 instance=ExtResource("13_notificaciones")]
 
-[node name="DiarioMisiones" parent="." instance=ExtResource("14_diario")]
+[node name="DiarioMisiones" parent="." unique_id=1172158483 instance=ExtResource("14_diario")]
