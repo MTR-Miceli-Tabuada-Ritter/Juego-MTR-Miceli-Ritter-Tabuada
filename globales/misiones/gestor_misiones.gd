@@ -84,6 +84,20 @@ func obtener_titulo(id: String) -> String:
 	return mision.titulo
 
 
+func obtener_resumen_misiones() -> Array[Dictionary]:
+	var resumenes: Array[Dictionary] = []
+	for id in _catalogo:
+		var mision: Mision = _catalogo[id]
+		resumenes.append({
+			"id": id,
+			"titulo": mision.titulo,
+			"descripcion": mision.descripcion,
+			"estado": obtener_estado(id),
+			"progreso": obtener_progreso(id),
+		})
+	return resumenes
+
+
 func obtener_progreso(id: String) -> Dictionary:
 	if not _catalogo.has(id):
 		return {}

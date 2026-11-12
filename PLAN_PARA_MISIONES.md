@@ -20,6 +20,8 @@ Se implementó la base de las etapas 1 a 4 descritas abajo:
   treinta espacios, movimiento, intercambio y combinación de pilas; se abre con I/Tab.
 - Avisos visuales al aceptar una misión, actualizar objetivos, estar lista para entregar
   y completar.
+- [Diario de misiones](escenas/interfaz/misiones/diario_misiones.tscn) accesible con J,
+  con vistas de misiones activas y completadas, descripciones y progreso por objetivo.
 - [Escena manual de prueba](tests/escena_prueba_misiones.tscn), para ejecutar con F6,
   y [pruebas automáticas](tests/run_tests.gd) sobre modelos y escenas reales.
 
@@ -52,6 +54,8 @@ rueda o teclas **1–0**, el uso, la cosecha y la venta trabajan sobre el modelo
 La mochila completa se abre con **I** o **Tab** y permite mover, intercambiar y
 combinar pilas en el mismo inventario. Los objetos fuera de la barra cuentan para
 entregas. Una cosecha sin espacio permanece en el mundo.
+El diario de misiones se abre con **J** y permite consultar encargos activos,
+progreso de objetivos e historial de misiones completadas.
 
 Las misiones son recursos de `Mision` compuestos por objetivos; no se crea una
 subclase por encargo. Los tipos actuales son `ObjetivoEntregarItems`,
@@ -441,8 +445,6 @@ Estas pruebas demuestran que el diseño no es un sistema de entregas renombrado.
 
 ### Etapa 5: ampliaciones posteriores
 
-- Diario de misiones para consultar las misiones activas y completadas; los avisos
-  de progreso ya están implementados.
 - Guardado conjunto de inventario, misiones y recompensas ya confirmadas.
 - Recompensas de objetos y partes del bote.
 - Objetivos nuevos, etapas, prerrequisitos, plazos, fracaso o repetición si el juego

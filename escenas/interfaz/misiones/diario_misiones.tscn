@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://ccpg1lvh15vtf"]
+
+[ext_resource type="Script" uid="uid://bp4rf1k73g0la" path="res://escenas/interfaz/misiones/diario_misiones.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://bgr3pw1yjdpek" path="res://recursos/fuentes/PixelOperator.ttf" id="2_fuente"]
+
+[sub_resource type="Theme" id="Theme_diario"]
+default_font = ExtResource("2_fuente")
+default_font_size = 16
+Button/colors/font_color = Color(1, 0.9, 0.72, 1)
+Label/colors/font_color = Color(0.96, 0.88, 0.74, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_panel"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.19, 0.14, 0.11, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.65, 0.46, 0.26, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="DiarioMisiones" type="CanvasLayer" unique_id=1311800893]
+process_mode = 3
+layer = 40
+script = ExtResource("1_script")
+
+[node name="Pantalla" type="Control" parent="." unique_id=1378255601]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Velo" type="ColorRect" parent="Pantalla" unique_id=1519904134]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.04, 0.03, 0.025, 0.76)
+
+[node name="Panel" type="PanelContainer" parent="Pantalla" unique_id=1541162404]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_diario")
+theme_override_styles/panel = SubResource("StyleBox_panel")
+
+[node name="Contenido" type="VBoxContainer" parent="Pantalla/Panel" unique_id=812923528]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Cabecera" type="HBoxContainer" parent="Pantalla/Panel/Contenido" unique_id=1423859780]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Titulo" type="Label" parent="Pantalla/Panel/Contenido/Cabecera" unique_id=139661347]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.83, 0.54, 1)
+theme_override_font_sizes/font_size = 22
+text = "DIARIO DE MISIONES"
+vertical_alignment = 1
+
+[node name="Atajo" type="Label" parent="Pantalla/Panel/Contenido/Cabecera" unique_id=1561424795]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.69, 0.58, 0.44, 1)
+theme_override_font_sizes/font_size = 12
+text = "J / ESC"
+vertical_alignment = 1
+
+[node name="Cerrar" type="Button" parent="Pantalla/Panel/Contenido/Cabecera" unique_id=1612686102]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 28)
+layout_mode = 2
+tooltip_text = "Cerrar diario · J / Esc"
+text = "X"
+
+[node name="Pestanas" type="HBoxContainer" parent="Pantalla/Panel/Contenido" unique_id=546533017]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Activas" type="Button" parent="Pantalla/Panel/Contenido/Pestanas" unique_id=2113825278]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 30)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "ACTIVAS"
+
+[node name="Completadas" type="Button" parent="Pantalla/Panel/Contenido/Pestanas" unique_id=1226616693]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 30)
+layout_mode = 2
+toggle_mode = true
+text = "COMPLETADAS"
+
+[node name="Cuerpo" type="HSplitContainer" parent="Pantalla/Panel/Contenido" unique_id=62407624]
+layout_mode = 2
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(230)
+split_offset = 230
+
+[node name="PanelLista" type="PanelContainer" parent="Pantalla/Panel/Contenido/Cuerpo" unique_id=616634510]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Desplazamiento" type="ScrollContainer" parent="Pantalla/Panel/Contenido/Cuerpo/PanelLista" unique_id=1777091124]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Lista" type="VBoxContainer" parent="Pantalla/Panel/Contenido/Cuerpo/PanelLista/Desplazamiento" unique_id=1612066565]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Vacio" type="Label" parent="Pantalla/Panel/Contenido/Cuerpo/PanelLista/Desplazamiento/Lista" unique_id=1753740597]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Todavía no aceptaste ninguna misión."
+autowrap_mode = 3
+
+[node name="Detalle" type="VBoxContainer" parent="Pantalla/Panel/Contenido/Cuerpo" unique_id=2121215937]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="TituloMision" type="Label" parent="Pantalla/Panel/Contenido/Cuerpo/Detalle" unique_id=2121746044]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.83, 0.54, 1)
+theme_override_font_sizes/font_size = 20
+text = "Seleccioná una misión"
+autowrap_mode = 3
+
+[node name="EstadoMision" type="Label" parent="Pantalla/Panel/Contenido/Cuerpo/Detalle" unique_id=1402138938]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.82, 0.57, 1)
+
+[node name="Descripcion" type="Label" parent="Pantalla/Panel/Contenido/Cuerpo/Detalle" unique_id=1278382391]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="Objetivos" type="VBoxContainer" parent="Pantalla/Panel/Contenido/Cuerpo/Detalle" unique_id=1401786953]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Temporizador" type="Timer" parent="." unique_id=1274923361]
+process_mode = 3
+wait_time = 3.0
+one_shot = true

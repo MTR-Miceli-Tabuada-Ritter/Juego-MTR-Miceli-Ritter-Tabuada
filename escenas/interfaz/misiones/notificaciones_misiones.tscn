@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://c5iam05gi5pw5"]
 
-[ext_resource type="Script" path="res://escenas/interfaz/misiones/notificaciones_misiones.gd" id="1_script"]
-[ext_resource type="FontFile" path="res://recursos/fuentes/PixelOperator.ttf" id="2_fuente"]
+[ext_resource type="Script" uid="uid://dk6udgnqy6u5x" path="res://escenas/interfaz/misiones/notificaciones_misiones.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://bgr3pw1yjdpek" path="res://recursos/fuentes/PixelOperator.ttf" id="2_fuente"]
+
+[sub_resource type="Theme" id="Theme_aviso"]
+default_font = ExtResource("2_fuente")
+default_font_size = 14
+Label/colors/font_color = Color(0.96, 0.88, 0.74, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_aviso"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
 bg_color = Color(0.19, 0.14, 0.11, 0.96)
 border_width_left = 2
 border_width_top = 2
@@ -14,25 +23,16 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-content_margin_left = 12.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
 
-[sub_resource type="Theme" id="Theme_aviso"]
-default_font = ExtResource("2_fuente")
-default_font_size = 14
-Label/colors/font_color = Color(0.96, 0.88, 0.74, 1)
-
-[node name="NotificacionesMisiones" type="CanvasLayer"]
+[node name="NotificacionesMisiones" type="CanvasLayer" unique_id=755643751]
 process_mode = 3
 layer = 30
 script = ExtResource("1_script")
 
-[node name="Aviso" type="PanelContainer" parent="."]
+[node name="Aviso" type="PanelContainer" parent="." unique_id=896456205]
 unique_name_in_owner = true
 visible = false
-anchors_preset = 10
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -190.0
@@ -44,11 +44,11 @@ mouse_filter = 2
 theme = SubResource("Theme_aviso")
 theme_override_styles/panel = SubResource("StyleBox_aviso")
 
-[node name="Contenido" type="VBoxContainer" parent="Aviso"]
+[node name="Contenido" type="VBoxContainer" parent="Aviso" unique_id=363294575]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Titulo" type="Label" parent="Aviso/Contenido"]
+[node name="Titulo" type="Label" parent="Aviso/Contenido" unique_id=1667449808]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.83, 0.54, 1)
@@ -56,14 +56,13 @@ theme_override_font_sizes/font_size = 17
 text = "Misión"
 horizontal_alignment = 1
 
-[node name="Detalle" type="Label" parent="Aviso/Contenido"]
+[node name="Detalle" type="Label" parent="Aviso/Contenido" unique_id=1754599221]
 unique_name_in_owner = true
 layout_mode = 2
-autowrap_mode = 3
-text = ""
 horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="Temporizador" type="Timer" parent="."]
+[node name="Temporizador" type="Timer" parent="." unique_id=1786937125]
 unique_name_in_owner = true
 process_mode = 3
 wait_time = 3.0
