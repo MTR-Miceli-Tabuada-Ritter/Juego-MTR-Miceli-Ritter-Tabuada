@@ -8,7 +8,7 @@ enum Estado { QUIETO, AVISANDO, PERSIGUIENDO, PREPARANDO, EMBISTIENDO, RECARGAND
 @export var distancia_embestida: float = 120.0
 @export var duracion_preparacion: float = 0.5
 @export var velocidad_embestida: float = 420.0
-@export var duracion_recarga: float = 1.0
+@export var duracion_recarga: float = 0.5
 @export var danio_embestida: float = 10.0
 
 @onready var animacion: AnimatedSprite2D = $AnimatedSprite2D
@@ -68,8 +68,12 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 			_tiempo_recarga -= delta
 			if _tiempo_recarga <= 0.0:
-				_estado = Estado.QUIETO
-				_buscar_jugador_en_rango()
+				if _objetivo_en_rango():
+					_estado = Estado.PERSIGUIENDO
+					_perseguir_jugador()
+				else:
+					_estado = Estado.QUIETO
+					_buscar_jugador_en_rango()
 	_deslizar_por_empuje(delta)
 
 
@@ -123,12 +127,10 @@ func _iniciar_aviso(jugador: CharacterBody2D) -> void:
 	_objetivo = jugador
 	velocity = Vector2.ZERO
 	animacion.modulate = Color.RED
-	_iniciar_temblor()
 	await get_tree().create_timer(duracion_aviso).timeout
 	if not is_inside_tree() or _estado != Estado.AVISANDO:
 		return
 
-	_detener_temblor()
 	animacion.modulate = Color.WHITE
 	if not _objetivo_en_rango():
 		_iniciar_recarga()
