@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0nqno3qe3m21"]
 
-[ext_resource type="Script" path="res://escenas/esqueleto.gd" id="1_esqueleto"]
+[ext_resource type="Script" uid="uid://5gyldrgsof8y" path="res://escenas/esqueleto.gd" id="1_esqueleto"]
 [ext_resource type="Texture2D" uid="uid://h63rah00agln" path="res://recursos/Cute_Fantasy_Free/Enemies/Skeleton.png" id="2_hvwh6"]
 [ext_resource type="PackedScene" uid="uid://bx82xb4ku6i42" path="res://escenas/salud_componente.tscn" id="3_dvue8"]
 [ext_resource type="PackedScene" uid="uid://c8xvpt4y4jafr" path="res://escenas/hurtbox_componente.tscn" id="4_gxh5t"]
@@ -61,7 +61,7 @@ animations = [{
 radius = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rango"]
-radius = 120.0
+radius = 270.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ataque"]
 radius = 24.0
@@ -91,16 +91,16 @@ componenteSalud = NodePath("../saludComponente")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponente" unique_id=1514183871]
 shape = SubResource("CircleShape2D_21ccn")
 
-[node name="rangoVista" type="Area2D" parent="."]
+[node name="rangoVista" type="Area2D" parent="." unique_id=2043839674]
 collision_layer = 0
-collision_mask = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rangoVista"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rangoVista" unique_id=1027541194]
 shape = SubResource("CircleShape2D_rango")
+debug_color = Color(2.0214916e-06, 0.6235656, 0.539319, 0.41960785)
 
-[node name="areaAtaque" type="Area2D" parent="."]
+[node name="areaAtaque" type="Area2D" parent="." unique_id=794620776]
 collision_layer = 0
-collision_mask = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="areaAtaque"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaAtaque" unique_id=659112737]
 shape = SubResource("CircleShape2D_ataque")
+debug_color = Color(0.99777025, 0, 0.16875929, 0.41960785)

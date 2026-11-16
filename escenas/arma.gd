@@ -5,9 +5,19 @@ var fuerzaEmpujeAtaque = 200
 
 @onready var areaAtaque: Area2D = $hurtboxComponente
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("atacar"):
-		_atacar()
+var _ultimo_frame_ataque := -1
+
+# K o clic izquierdo. Sin polling: los clics que consume la interfaz
+# (diálogos, mochila, HUD) no llegan acá y no atacan.
+func _unhandled_input(event: InputEvent) -> void:
+	if not event.is_action_pressed("atacar"):
+		return
+	# K y clic en el mismo fotograma cuentan como un solo golpe.
+	var frame := Engine.get_process_frames()
+	if frame == _ultimo_frame_ataque:
+		return
+	_ultimo_frame_ataque = frame
+	_atacar()
 
 func _atacar() -> void:
 	var atacante := _obtener_atacante()

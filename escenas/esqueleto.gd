@@ -1,9 +1,12 @@
 extends "res://escenas/enemigo_misiones.gd"
 
-enum Estado { QUIETO, AVISANDO, EMBISTIENDO, RECARGANDO }
+enum Estado { QUIETO, AVISANDO, PERSIGUIENDO, PREPARANDO, EMBISTIENDO, RECARGANDO }
 
-@export var rango_vista: float = 120.0
+@export var rango_vista: float = 270.0
 @export var duracion_aviso: float = 0.3
+@export var velocidad_persecucion: float = 100.0
+@export var distancia_embestida: float = 120.0
+@export var duracion_preparacion: float = 0.5
 @export var velocidad_embestida: float = 420.0
 @export var duracion_recarga: float = 1.0
 @export var danio_embestida: float = 10.0
@@ -15,6 +18,7 @@ enum Estado { QUIETO, AVISANDO, EMBISTIENDO, RECARGANDO }
 var _estado: Estado = Estado.QUIETO
 var _objetivo: CharacterBody2D
 var _direccion_embestida := Vector2.ZERO
+var _tiempo_preparacion := 0.0
 var _tiempo_embestida := 0.0
 var _tiempo_recarga := 0.0
 var _danio_aplicado := false
@@ -28,6 +32,14 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	match _estado:
+		Estado.PERSIGUIENDO:
+			_perseguir_jugador()
+		Estado.PREPARANDO:
+			velocity = Vector2.ZERO
+			_tiempo_preparacion -= delta
+			if _tiempo_preparacion <= 0.0:
+				_danio_aplicado = false
+				_estado = Estado.EMBISTIENDO
 		Estado.EMBISTIENDO:
 			velocity = _direccion_embestida * velocidad_embestida
 			move_and_slide()
@@ -53,33 +65,59 @@ func _iniciar_aviso(jugador: CharacterBody2D) -> void:
 		return
 	_estado = Estado.AVISANDO
 	_objetivo = jugador
+	velocity = Vector2.ZERO
 	animacion.modulate = Color.RED
 	await get_tree().create_timer(duracion_aviso).timeout
 	if not is_inside_tree() or _estado != Estado.AVISANDO:
 		return
 
 	animacion.modulate = Color.WHITE
-	if not is_instance_valid(_objetivo) or _objetivo.is_queued_for_deletion():
+	if not _objetivo_en_rango():
+		_iniciar_recarga()
+		return
+
+	componente_salud.aplicar_friccion_empuje = false
+	_estado = Estado.PERSIGUIENDO
+
+
+func _objetivo_en_rango() -> bool:
+	return (is_instance_valid(_objetivo)
+		and not _objetivo.is_queued_for_deletion()
+		and rango_vista_area.overlaps_body(_objetivo))
+
+
+func _perseguir_jugador() -> void:
+	if not _objetivo_en_rango():
 		_iniciar_recarga()
 		return
 
 	var desplazamiento := _objetivo.global_position - global_position
+	if desplazamiento.length() <= distancia_embestida:
+		_preparar_embestida(desplazamiento)
+	else:
+		velocity = desplazamiento.normalized() * velocidad_persecucion
+		move_and_slide()
+
+
+func _preparar_embestida(desplazamiento: Vector2) -> void:
+	# Apuntar al empezar la pausa: moverse durante ella permite esquivar.
 	_direccion_embestida = desplazamiento.normalized()
 	if _direccion_embestida == Vector2.ZERO:
 		_iniciar_recarga()
 		return
 
 	_tiempo_embestida = clampf(desplazamiento.length() / velocidad_embestida, 0.1, 0.4)
-	_danio_aplicado = false
+	_tiempo_preparacion = duracion_preparacion
+	velocity = Vector2.ZERO
 	componente_salud.aplicar_friccion_empuje = false
-	_estado = Estado.EMBISTIENDO
+	_estado = Estado.PREPARANDO
 
 
 func _aplicar_danio_embestida() -> void:
 	if _danio_aplicado:
 		return
 	for area in area_ataque.get_overlapping_areas():
-		if area is hurtboxComponente:
+		if area is hurtboxComponente and area.componenteSalud != null:
 			var ataque := Ataque.new()
 			ataque.ataqueDanio = danio_embestida
 			ataque.ataqueFuerzaEmpuje = 150.0
