@@ -1,41 +1,67 @@
-## Juego MTR
+# 🏝️ Juego MTR
 
-Repositorio: https://github.com/MTR-Miceli-Tabuada-Ritter/Juego-MTR-Miceli-Ritter-Tabuada
+<img src="icono.png" alt="Icono del juego" width="96">
 
-Se trata de un juego donde un náufrago despierta sin recordar nada y descubre que se encuentra en una isla habitada por animales que hablan. El mundo está lleno de misterios, personajes con personalidad propia y desafíos que deberán resolverse para avanzar.
+**Una aventura de exploración, misiones y supervivencia en una isla llena de misterios.**
 
-El objetivo principal del juego es completar las misiones principales que te asignan los animales de la isla. Cada uno de ellos te entregará una parte de un bote, y ese bote será la herramienta que te permitirá escapar de la isla.
+🚧 **En desarrollo** · 🎮 **Aventura 2D** · 🛠️ **Godot 4.7**
 
-## Historia
+## 📖 La historia
 
-Un personaje despierta en una isla desconocida, sin recuerdos de cómo llegó allí ni de su pasado. A medida que explora el entorno, descubre que los animales del lugar no son simples criaturas salvajes, sino seres que pueden hablar, interactuar y guiarlo en su aventura.
+Un náufrago despierta en una isla desconocida sin recordar cómo llegó allí. Al explorar, descubre que sus habitantes son animales capaces de hablar, cada uno con su propia personalidad y desafíos.
 
-Cada animal ofrece una misión distinta, y al completarlas el protagonista obtiene una pieza esencial para construir un bote. La aventura gira en torno a la exploración, la resolución de desafíos y la superación de las pruebas que cada habitante de la isla le presenta.
+Para escapar, deberá ayudarlos, completar sus misiones y reunir las piezas necesarias para construir un bote.
 
-## Estado del proyecto
+## ✨ Características
 
-- Estado actual: en desarrollo
-- Nombre del proyecto: no consolidado todavía
-- Objetivo actual: construir la base del juego, mecánicas, historia y progresión principal
-- Futuras mejoras: ampliar contenido, pulir jugabilidad, mejorar narrativa y terminar la experiencia completa
-- Guía del prototipo de misiones e inventario: [PLAN_PARA_MISIONES.md](PLAN_PARA_MISIONES.md#prototipo-de-misiones-e-inventario)
-- Plan de combate con espada y sprites pendientes: [plan de combate](docs/combate/plan.md)
+- 🗺️ **Exploración:** recorres la isla y descubres sus personajes y secretos.
+- 🐾 **Misiones y diálogos:** conoces a los animales y aceptas sus desafíos.
+- 🌱 **Cultivo y recursos:** trabajas la tierra y reúnes materiales.
+- 🎒 **Inventario:** guardas y seleccionas objetos y herramientas.
+- ⚔️ **Combate:** utilizas una espada para defenderte de los esqueletos.
+- ❤️ **Supervivencia:** cuidas tu vida mientras avanzas en la aventura.
 
-## Objetivo principal
+## 📸 Capturas
 
-Completar las misiones que te entregan los animales, reunir cada una de las partes del bote y lograr escapar de la isla.
+Capturas pendientes de agregar:
 
-## Nota
+| Imagen | Contenido sugerido |
+| --- | --- |
+| Portada | Una vista general de la isla y el personaje. |
+| Personajes | Un diálogo con alguno de los animales. |
+| Jugabilidad | Una escena de cultivo o combate. |
 
-Este juego aún está en fase de creación y puede sufrir cambios significativos en diseño, nombre, mecánicas y contenido durante su desarrollo.
+<!-- Agregar las capturas al repositorio y reemplazar esta tabla por imágenes, por ejemplo:
+![Vista de la isla](ruta/a/la/captura.png)
+-->
 
-## Integrantes
+## 🚀 Cómo ejecutar el proyecto
+
+1. Instala [Godot 4.7](https://godotengine.org/download/).
+2. Clona el repositorio:
+
+	```bash
+	git clone https://github.com/MTR-Miceli-Tabuada-Ritter/Juego-MTR-Miceli-Ritter-Tabuada.git
+	```
+
+3. Abre Godot, importa el archivo `project.godot` del repositorio y espera a que se importen los recursos.
+4. Ejecuta el proyecto con el botón **Ejecutar proyecto** o con **F5**.
+
+## 🛠️ Tecnologías
+
+- [Godot Engine](https://godotengine.org/) y GDScript.
+- Dialogue Manager para los diálogos.
+- Phantom Camera para las cámaras.
+
+## 🚧 Estado del proyecto
+
+El juego está en desarrollo y su nombre todavía no es definitivo. El equipo continúa trabajando en las mecánicas, la historia y la progresión principal; el contenido y el diseño pueden cambiar.
+
+## 👥 Equipo
 
 - Miceli
 - Ritter
 - Tabuada
 - González Parodi
 
-## Profesor
-
-- Beitia
+**Profesor:** Beitia
