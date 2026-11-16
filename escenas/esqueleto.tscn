@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0nqno3qe3m21"]
 
-[ext_resource type="Script" path="res://escenas/enemigo_misiones.gd" id="1_misiones"]
+[ext_resource type="Script" uid="uid://5gyldrgsof8y" path="res://escenas/esqueleto.gd" id="1_esqueleto"]
 [ext_resource type="Texture2D" uid="uid://h63rah00agln" path="res://recursos/Cute_Fantasy_Free/Enemies/Skeleton.png" id="2_hvwh6"]
 [ext_resource type="PackedScene" uid="uid://bx82xb4ku6i42" path="res://escenas/salud_componente.tscn" id="3_dvue8"]
 [ext_resource type="PackedScene" uid="uid://c8xvpt4y4jafr" path="res://escenas/hurtbox_componente.tscn" id="4_gxh5t"]
@@ -55,19 +55,49 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBox_salud_fondo"]
+bg_color = Color(0.12, 0.06, 0.06, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.05, 0.03, 0.03, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_salud_relleno"]
+bg_color = Color(0.85, 0.15, 0.15, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6ly3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_21ccn"]
 radius = 26.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rango"]
+radius = 270.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ataque"]
+radius = 24.0
+
 [node name="Esqueleto" type="CharacterBody2D" unique_id=1885121538]
 collision_layer = 64
 collision_mask = 35
-script = ExtResource("1_misiones")
+script = ExtResource("1_esqueleto")
 tipo_enemigo = "esqueleto"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1138243893]
 sprite_frames = SubResource("SpriteFrames_h6ly3")
+
+[node name="BarraSalud" type="ProgressBar" parent="." unique_id=635090292]
+z_index = 1
+offset_left = -12.0
+offset_top = -36.0
+offset_right = 12.0
+offset_bottom = -32.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBox_salud_fondo")
+theme_override_styles/fill = SubResource("StyleBox_salud_relleno")
+step = 0.0
+value = 100.0
+show_percentage = false
 
 [node name="cuerpo" type="CollisionShape2D" parent="." unique_id=1972967145]
 position = Vector2(0, 4)
@@ -84,3 +114,17 @@ componenteSalud = NodePath("../saludComponente")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponente" unique_id=1514183871]
 shape = SubResource("CircleShape2D_21ccn")
+
+[node name="rangoVista" type="Area2D" parent="." unique_id=2043839674]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rangoVista" unique_id=1027541194]
+shape = SubResource("CircleShape2D_rango")
+debug_color = Color(2.0214916e-06, 0.6235656, 0.539319, 0.41960785)
+
+[node name="areaAtaque" type="Area2D" parent="." unique_id=794620776]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaAtaque" unique_id=659112737]
+shape = SubResource("CircleShape2D_ataque")
+debug_color = Color(0.99777025, 0, 0.16875929, 0.41960785)

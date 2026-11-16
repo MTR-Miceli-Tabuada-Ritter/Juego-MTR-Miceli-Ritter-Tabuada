@@ -1,16 +1,25 @@
 extends CharacterBody2D
 var agujeroPreload = preload("res://escenas/agujeroCultivo/agujeroCultivo.tscn")
+
 @export var direccionVistaMarker: Marker2D
 @export var animacion: AnimatedSprite2D 
 @export var notificacion: Sprite2D
 @export var accionablesArea: Area2D
 @onready var tilemap: TileMapLayer = get_tree().get_first_node_in_group("tilemap_cultivable")#no me interesa cambiar desde el inspector entonces dejo onready
 @onready var tilemapAgua: TileMapLayer = get_tree().get_first_node_in_group("tilemap_agua")
+@onready var arma: Node2D = $Arma
+
+enum Accion { NINGUNA, HERRAMIENTA, ATAQUE }
+# Cuadro de las animaciones Espada* en el que se ve el corte.
+const CUADRO_IMPACTO_ESPADA := 1
 var velocidad = 200.0
 var ultima_direccion = Vector2.DOWN
 var esta_actuando = false
 var masCercano = null
 var _indice_accion: int = -1
+var _accion_actual := Accion.NINGUNA
+var _stack_accion: ItemStack = null
+var _impacto_hecho := false
 
 var escenaPrincipal
 
@@ -18,7 +27,49 @@ func _ready() -> void:
 	add_to_group("jugador")
 	escenaPrincipal = get_node("/root/escenaPrincipal")
 	animacion.animation_finished.connect(_on_animation_finished)
+	animacion.frame_changed.connect(_on_frame_changed)
 	_actualizar_area_cultivo(ultima_direccion)
+
+# K o clic izquierdo. Por evento y no por polling: los clics que consume la
+# interfaz (mochila, diálogos, HUD) no llegan acá y no actúan.
+func _unhandled_input(event: InputEvent) -> void:
+	var ataca := event.is_action_pressed("atacar")
+	var usa_herramienta := event.is_action_pressed("herramienta")
+	if esta_actuando or not (ataca or usa_herramienta):
+		return
+	var stack := InventarioJugador.obtener_stack_seleccionado()
+	if stack != null and stack.item is ItemEspada:
+		intentar_atacar()
+	elif usa_herramienta:
+		_usar_herramienta()
+	else:
+		return
+	get_viewport().set_input_as_handled()
+
+# Solo con la espada seleccionada; durante otra acción o una pausa no hace nada.
+func intentar_atacar() -> bool:
+	var stack := InventarioJugador.obtener_stack_seleccionado()
+	if esta_actuando or not can_process() or stack == null or not stack.item is ItemEspada:
+		return false
+	esta_actuando = true
+	_accion_actual = Accion.ATAQUE
+	_indice_accion = InventarioJugador.indice_seleccionado
+	_stack_accion = stack
+	_impacto_hecho = false
+	var direccion := _direccion_cardinal(ultima_direccion)
+	arma.preparar(direccion)
+	_procesar_animacion(stack.item.nombre_animacion, direccion)
+	stack.item.sonido_al_usar()
+	return true
+
+func _usar_herramienta() -> void:
+	esta_actuando = true
+	_accion_actual = Accion.HERRAMIENTA
+	_indice_accion = InventarioJugador.indice_seleccionado
+	var stack_en_uso := InventarioJugador.inventario.obtener_stack(_indice_accion)
+	_procesar_animacion(stack_en_uso.item.nombre_animacion if stack_en_uso != null else "Hacha", ultima_direccion)
+	if stack_en_uso != null:
+		stack_en_uso.item.sonido_al_usar()
 
 func _physics_process(_delta: float) -> void:
 	var direccionMovimiento = Input.get_vector("izquierda", "derecha", "arriba", "abajo")
@@ -33,14 +84,7 @@ func _physics_process(_delta: float) -> void:
 		SonidosGlobales.reproducirSonidoCaminar()
 	else:
 		SonidosGlobales.detenerSonidoCaminar()
-	if Input.is_action_just_pressed("herramienta") and not esta_actuando:
-		esta_actuando = true
-		_indice_accion = InventarioJugador.indice_seleccionado
-		var stack_en_uso := InventarioJugador.inventario.obtener_stack(_indice_accion)
-		_procesar_animacion(stack_en_uso.item.nombre_animacion if stack_en_uso != null else "Hacha", ultima_direccion)
-		if stack_en_uso != null:
-			stack_en_uso.item.sonido_al_usar()
-	if Input.is_action_just_pressed("interactuar") and masCercano != null and is_instance_valid(masCercano):
+	if Input.is_action_just_pressed("interactuar") and _accion_actual != Accion.ATAQUE and masCercano != null and is_instance_valid(masCercano):
 		masCercano.interaccionar.emit()
 	if not esta_actuando:
 		if direccionMovimiento != Vector2.ZERO:
@@ -105,12 +149,33 @@ func _procesar_animacion(estado: String, direccion: Vector2):
 		else:
 			animacion.play(estado + "Arriba")
 
+# Misma regla que _procesar_animacion: eje dominante y empate vertical.
+func _direccion_cardinal(direccion: Vector2) -> Vector2:
+	if abs(direccion.x) > abs(direccion.y):
+		return Vector2.RIGHT if direccion.x > 0 else Vector2.LEFT
+	return Vector2.DOWN if direccion.y > 0 else Vector2.UP
+
+func _on_frame_changed() -> void:
+	if _accion_actual != Accion.ATAQUE or _impacto_hecho or animacion.frame != CUADRO_IMPACTO_ESPADA:
+		return
+	_impacto_hecho = true
+	# Cambiar o perder la espada antes del corte cancela el daño de este golpe.
+	if InventarioJugador.indice_seleccionado == _indice_accion and InventarioJugador.inventario.obtener_stack(_indice_accion) == _stack_accion:
+		arma.impactar()
+
 func _on_animation_finished():
-	if esta_actuando:
-		esta_actuando = false
+	if not esta_actuando:
+		return
+	var accion := _accion_actual
+	esta_actuando = false
+	_accion_actual = Accion.NINGUNA
+	if accion == Accion.ATAQUE:
+		# Un golpe nunca trabaja la tierra.
+		_stack_accion = null
+	else:
 		SonidosGlobales.detenerSonidoRegar()
 		_intentar_cultivar()
-		_indice_accion = -1
+	_indice_accion = -1
 
 func consumir_item(cantidad: int) -> bool:
 	return InventarioJugador.inventario.quitar_de_slot(_indice_accion, cantidad)
