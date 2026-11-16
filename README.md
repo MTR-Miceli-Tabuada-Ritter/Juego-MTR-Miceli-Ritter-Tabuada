@@ -19,6 +19,7 @@ Cada animal ofrece una misión distinta, y al completarlas el protagonista obtie
 - Objetivo actual: construir la base del juego, mecánicas, historia y progresión principal
 - Futuras mejoras: ampliar contenido, pulir jugabilidad, mejorar narrativa y terminar la experiencia completa
 - Guía del prototipo de misiones e inventario: [PLAN_PARA_MISIONES.md](PLAN_PARA_MISIONES.md#prototipo-de-misiones-e-inventario)
+- Plan de combate con espada y sprites pendientes: [plan de combate](docs/combate/plan.md)
 
 ## Objetivo principal
 

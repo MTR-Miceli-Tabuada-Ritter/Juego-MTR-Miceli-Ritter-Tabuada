@@ -7,6 +7,7 @@ signal murio(ataque: Ataque)
 const FRICCION_EMPUJE = 800.0
 
 @export var SALUD_MAX = 10
+@export var aplicar_friccion_empuje: bool = true
 var salud:float
 var _muerto: bool = false
 
@@ -14,6 +15,8 @@ func _ready() -> void:
 	salud = SALUD_MAX
 
 func _physics_process(delta: float) -> void:
+	if not aplicar_friccion_empuje:
+		return
 	var cuerpo := get_parent() as CharacterBody2D
 	if cuerpo and cuerpo.velocity != Vector2.ZERO:
 		cuerpo.velocity = cuerpo.velocity.move_toward(Vector2.ZERO, FRICCION_EMPUJE * delta)

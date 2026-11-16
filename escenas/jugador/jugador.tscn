@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c0tksjup2h7wm" path="res://recursos/Cute_Fantasy_Free/Player/Player_Actions.png" id="3_qsk7m"]
 [ext_resource type="Texture2D" uid="uid://b7vwkicncm4kx" path="res://recursos/assetPack/Hud_Ui/select_icon_ui.png" id="4_3don6"]
 [ext_resource type="PackedScene" uid="uid://dhvtai6hgaxju" path="res://escenas/Arma.tscn" id="5_jkpmm"]
+[ext_resource type="PackedScene" uid="uid://bx82xb4ku6i42" path="res://escenas/salud_componente.tscn" id="6_salud"]
+[ext_resource type="PackedScene" uid="uid://c8xvpt4y4jafr" path="res://escenas/hurtbox_componente.tscn" id="7_hurtbox"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3don6"]
 atlas = ExtResource("2_26844")
@@ -531,6 +533,9 @@ size = Vector2(32, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3w17"]
 radius = 32.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
+radius = 14.0
+
 [node name="Jugador" type="CharacterBody2D" unique_id=1791083245 node_paths=PackedStringArray("direccionVistaMarker", "animacion", "notificacion", "accionablesArea")]
 collision_mask = 102
 script = ExtResource("1_8cmsc")
@@ -576,3 +581,15 @@ texture = ExtResource("4_3don6")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=250702629]
 
 [node name="Arma" parent="." unique_id=565178407 instance=ExtResource("5_jkpmm")]
+
+[node name="saludComponente" parent="." instance=ExtResource("6_salud")]
+SALUD_MAX = 100
+aplicar_friccion_empuje = false
+
+[node name="hurtboxComponente" parent="." node_paths=PackedStringArray("componenteSalud") instance=ExtResource("7_hurtbox")]
+collision_layer = 1
+collision_mask = 0
+componenteSalud = NodePath("../saludComponente")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponente"]
+shape = SubResource("CircleShape2D_hurtbox")
