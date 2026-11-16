@@ -264,7 +264,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_4naoc")
 }],
 "loop": 0,
-"name": &"CuchilloAbajo",
+"name": &"EspadaAbajo",
 "speed": 10.0
 }, {
 "frames": [{
@@ -281,7 +281,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ie13r")
 }],
 "loop": 0,
-"name": &"CuchilloArriba",
+"name": &"EspadaArriba",
 "speed": 10.0
 }, {
 "frames": [{
@@ -298,7 +298,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8f517")
 }],
 "loop": 0,
-"name": &"CuchilloDerecha",
+"name": &"EspadaDerecha",
 "speed": 10.0
 }, {
 "frames": [{
@@ -582,14 +582,15 @@ texture = ExtResource("4_3don6")
 
 [node name="Arma" parent="." unique_id=565178407 instance=ExtResource("5_jkpmm")]
 
-[node name="saludComponente" parent="." instance=ExtResource("6_salud")]
+[node name="saludComponente" parent="." unique_id=1840658134 instance=ExtResource("6_salud")]
 SALUD_MAX = 100
 aplicar_friccion_empuje = false
+liberar_al_morir = false
+regeneracion_por_segundo = 5.0
 
-[node name="hurtboxComponente" parent="." node_paths=PackedStringArray("componenteSalud") instance=ExtResource("7_hurtbox")]
+[node name="hurtboxComponente" parent="." unique_id=1082217852 node_paths=PackedStringArray("componenteSalud") instance=ExtResource("7_hurtbox")]
 collision_layer = 1
-collision_mask = 0
 componenteSalud = NodePath("../saludComponente")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponente"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponente" unique_id=1155509667]
 shape = SubResource("CircleShape2D_hurtbox")

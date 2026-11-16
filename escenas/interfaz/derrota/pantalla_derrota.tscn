@@ -1,0 +1,59 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://escenas/interfaz/derrota/pantalla_derrota.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://c5m0py66pqvv6" path="res://recursos/fuentes/fuenteTituloGrapeSoda.ttf" id="2_fuente"]
+[ext_resource type="Theme" uid="uid://bq1aoaaj1org7" path="res://recursos/fuentes/boton.tres" id="3_boton"]
+
+[sub_resource type="Theme" id="Theme_titulo"]
+default_font = ExtResource("2_fuente")
+default_font_size = 78
+
+[node name="PantallaDerrota" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+script = ExtResource("1_script")
+
+[node name="Fondo" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0, 0, 0.6)
+
+[node name="Titulo" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -119.0
+offset_right = 150.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_titulo")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 3
+text = "Moriste"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Contenido" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -12.0
+offset_right = 80.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NuevaPartida" type="Button" parent="Contenido"]
+layout_mode = 2
+theme = ExtResource("3_boton")
+text = "Nueva partida"

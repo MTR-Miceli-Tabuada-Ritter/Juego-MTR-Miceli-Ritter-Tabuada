@@ -14,12 +14,15 @@
 [ext_resource type="PackedScene" uid="uid://i5ma8ns01jkr" path="res://escenas/interfaz/mochila/mochila.tscn" id="12_mochila"]
 [ext_resource type="PackedScene" uid="uid://c5iam05gi5pw5" path="res://escenas/interfaz/misiones/notificaciones_misiones.tscn" id="13_notificaciones"]
 [ext_resource type="PackedScene" uid="uid://ccpg1lvh15vtf" path="res://escenas/interfaz/misiones/diario_misiones.tscn" id="14_diario"]
+[ext_resource type="PackedScene" path="res://escenas/interfaz/derrota/pantalla_derrota.tscn" id="15_derrota"]
 
-[node name="escenaPrincipal" type="Node2D" unique_id=1856232161 node_paths=PackedStringArray("colorDeNoche", "interfaz")]
+[node name="escenaPrincipal" type="Node2D" unique_id=1856232161 node_paths=PackedStringArray("colorDeNoche", "interfaz", "jugador", "pantallaDerrota")]
 y_sort_enabled = true
 script = ExtResource("1_xo3ps")
 colorDeNoche = NodePath("nocheColor")
 interfaz = NodePath("Interfaz")
+jugador = NodePath("escenario/CharacterBody2D")
+pantallaDerrota = NodePath("PantallaDerrota")
 
 [node name="Interfaz" parent="." unique_id=2077230092 instance=ExtResource("3_xo3ps")]
 
@@ -48,7 +51,13 @@ position = Vector2(865, -48)
 position = Vector2(406, 293)
 
 [node name="Esqueleto" parent="escenario" unique_id=1885121538 instance=ExtResource("10_ehepm")]
-rango_vista = 270.0
+position = Vector2(-770, -115)
+
+[node name="Esqueleto2" parent="escenario" unique_id=1002807033 instance=ExtResource("10_ehepm")]
+position = Vector2(-785, -16)
+
+[node name="Esqueleto3" parent="escenario" unique_id=623251958 instance=ExtResource("10_ehepm")]
+position = Vector2(-668, -66)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=321322868]
 stream = ExtResource("6_iwntd")
@@ -62,3 +71,5 @@ visible = false
 [node name="NotificacionesMisiones" parent="." unique_id=1424562923 instance=ExtResource("13_notificaciones")]
 
 [node name="DiarioMisiones" parent="." unique_id=1172158483 instance=ExtResource("14_diario")]
+
+[node name="PantallaDerrota" parent="." unique_id=907566101 instance=ExtResource("15_derrota")]

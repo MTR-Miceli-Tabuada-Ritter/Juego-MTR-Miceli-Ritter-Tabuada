@@ -4,6 +4,8 @@ signal plataGanada()
 
 @export var colorDeNoche: CanvasModulate
 @export var interfaz: CanvasLayer
+@export var jugador: CharacterBody2D
+@export var pantallaDerrota: CanvasLayer
 
 var dia = 1
 var mes = 1
@@ -18,9 +20,20 @@ var tiempoTranscurrido = 0.0
 
 func _ready() -> void:
 	InventarioJugador.plata_cambiada.connect(_notificar_plata)
+	var salud_jugador: saludComponente = jugador.get_node("saludComponente")
+	interfaz.vincular_salud(salud_jugador)
+	salud_jugador.murio.connect(_al_morir_jugador)
+	pantallaDerrota.nueva_partida_pedida.connect(_empezar_de_nuevo)
 
 func _notificar_plata() -> void:
 	plataGanada.emit()
+
+func _al_morir_jugador(_ataque: Ataque) -> void:
+	pantallaDerrota.mostrar()
+
+func _empezar_de_nuevo() -> void:
+	iniciar_nueva_partida()
+	get_tree().reload_current_scene()
 
 func iniciar_nueva_partida() -> void:
 	GestorMisiones.reiniciar()

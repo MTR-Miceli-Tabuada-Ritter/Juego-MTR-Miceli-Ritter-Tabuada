@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var horaTexto: RichTextLabel
 @export var fechaTexto: RichTextLabel
 @export var plataTexto: RichTextLabel
+@export var barraSalud: TextureProgressBar
 
 @export var slot1: TextureRect
 @export var slot2: TextureRect
@@ -40,6 +41,14 @@ func _cambiarFecha():
 
 func _cambiarPlata():
 	plataTexto.text = "%03d" % [InventarioJugador.plata]
+
+func vincular_salud(salud: saludComponente) -> void:
+	_cambiarSalud(salud.salud, salud.SALUD_MAX)
+	salud.salud_cambiada.connect(_cambiarSalud)
+
+func _cambiarSalud(salud: float, salud_max: float) -> void:
+	barraSalud.max_value = salud_max
+	barraSalud.value = salud
 
 func _process(delta: float) -> void:
 	tiempoEnSegundos += delta * velocidadMultiplicador 

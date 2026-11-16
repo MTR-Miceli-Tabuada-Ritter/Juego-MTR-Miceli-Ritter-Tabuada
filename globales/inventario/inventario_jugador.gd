@@ -23,6 +23,7 @@ func reiniciar() -> void:
 	plata = 0
 	# Equipo inicial y papas para probar las entregas del Gallo.
 	inventario.establecer_stack(0, ItemStack.new(preload("res://recursos/items/cultivo_2.tres"), 3))
+	inventario.establecer_stack(1, ItemStack.new(preload("res://recursos/items/espada.tres"), 1))
 	inventario.establecer_stack(4, ItemStack.new(preload("res://recursos/items/semilla_0.tres"), 14))
 	inventario.establecer_stack(5, ItemStack.new(preload("res://recursos/items/semilla_1.tres"), 15))
 	inventario.establecer_stack(6, ItemStack.new(preload("res://recursos/items/semilla_2.tres"), 15))

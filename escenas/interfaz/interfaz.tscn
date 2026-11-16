@@ -22,11 +22,21 @@ shadow_color = Color(0.03, 0.02, 0.02, 0.65)
 shadow_size = 6
 shadow_offset = Vector2(0, 2)
 
-[node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "fechaTexto", "plataTexto", "slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_salud_fondo"]
+atlas = ExtResource("3_0cwio")
+region = Rect2(34, 8, 78, 14)
+margin = Rect2(34, 8, 50, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_salud_relleno"]
+atlas = ExtResource("3_0cwio")
+region = Rect2(34, 8, 78, 14)
+
+[node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "fechaTexto", "plataTexto", "barraSalud", "slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10")]
 script = ExtResource("1_6v4fd")
 horaTexto = NodePath("fechaPlata/FilaHora/hora")
 fechaTexto = NodePath("fechaPlata/FilaFecha/fecha")
 plataTexto = NodePath("fechaPlata/FilaPlata/plata")
+barraSalud = NodePath("barraSalud")
 slot1 = NodePath("inventario/slot1")
 slot2 = NodePath("inventario/slot2")
 slot3 = NodePath("inventario/slot3")
@@ -38,14 +48,19 @@ slot8 = NodePath("inventario/slot8")
 slot9 = NodePath("inventario/slot9")
 slot10 = NodePath("inventario/slot10")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=364858354]
-visible = false
-offset_right = 128.0
+[node name="barraSalud" type="TextureProgressBar" parent="." unique_id=364858354]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 136.0
 offset_bottom = 40.0
 size_flags_horizontal = 4
-value = 20.0
+mouse_filter = 2
+value = 100.0
+texture_under = SubResource("AtlasTexture_salud_fondo")
 texture_over = ExtResource("2_kjlrn")
-texture_progress = ExtResource("3_0cwio")
+texture_progress = SubResource("AtlasTexture_salud_relleno")
+texture_progress_offset = Vector2(34, 8)
+tint_under = Color(0.25, 0.25, 0.25, 1)
 
 [node name="Control" type="Control" parent="." unique_id=360494730]
 layout_mode = 3
