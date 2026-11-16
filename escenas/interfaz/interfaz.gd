@@ -1,8 +1,7 @@
 extends CanvasLayer
 
 @export var horaTexto: RichTextLabel
-@export var mesTexto: RichTextLabel
-@export var diaTexto: RichTextLabel
+@export var fechaTexto: RichTextLabel
 @export var plataTexto: RichTextLabel
 
 @export var slot1: TextureRect
@@ -37,8 +36,7 @@ func _actualizar_inventario() -> void:
 		slots[i].set_stack(InventarioJugador.inventario.obtener_stack(i))
 
 func _cambiarFecha():
-	diaTexto.text = centrar + "%02d" % [escenaPrincipal.dia]
-	mesTexto.text = centrar + "%02d" % [escenaPrincipal.mes]
+	fechaTexto.text = "%02d / %02d" % [escenaPrincipal.dia, escenaPrincipal.mes]
 
 func _cambiarPlata():
 	plataTexto.text = "%03d" % [InventarioJugador.plata]

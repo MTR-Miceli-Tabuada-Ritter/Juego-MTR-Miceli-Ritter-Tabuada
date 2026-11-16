@@ -7,15 +7,26 @@
 [ext_resource type="PackedScene" uid="uid://e2fgdxd3fo8w" path="res://escenas/interfaz/inventarioResaltado/inventarioResaltado.tscn" id="5_4wubh"]
 [ext_resource type="PackedScene" uid="uid://bpd57pgebrxwu" path="res://escenas/interfaz/inventario/slotInventario.tscn" id="6_8jl4y"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4wubh"]
-load_path = "res://.godot/imported/marcador.png-f39e57428b586139efa25ba687d9e158.ctex"
+[sub_resource type="StyleBoxFlat" id="StyleBox_fecha_plata"]
+bg_color = Color(0.19, 0.14, 0.11, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.65, 0.46, 0.26, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.03, 0.02, 0.02, 0.65)
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
 
-[node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "mesTexto", "diaTexto", "plataTexto", "slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10")]
+[node name="Interfaz" type="CanvasLayer" unique_id=2077230092 node_paths=PackedStringArray("horaTexto", "fechaTexto", "plataTexto", "slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10")]
 script = ExtResource("1_6v4fd")
-horaTexto = NodePath("fechaPlata/hora")
-mesTexto = NodePath("fechaPlata/HBoxContainer/mes")
-diaTexto = NodePath("fechaPlata/HBoxContainer/dia")
-plataTexto = NodePath("fechaPlata/plata")
+horaTexto = NodePath("fechaPlata/FilaHora/hora")
+fechaTexto = NodePath("fechaPlata/FilaFecha/fecha")
+plataTexto = NodePath("fechaPlata/FilaPlata/plata")
 slot1 = NodePath("inventario/slot1")
 slot2 = NodePath("inventario/slot2")
 slot3 = NodePath("inventario/slot3")
@@ -103,76 +114,103 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=1045668793]
-custom_minimum_size = Vector2(36, 50)
-offset_left = 533.0
-offset_right = 640.0292
-offset_bottom = 99.0
-texture = SubResource("CompressedTexture2D_4wubh")
-expand_mode = 1
+[node name="PanelFechaPlata" type="PanelContainer" parent="." unique_id=1045668793]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -174.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 84.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_fecha_plata")
 
 [node name="fechaPlata" type="VBoxContainer" parent="." unique_id=372595194]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -68.0
-offset_top = 3.0
-offset_right = -6.0
-offset_bottom = 67.0
+offset_left = -158.0
+offset_top = 15.0
+offset_right = -18.0
+offset_bottom = 82.0
 grow_horizontal = 0
-theme_override_constants/separation = 2
+theme_override_constants/separation = 5
 
-[node name="hora" type="RichTextLabel" parent="fechaPlata" unique_id=1850452812]
+[node name="FilaHora" type="HBoxContainer" parent="fechaPlata" unique_id=1724740334]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="etiquetaHora" type="Label" parent="fechaPlata/FilaHora" unique_id=1899241460]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+theme = ExtResource("1_2ul7s")
+theme_override_colors/font_color = Color(0.72, 0.61, 0.47, 1)
+theme_override_font_sizes/font_size = 11
+text = "HORA"
+vertical_alignment = 1
+
+[node name="hora" type="RichTextLabel" parent="fechaPlata/FilaHora" unique_id=1850452812]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_2ul7s")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 17
+theme_override_colors/default_color = Color(1, 0.9, 0.72, 1)
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "00:00"
 fit_content = true
 scroll_active = false
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="fechaPlata" unique_id=411577762]
+[node name="FilaFecha" type="HBoxContainer" parent="fechaPlata" unique_id=1837768017]
 layout_mode = 2
+theme_override_constants/separation = 2
 
-[node name="dia" type="RichTextLabel" parent="fechaPlata/HBoxContainer" unique_id=1939408586]
+[node name="etiquetaFecha" type="Label" parent="fechaPlata/FilaFecha" unique_id=1053829505]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+theme = ExtResource("1_2ul7s")
+theme_override_colors/font_color = Color(0.72, 0.61, 0.47, 1)
+theme_override_font_sizes/font_size = 11
+text = "FECHA"
+vertical_alignment = 1
+
+[node name="fecha" type="RichTextLabel" parent="fechaPlata/FilaFecha" unique_id=501459436]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_2ul7s")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 17
+theme_override_colors/default_color = Color(0.96, 0.88, 0.74, 1)
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "01 / 01"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="FilaPlata" type="HBoxContainer" parent="fechaPlata" unique_id=1199714966]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="etiquetaMonedas" type="Label" parent="fechaPlata/FilaPlata" unique_id=1735109823]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+theme = ExtResource("1_2ul7s")
+theme_override_colors/font_color = Color(0.72, 0.61, 0.47, 1)
+theme_override_font_sizes/font_size = 11
+text = "MONEDAS"
+vertical_alignment = 1
+
+[node name="plata" type="RichTextLabel" parent="fechaPlata/FilaPlata" unique_id=126212805]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_2ul7s")
+theme_override_colors/default_color = Color(1, 0.83, 0.54, 1)
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "00"
 fit_content = true
 scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="mes" type="RichTextLabel" parent="fechaPlata/HBoxContainer" unique_id=1070571687]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_2ul7s")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 17
-bbcode_enabled = true
-text = "00"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="plata" type="RichTextLabel" parent="fechaPlata" unique_id=126212805]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_2ul7s")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 17
-bbcode_enabled = true
-text = "00"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
